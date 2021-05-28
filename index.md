@@ -2,11 +2,13 @@
 layout: default
 ---
 
-Hey there its Mahavir](https://github.com/mveer1).
+[Hey there its Mahavir](https://github.com/mveer1).
 
 # CV
-A pdf link here
-# Projects
+> [CV](./assets/pdfs/Resume1.pdf)
+
+
+<!-- # Projects
 
 *   This is an unordered list following a header.
 *   This is an unordered list following a header.
@@ -22,4 +24,4 @@ A pdf link here
 
 ```
 a----------------------------------------------------------------------------------------------------------------------------------------z
-```
+``` -->
