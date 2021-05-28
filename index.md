@@ -2,7 +2,7 @@
 layout: default
 ---
 
-Hey there its [Mahavir](https://github.com/mveer1).
+Hey there its Mahavir](https://github.com/mveer1).
 
 # CV
 A pdf link here
