@@ -1,0 +1,88 @@
+---
+---
+
+/*@import "{{ site.theme }}";*/
+
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+.contact {
+  font-family: "Inconsolata", "Consolas", monospace;
+  font-size: 16px;
+}
+
+h2, h3 {
+  color: #3c1874;
+  font-weight: 400;
+}
+
+a {
+  line-height: 1em;
+  color: #791c0b;
+  text-decoration: none;
+  padding: 0;
+}
+
+a:hover {
+  border-bottom: solid 2px #791c0b;
+}
+
+
+body {
+  color: black;
+  margin: 40px auto;
+  padding: 0px 10px 0px 10px;
+  max-width: 920px;
+  font-size: large;
+  line-height: 1.5;
+  font-family: 'Cairo', sans-serif;
+}
+
+.clearfix { clear: both; }
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+}
+
+.menu .menu-item {
+  flex: 1 0 auto;
+  box-sizing: border-box;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.menu .menu-item:first-child {
+  margin-left: 0px;
+}
+
+.menu .menu-item.active a {
+  border-bottom: none;
+  font-weight: bold;
+  border-bottom: solid 2px #791c0b;
+}
+
+.site {
+  line-height: 1.5em;
+}
+
+.site header {
+  font-size: xx-large;
+  font-weight: 600;
+  color: #3c1874;
+  font-family: 'Cairo', sans-serif;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  float: left;
+  border-radius: 50%;
+  margin-bottom: 1em;
+  margin-right: 2em;
+}
