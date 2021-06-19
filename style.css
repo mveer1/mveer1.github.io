@@ -14,10 +14,16 @@ html { font-family: 'Inter', sans-serif; }
   font-size: 16px;
 }
 
-h2, h3 {
+h2 {
+  color: #2b2b2b;
+  font-weight: 700;
+}
+
+h3 {
   color: #2b2b2b;
   font-weight: 400;
 }
+
 
 a {
   line-height: 1em;
@@ -38,7 +44,7 @@ body {
   max-width: 920px;
   font-size: large;
   line-height: 1.5;
-  font-family: 'Cairo', sans-serif;
+  font-family: 'Cambria', sans-serif;
 }
 
 .clearfix { clear: both; }
@@ -75,7 +81,7 @@ body {
   font-size: xx-large;
   font-weight: 600;
   color: #a04800;
-  font-family: 'Cairo', sans-serif;
+  font-family: 'Cambria', sans-serif;
 }
 
 .avatar {
