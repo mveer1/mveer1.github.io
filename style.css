@@ -16,12 +16,14 @@ html { font-family: 'Inter', sans-serif; }
 
 h2 {
   color: #2b2b2b;
+  font-size: 12px;
   font-weight: 700;
 }
 
 h3 {
   color: #2b2b2b;
-  font-weight: 400;
+  font-size: 8px;
+  font-weight: 600;
 }
 
 
@@ -44,6 +46,7 @@ body {
   max-width: 1200px;
   font-size: large;
   line-height: 1.5;
+  font-weight: 500;
   font-family: 'Verdana', sans-serif;
 }
 
