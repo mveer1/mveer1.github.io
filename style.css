@@ -10,24 +10,24 @@ html { font-family: 'Inter', sans-serif; }
 }
 
 .contact {
-  font-family: "Inconsolata", "Consolas", monospace;
+  font-family: "Inconsolata", "Consolas", Cambria;
   font-size: 16px;
 }
 
 h2, h3 {
-  color: #3c1874;
+  color: #2b2b2b;
   font-weight: 400;
 }
 
 a {
   line-height: 1em;
-  color: #791c0b;
+  color: #765100;
   text-decoration: none;
   padding: 0;
 }
 
 a:hover {
-  border-bottom: solid 2px #791c0b;
+  border-bottom: solid 2px #765100;
 }
 
 
@@ -64,7 +64,7 @@ body {
 .menu .menu-item.active a {
   border-bottom: none;
   font-weight: bold;
-  border-bottom: solid 2px #791c0b;
+  border-bottom: solid 2px #765100;
 }
 
 .site {
@@ -74,7 +74,7 @@ body {
 .site header {
   font-size: xx-large;
   font-weight: 600;
-  color: #3c1874;
+  color: #a04800;
   font-family: 'Cairo', sans-serif;
 }
 
