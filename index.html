@@ -6,9 +6,9 @@
   <title>Test</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="hideLoadingScreen()">
+<body onload="showContent()">
 
-  <!-- Loading Screen -->
+  <!-- Loading Overlay -->
   <div id="loading-screen">
     <img src="logo.png" alt="Logo" class="logo"> <!-- Replace 'logo.png' with your actual logo file path -->
     <div class="progress-bar">
@@ -17,28 +17,32 @@
   </div>
 
   <!-- Main Content -->
-  <header>
-    <h1>Test 04</h1>
-    <p>Test</p>
-  </header>
-  <main>
-    <section>
-      <h2>Test</h2>
+  <div id="main-content" style="display: none;">
+    <header>
+      <h1>Test 05</h1>
       <p>Test</p>
-    </section>
-    <section>
-      <h2>Test</h2>
-      <p>Test</p>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2024 Test</p>
-  </footer>
+    </header>
+    <main>
+      <section>
+        <h2>Test</h2>
+        <p>Test</p>
+      </section>
+      <section>
+        <h2>Test</h2>
+        <p>Test</p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Test</p>
+    </footer>
+  </div>
 
   <script>
-    function hideLoadingScreen() {
+    function showContent() {
+      // Simulate loading delay
       setTimeout(() => {
         document.getElementById('loading-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
       }, 3000); // Adjust delay as needed
     }
   </script>
