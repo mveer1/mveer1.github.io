@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.jpg" type="image/x-icon">
 </head>
 <body onload="showContent()">
 
@@ -19,7 +20,7 @@
   <!-- Main Content -->
   <div id="main-content" style="display: none;">
     <header>
-      <h1>Test 05</h1>
+      <h1>Test 06</h1>
       <p>Test</p>
     </header>
     <main>
@@ -41,10 +42,11 @@
     function showContent() {
       // Simulate loading delay
       setTimeout(() => {
-        document.getElementById('loading-screen').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
+        document.getElementById('loading-screen').style.display = 'none'; // Hide the loading screen
+        document.getElementById('main-content').style.display = 'block';  // Show the main content
       }, 3000); // Adjust delay as needed
     }
   </script>
+  
 </body>
 </html>
