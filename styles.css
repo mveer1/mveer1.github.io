@@ -23,14 +23,14 @@
   width: 80%; /* Width of the loading bar */
   max-width: 300px;
   height: 4px;
-  background: #333;
+  background: #000000;
   overflow: hidden;
 }
 
 .progress {
   height: 100%;
   background: #008eb1; /* Bright color for loading bar */
-  animation: loading 3s linear; /* Animation duration matches JavaScript delay */
+  animation: loading 3s forwards; /* Animation duration matches JavaScript delay */
 }
 
 @keyframes loading {
@@ -47,7 +47,7 @@ body, header, main, footer {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  color: #ffffff;
+  color: #494949;
 }
 
 header {
@@ -62,7 +62,7 @@ main {
 }
 
 footer {
-  background-color: #4b4b4b;
+  background-color: #446345;
   text-align: center;
   padding: 10px;
   position: fixed;
