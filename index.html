@@ -3,27 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My GitHub Page</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Optional: for custom styles -->
+  <title>Test</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="hideLoadingScreen()">
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader"></div>
+    <p>Loading...</p>
+  </div>
+
+  <!-- Main Content -->
   <header>
-    <h1>Welcome to My GitHub Page!</h1>
-    <p>test</p>
+    <h1>Test</h1>
+    <p>Test</p>
   </header>
   <main>
     <section>
-      <h2>About Me</h2>
-      <p>test</p>
+      <h2>Test</h2>
+      <p>Test</p>
     </section>
     <section>
-      <h2>Projects</h2>
-      <p>test</p>
+      <h2>Test</h2>
+      <p>Test</p>
     </section>
   </main>
   <footer>
-    <p>&copy; 2022 - Mahavir </p>
+    <p>&copy; 2024 Test</p>
   </footer>
+
+  <script>
+    function hideLoadingScreen() {
+      document.getElementById('loading-screen').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
-s
