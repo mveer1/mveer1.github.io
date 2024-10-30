@@ -4,11 +4,11 @@
   justify-content: center;
   align-items: center; /* Center items horizontally */
   height: 100vh; /* Full height of the viewport */
-  background-color: #fff; /* Optional: background color */
+  background-color: #000000; /* Optional: background color */
 }
 
 .loading-logo img {
-  width: 20px; /* Fixed size for the logo */
+  width: 60px; /* Fixed size for the logo */
   height: auto; /* Maintain aspect ratio */
   margin-bottom: 20px; /* Space below the logo */
 }
@@ -43,11 +43,11 @@ body, header, main, footer {
   padding: 0;
   font-family: Arial, sans-serif;
   color: #dddddd;
-  background-color: #494949;
+  background-color: #3d3d3d;
 }
 
 header {
-  background-color: #446345;
+  background-color: #3d3d3d;
   color: white;
   padding: 20px;
   text-align: center;
@@ -58,7 +58,7 @@ main {
 }
 
 footer {
-  background-color: #446345;
+  background-color: #3d3d3d;
   text-align: center;
   padding: 10px;
   position: fixed;
