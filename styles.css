@@ -6,7 +6,7 @@
   height: 100vh; /* Full height of the viewport */
   background-color: #000000; /* Optional: background color */
 }
-
+  
 .loading-logo img {
   width: 60px; /* Fixed size for the logo */
   height: auto; /* Maintain aspect ratio */
@@ -37,21 +37,21 @@
   }
 }
 
-/* Main Content Styling */
 body, header, main, footer {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
+  font-family: 'Courier New', Courier, monospace;
   color: #dddddd;
   background-color: #3d3d3d;
 }
 
-header {
+/* header {
   background-color: #3d3d3d;
   color: white;
   padding: 20px;
   text-align: center;
-}
+} */
 
 main {
   padding: 20px;
@@ -64,4 +64,52 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+
+/* Top Divider Line */
+.top-divider {
+  width: 100%;
+  border-top: 1px solid #333; /* Thin, slightly lighter line */
+  margin: 10px 0;
+}
+
+.introx {
+  font-size: 1.6rem;
+  color: #bada55; /* Light green color */
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+
+header {
+  /* text-align: center; */
+  margin: 10px;
+  margin-left: 50px auto;
+  padding: 20px;
+}
+
+
+header p {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+/* Line Below Header */
+header .divider {
+  width: 50%;
+  border-top: 1px solid #333;
+  margin: 20px auto;
+}
+
+a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+a:hover {
+  color: #bada55;
+  text-decoration: underline;
 }
