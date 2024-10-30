@@ -1,23 +1,18 @@
-/* Loading Screen */
 #loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000; /* Black background */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  color: #fff;
+  align-items: center; /* Center items horizontally */
+  height: 100vh; /* Full height of the viewport */
+  background-color: #fff; /* Optional: background color */
 }
 
-.logo {
-  width: 100px; /* Adjust the size of the logo */
-  margin-bottom: 20px;
+.loading-logo img {
+  width: 20px; /* Fixed size for the logo */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 20px; /* Space below the logo */
 }
+
 
 .progress-bar {
   width: 80%; /* Width of the loading bar */
@@ -30,7 +25,7 @@
 .progress {
   height: 100%;
   background: #008eb1; /* Bright color for loading bar */
-  animation: loading 3s forwards; /* Animation duration matches JavaScript delay */
+  animation: loading 3s linear; /* Animation duration matches JavaScript delay */
 }
 
 @keyframes loading {
@@ -47,7 +42,8 @@ body, header, main, footer {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  color: #494949;
+  color: #dddddd;
+  background-color: #494949;
 }
 
 header {
