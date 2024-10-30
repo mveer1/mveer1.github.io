@@ -15,19 +15,22 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Loading Overlay -->
-  <div id="loading-screen">
-    <div class="loading-logo">Your Logo</div>
-    <div class="progress-bar">
-      <div class="progress"></div>
+    <!-- Loading Overlay -->
+    <div id="loading-screen">
+      <div class="loading-logo">
+        <img src="logo.png" alt="Your Logo" />
+      </div>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
     </div>
-  </div>
-
-  <script>
-    // Simulate loading time with a timeout, then redirect to index.html
-    setTimeout(() => {
-      window.location.href = "home.html"; // Redirect to the main page
-    }, 3000); // Adjust the time (3000ms = 3s) as needed
-  </script>
-</body>
+  
+    <script>
+      // Simulate loading time with a timeout, then redirect to index.html
+      setTimeout(() => {
+        window.location.href = "home.html"; // Redirect to the main page
+      }, 3000); // Adjust the time (3000ms = 3s) as needed
+    </script>
+  </body>
+  
 </html>
