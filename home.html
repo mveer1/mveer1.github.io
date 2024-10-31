@@ -1,5 +1,4 @@
 <!-- This is the main page -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,34 +10,38 @@
 </head>
 <body>
     <header>
-        <div class="site-title">Mahavir ></div> <!-- Site title -->
+        <div class="site-title">Mahavir</div> <!-- Site title -->
         <div class="top-divider"></div>
-      </header>
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+    <main>
+        <div class="introx"> 
+            <h1>Hello</h1>
+            <p>This site is under construction 🦺. test 030</p>
+        </div>
+        <section class="about">
+            <a href="https://mveer1.github.io" class="hover-class" target="_blank">
+                <h3>About Me</h3>
+            </a>
+        </section>
 
-  <main>
-    <div class="introx"> 
-        <h1>Hello</h1>
-        <p>This site is under construction 🦺. test 030</p>
-      </div>
-    <section class="about">
-        <a href="https://mveer1.github.io" class="hover-class" target="_blank">
-            <h3>About Me</h3>
-          </a>          
-      <!-- <p>Short introduction or bio.</p> -->
-    </section>
+        <a href="#">Twitter</a>
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
 
-    <!-- <section class="thoughts">
-      <h3>Recent Thoughts</h3>
-      <p><strong>1/06/2024</strong> </p>
-      <p><strong>12/28/2023</strong> 2024</p>
-    </section> -->
-    <a href="#">Twitter</a>
-    <a href="#">GitHub</a>
-    <a href="#">LinkedIn</a>
-  </main>
+        <h1>Conway's Game of Life</h1>
+        <button onclick="toggleGame()" class="button">Start / Pause</button>
+        <br>
+        <canvas id="gameCanvas" class="canvas"></canvas>
+        <script src="./gameoflife.js"></script>
+    </main>
 
-  <footer>
-    <p>&copy; 2024 - Mahavir</p>
-  </footer>
+    <footer>
+        <p>&copy; 2024 - Mahavir</p>
+    </footer>
 </body>
 </html>
