@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      background-color: rgba(61, 61, 61, 0.9); /* Semi-transparent background */
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      position: relative;
+      flex-direction: column;
+      text-align: center; /* Center text */
+    }
+
+    .menu-container {
+      background-color: #3d3d3d;
+      padding: 0px;
+      display: flex;
+      flex-direction: column;
+      gap: 0px; /* Space between buttons */
+      width: 80%; /* Wider width for the menu */
+      max-width: 600px; /* Maximum width */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu-button {
+      position: relative;
+      background-color: #3d3d3d;
+      color: #ddd; /* Default text color */
+      padding: 30px;
+      border: none;
+      cursor: pointer;
+      overflow: hidden; /* Hide overflow of the pseudo-element */
+      width: 100%; /* Full width */
+      font-size: 1.2rem; /* Larger font size */
+    }
+
+    .menu-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 100%; /* Start from the right */
+      width: 100%;
+      height: 100%;
+      background-color: #2f2f2f; /* Darker background */
+      transform: translateX(-100%); /* Move out of view initially */
+      transition: transform 0.3s ease; /* Transition for movement */
+      z-index: 0; /* Send behind text */
+    }
+
+    .menu-button:hover::before {
+      transform: translateX(0); /* Slide in from the chosen direction */
+    }
+
+    .menu-button:hover {
+      color: #bada55; /* Green text color */
+      position: relative; /* Create new stacking context */
+      z-index: 1; /* Bring text above the background */
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+      display: none; /* Hidden by default */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Ensure it is above other elements */
+    }
+
+    .overlay-content {
+      background-color: #3d3d3d;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      width: 80%; /* Adjust overlay width */
+      max-width: 600px; /* Maximum overlay width */
+    }
+
+    .close-overlay {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #2a2a2a;
+      color: #ddd;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <div class="menu-container">
+        <button class="menu-button" onmouseover="setRandomDirection(this)" onclick="showOverlay('about')">About</button>
+        <button class="menu-button" onmouseover="setRandomDirection(this)" onclick="showOverlay('resume')">Resume</button>
+        <button class="menu-button" onmouseover="setRandomDirection(this)" onclick="showOverlay('contact')">Contact Me</button>
+    </div>
+
+    <!-- Overlay for displaying sections -->
+    <div id="overlay" class="overlay">
+      <div class="overlay-content">
+        <button class="close-overlay" onclick="closeOverlay()">Close</button>
+        <div id="overlay-text"></div>
+      </div>
+    </div>
+
+    <script>
+      function showOverlay(section) {
+          // Show overlay
+          document.getElementById('overlay').style.display = 'flex';
+
+          // Set overlay text based on the button clicked
+          let text = '';
+          switch (section) {
+              case 'about':
+                  text = '<h1>About Me</h1><p>This is the About section content.</p>';
+                  break;
+              case 'resume':
+                  text = '<h1>My Resume</h1><p>This is the Resume section content.</p>';
+                  break;
+              case 'contact':
+                  text = '<h1>Contact Me</h1><p>This is the Contact section content.</p>';
+                  break;
+          }
+          document.getElementById('overlay-text').innerHTML = text;
+      }
+
+      function closeOverlay() {
+          // Hide overlay
+          document.getElementById('overlay').style.display = 'none';
+      }
+
+      function setRandomDirection(button) {
+          // Randomly choose a direction for the hover effect
+          const directions = ['left', 'right', 'top', 'bottom'];
+          const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+
+          // Update the button's pseudo-element styles based on the chosen direction
+          const beforeStyle = button.querySelector('::before');
+          switch (randomDirection) {
+              case 'left':
+                  button.style.setProperty('--hover-left', '0');
+                  button.style.setProperty('--hover-right', '100%');
+                  button.style.setProperty('--hover-top', '0');
+                  button.style.setProperty('--hover-bottom', '0');
+                  break;
+              case 'right':
+                  button.style.setProperty('--hover-left', '100%');
+                  button.style.setProperty('--hover-right', '0');
+                  button.style.setProperty('--hover-top', '0');
+                  button.style.setProperty('--hover-bottom', '0');
+                  break;
+              case 'top':
+                  button.style.setProperty('--hover-left', '0');
+                  button.style.setProperty('--hover-right', '0');
+                  button.style.setProperty('--hover-top', '100%');
+                  button.style.setProperty('--hover-bottom', '0');
+                  break;
+              case 'bottom':
+                  button.style.setProperty('--hover-left', '0');
+                  button.style.setProperty('--hover-right', '0');
+                  button.style.setProperty('--hover-top', '0');
+                  button.style.setProperty('--hover-bottom', '100%');
+                  break;
+          }
+          updateHoverEffect(button);
+      }
+
+      function updateHoverEffect(button) {
+          const beforeElement = button.style.getPropertyValue('--hover-left') === '0' ? 'translateX(-100%)' : 'translateX(100%)';
+          button.classList.toggle('hover-effect', beforeElement);
+      }
+    </script>
+</body>
+</html>

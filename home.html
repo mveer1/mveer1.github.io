@@ -1,4 +1,5 @@
 <!-- This is the main page -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,34 +11,37 @@
 </head>
 <body>
     <header>
-        <div class="site-title">Mahavir</div> <!-- Site title -->
+        <div class="site-title">Mahavir</div> 
         <div class="top-divider"></div>
-        <div class="burger-menu" onclick="toggleMenu()">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
+        <div class="burger-menu" onclick="window.location.href='menu.html'">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+      </div>
     </header>
+    
     <main>
         <div class="introx"> 
             <h1>Hello</h1>
-            <p>This site is under construction 🦺. test 030</p>
+            <p>This site is under construction 🦺 : 053</p>
         </div>
         <section class="about">
             <a href="https://mveer1.github.io" class="hover-class" target="_blank">
                 <h3>About Me</h3>
-            </a>
+            </a>          
         </section>
 
         <a href="#">Twitter</a>
         <a href="#">GitHub</a>
         <a href="#">LinkedIn</a>
-
-        <h1>Conway's Game of Life</h1>
+        <br><br><br><br>
+        <h3>Conway's Game of Life</h3>
         <button onclick="toggleGame()" class="button">Start / Pause</button>
         <br>
         <canvas id="gameCanvas" class="canvas"></canvas>
+        <script src="./script.js"></script>
         <script src="./gameoflife.js"></script>
+        <br>
     </main>
 
     <footer>
