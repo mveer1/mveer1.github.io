@@ -13,21 +13,34 @@
   margin-bottom: 20px; /* Space below the logo */
 }
 
-
+/* Container for the progress bar */
 .progress-bar {
-  width: 80%; /* Width of the loading bar */
-  max-width: 300px;
+  position: relative;
+  width: 80%;
+  max-width: 500px;
   height: 4px;
   background: #000000;
   overflow: hidden;
 }
 
 .progress {
-  height: 100%;
-  background: #008eb1; /* Bright color for loading bar */
-  animation: loading 3s linear; /* Animation duration matches JavaScript delay */
+  height: 80%;
+  background: linear-gradient(
+      to right, 
+      rgba(0, 204, 255, 0.100) 0%, 
+      rgba(0, 204, 255, 0.200) 20%, 
+      rgba(0, 204, 255, 0.400) 40%, 
+      rgba(0, 204, 255, 0.600) 60%,
+      rgba(0, 204, 255, 0.800) 80%, 
+      #00ccff 100%  
+    ); 
+  /* box-shadow: 0px 0px 2px 2px rgba(0, 142, 177, 0.181); */
+  animation: loading 3s cubic-bezier(0.90, 0, 0.10, 1) forwards;
+  position: relative;
 }
 
+
+/* Keyframes for the progress bar */
 @keyframes loading {
   0% {
     width: 0%;
@@ -36,6 +49,8 @@
     width: 100%;
   }
 }
+
+
 
 body, header, main, footer {
   margin: 0;
@@ -70,13 +85,14 @@ footer {
 /* Top Divider Line */
 .top-divider {
   width: 100%;
-  border-top: 1px solid #333; /* Thin, slightly lighter line */
-  margin: 10px 0;
+  border-top: 2px solid #333; /* Thin, slightly lighter line */
+  margin: 20px 0px;
 }
 
 .introx {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #bada55; /* Light green color */
+  font: 'Courier';
   font-weight: bold;
   margin-bottom: 0;
 }
@@ -89,19 +105,6 @@ header {
   padding: 20px;
 }
 
-
-header p {
-  font-size: 1.2rem;
-  color: #ccc;
-  margin-top: 10px;
-}
-
-/* Line Below Header */
-header .divider {
-  width: 50%;
-  border-top: 1px solid #333;
-  margin: 20px auto;
-}
 
 a {
   color: #ccc;
