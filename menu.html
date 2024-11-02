@@ -6,147 +6,15 @@
   <title>Mahavir</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  <style>
-    body {
-      background-color: rgb(61, 61, 61);
-      color: #eee;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      position: relative;
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .close-page {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: #2a2a2a;
-      color: #ddd;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 15px;
-      cursor: pointer;
-      font-size: 1rem;
-      z-index: 1000;
-    }
-
-    .menu-container {
-      background-color: #3d3d3d;
-      padding: 0px;
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      width: 80%;
-      height: 80vh;
-      max-width: 600px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .menu-button {
-      background-color: #3d3d3d;
-      color: #bbb;
-      padding: 30px;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1.8rem;
-      position: relative;
-      overflow: hidden;
-      flex-grow: 1;
-      transition: color 0.3s ease; /* Smooth color transition for text */
-    }
-
-    /* Hover effect */
-    .menu-button:hover {
-      color: #fff; /* Lighten text color on hover */
-    }
-
-    /* Top rectangle animation */
-    .menu-button::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 100%; /* Start off-screen on the right */
-      width: 100%;
-      height: 70%; /* Covers the top 70% */
-      background-color: rgba(47, 47, 47, 0.8);
-      transition: transform 0.4s ease; /* Smooth slide-in */
-      transform: translateX(0); /* Initial state */
-      z-index: 0;
-    }
-
-    /* Bottom rectangle animation */
-    .menu-button::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 100%; /* Start off-screen on the left */
-      width: 100%;
-      height: 30%; /* Covers the bottom 30% */
-      background-color: rgba(47, 47, 47, 0.8);
-      transition: transform 0.4s ease; /* Smooth slide-in */
-      transform: translateX(0); /* Initial state */
-      z-index: 0;
-    }
-
-    /* Activate animations on hover */
-    .menu-button:hover::before {
-      transform: translateX(-100%); /* Slide in from the right */
-    }
-
-    .menu-button:hover::after {
-      transform: translateX(100%); /* Slide in from the left */
-    }
-
-    /* Ensure text stays above the overlay rectangles */
-    .menu-button span {
-      position: relative;
-      z-index: 1;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .overlay-content {
-      background-color: #3d3d3d;
-      padding: 20px;
-      color: #fff;
-      text-align: center;
-      position: relative;
-      width: 80%;
-      max-width: 600px;
-    }
-
-    .close-overlay {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: #2a2a2a;
-      color: #ddd;
-      border: none;
-      border-radius: 5px;
-      padding: 10px;
-      cursor: pointer;
-    }
-  </style>
 </head>
-<body>
-    <!-- Button to close this overlay page -->
-    <button class="close-page" onclick="closePage()">Close Page</button>
+<body class="menu-page-body">
+    <header>
+      <div class="menu-burger-menu" onclick="closePage()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+  </header>
 
     <div class="menu-container">
         <button class="menu-button" onclick="showOverlay('about')"><span>about</span></button>
@@ -154,40 +22,13 @@
         <button class="menu-button" onclick="showOverlay('contact')"><span>contact Me</span></button>
     </div>
 
-    <!-- Overlay for displaying sections -->
-    <div id="overlay" class="overlay">
-      <div class="overlay-content">
-        <button class="close-overlay" onclick="closeOverlay()">Close</button>
+    <div id="overlay" class="menu-overlay">
+      <div class="menu-overlay-content">
+        <button class="menu-close-overlay" onclick="closeOverlay()">Close</button>
         <div id="overlay-text"></div>
       </div>
     </div>
 
-    <script>
-      function showOverlay(section) {
-          document.getElementById('overlay').style.display = 'flex';
-
-          let text = '';
-          switch (section) {
-              case 'about':
-                  text = '<h1>About Me</h1><p>This is the About section content.</p>';
-                  break;
-              case 'resume':
-                  text = '<h1>My Resume</h1><p>This is the Resume section content.</p>';
-                  break;
-              case 'contact':
-                  text = '<h1>Contact Me</h1><p>This is the Contact section content.</p>';
-                  break;
-          }
-          document.getElementById('overlay-text').innerHTML = text;
-      }
-
-      function closeOverlay() {
-          document.getElementById('overlay').style.display = 'none';
-      }
-
-      function closePage() {
-          window.history.back();
-      }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
