@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu</title>
+  <title>Mahavir</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
   <style>
     body {
-      background-color: rgba(61, 61, 61, 0.9); /* Semi-transparent background */
-      color: #fff;
+      background-color: rgb(61, 61, 61);
+      color: #eee;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,7 +17,21 @@
       margin: 0;
       position: relative;
       flex-direction: column;
-      text-align: center; /* Center text */
+      text-align: center;
+    }
+
+    .close-page {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #2a2a2a;
+      color: #ddd;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 1rem;
+      z-index: 1000;
     }
 
     .menu-container {
@@ -25,45 +39,73 @@
       padding: 0px;
       display: flex;
       flex-direction: column;
-      gap: 0px; /* Space between buttons */
-      width: 80%; /* Wider width for the menu */
-      max-width: 600px; /* Maximum width */
+      gap: 0px;
+      width: 80%;
+      height: 80vh;
+      max-width: 600px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     .menu-button {
-      position: relative;
       background-color: #3d3d3d;
-      color: #ddd; /* Default text color */
+      color: #bbb;
       padding: 30px;
       border: none;
       cursor: pointer;
-      overflow: hidden; /* Hide overflow of the pseudo-element */
-      width: 100%; /* Full width */
-      font-size: 1.2rem; /* Larger font size */
+      width: 100%;
+      font-size: 1.8rem;
+      position: relative;
+      overflow: hidden;
+      flex-grow: 1;
+      transition: color 0.3s ease; /* Smooth color transition for text */
     }
 
+    /* Hover effect */
+    .menu-button:hover {
+      color: #fff; /* Lighten text color on hover */
+    }
+
+    /* Top rectangle animation */
     .menu-button::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
-      left: 100%; /* Start from the right */
+      left: 100%; /* Start off-screen on the right */
       width: 100%;
-      height: 100%;
-      background-color: #2f2f2f; /* Darker background */
-      transform: translateX(-100%); /* Move out of view initially */
-      transition: transform 0.3s ease; /* Transition for movement */
-      z-index: 0; /* Send behind text */
+      height: 70%; /* Covers the top 70% */
+      background-color: rgba(47, 47, 47, 0.8);
+      transition: transform 0.4s ease; /* Smooth slide-in */
+      transform: translateX(0); /* Initial state */
+      z-index: 0;
     }
 
+    /* Bottom rectangle animation */
+    .menu-button::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 100%; /* Start off-screen on the left */
+      width: 100%;
+      height: 30%; /* Covers the bottom 30% */
+      background-color: rgba(47, 47, 47, 0.8);
+      transition: transform 0.4s ease; /* Smooth slide-in */
+      transform: translateX(0); /* Initial state */
+      z-index: 0;
+    }
+
+    /* Activate animations on hover */
     .menu-button:hover::before {
-      transform: translateX(0); /* Slide in from the chosen direction */
+      transform: translateX(-100%); /* Slide in from the right */
     }
 
-    .menu-button:hover {
-      color: #bada55; /* Green text color */
-      position: relative; /* Create new stacking context */
-      z-index: 1; /* Bring text above the background */
+    .menu-button:hover::after {
+      transform: translateX(100%); /* Slide in from the left */
+    }
+
+    /* Ensure text stays above the overlay rectangles */
+    .menu-button span {
+      position: relative;
+      z-index: 1;
     }
 
     .overlay {
@@ -72,11 +114,11 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
-      display: none; /* Hidden by default */
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
       justify-content: center;
       align-items: center;
-      z-index: 1000; /* Ensure it is above other elements */
+      z-index: 1000;
     }
 
     .overlay-content {
@@ -85,8 +127,8 @@
       color: #fff;
       text-align: center;
       position: relative;
-      width: 80%; /* Adjust overlay width */
-      max-width: 600px; /* Maximum overlay width */
+      width: 80%;
+      max-width: 600px;
     }
 
     .close-overlay {
@@ -103,10 +145,13 @@
   </style>
 </head>
 <body>
+    <!-- Button to close this overlay page -->
+    <button class="close-page" onclick="closePage()">Close Page</button>
+
     <div class="menu-container">
-        <button class="menu-button" onmouseover="setRandomDirection(this)" onclick="showOverlay('about')">About</button>
-        <button class="menu-button" onmouseover="setRandomDirection(this)" onclick="showOverlay('resume')">Resume</button>
-        <button class="menu-button" onmouseover="setRandomDirection(this)" onclick="showOverlay('contact')">Contact Me</button>
+        <button class="menu-button" onclick="showOverlay('about')"><span>about</span></button>
+        <button class="menu-button" onclick="showOverlay('resume')"><span>resume</span></button>
+        <button class="menu-button" onclick="showOverlay('contact')"><span>contact Me</span></button>
     </div>
 
     <!-- Overlay for displaying sections -->
@@ -119,10 +164,8 @@
 
     <script>
       function showOverlay(section) {
-          // Show overlay
           document.getElementById('overlay').style.display = 'flex';
 
-          // Set overlay text based on the button clicked
           let text = '';
           switch (section) {
               case 'about':
@@ -139,49 +182,11 @@
       }
 
       function closeOverlay() {
-          // Hide overlay
           document.getElementById('overlay').style.display = 'none';
       }
 
-      function setRandomDirection(button) {
-          // Randomly choose a direction for the hover effect
-          const directions = ['left', 'right', 'top', 'bottom'];
-          const randomDirection = directions[Math.floor(Math.random() * directions.length)];
-
-          // Update the button's pseudo-element styles based on the chosen direction
-          const beforeStyle = button.querySelector('::before');
-          switch (randomDirection) {
-              case 'left':
-                  button.style.setProperty('--hover-left', '0');
-                  button.style.setProperty('--hover-right', '100%');
-                  button.style.setProperty('--hover-top', '0');
-                  button.style.setProperty('--hover-bottom', '0');
-                  break;
-              case 'right':
-                  button.style.setProperty('--hover-left', '100%');
-                  button.style.setProperty('--hover-right', '0');
-                  button.style.setProperty('--hover-top', '0');
-                  button.style.setProperty('--hover-bottom', '0');
-                  break;
-              case 'top':
-                  button.style.setProperty('--hover-left', '0');
-                  button.style.setProperty('--hover-right', '0');
-                  button.style.setProperty('--hover-top', '100%');
-                  button.style.setProperty('--hover-bottom', '0');
-                  break;
-              case 'bottom':
-                  button.style.setProperty('--hover-left', '0');
-                  button.style.setProperty('--hover-right', '0');
-                  button.style.setProperty('--hover-top', '0');
-                  button.style.setProperty('--hover-bottom', '100%');
-                  break;
-          }
-          updateHoverEffect(button);
-      }
-
-      function updateHoverEffect(button) {
-          const beforeElement = button.style.getPropertyValue('--hover-left') === '0' ? 'translateX(-100%)' : 'translateX(100%)';
-          button.classList.toggle('hover-effect', beforeElement);
+      function closePage() {
+          window.history.back();
       }
     </script>
 </body>
