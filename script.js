@@ -40,3 +40,7 @@ function closeOverlay() {
 function closePage() {
     window.history.back();
 }
+
+function openResume() {
+    window.open('resume.pdf', '_blank');
+  }
