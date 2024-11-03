@@ -10,14 +10,18 @@
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <div class="page-transition-overlay" id="pageTransitionOverlay">
+        <div class="curtain-top"></div>
+        <div class="curtain-bottom"></div>
+    </div>
     <header>
         <div class="site-title">Mahavir</div> 
         <div class="top-divider"></div>
-        <div class="burger-menu" onclick="window.location.href='menu.html'">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-      </div>
+        <div class="burger-menu" onclick="transitionToPage('menu.html')">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
     </header>
     
     <main>

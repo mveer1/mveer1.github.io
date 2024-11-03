@@ -8,12 +8,16 @@
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body class="menu-page-body">
+  <div class="page-transition-overlay" id="pageTransitionOverlay">
+    <div class="curtain-top"></div>
+    <div class="curtain-bottom"></div>
+  </div>
     <header>
-      <div class="menu-burger-menu" onclick="closePage()">
+      <div class="menu-burger-menu" onclick="transitionToPage('home.html')">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
-      </div>
+    </div>
   </header>
 
     <div class="menu-container">
@@ -29,6 +33,8 @@
       </div>
     </div>
 
+    <!-- Page Transition Overlay -->
+    <div class="page-transition-overlay" id="pageTransitionOverlay"></div>
     <script src="script.js"></script>
 </body>
 </html>

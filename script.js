@@ -44,3 +44,21 @@ function closePage() {
 function openResume() {
     window.open('resume.pdf', '_blank');
   }
+
+const transitionOverlay = document.getElementById('pageTransitionOverlay');
+
+function transitionToPage(url) {
+    transitionOverlay.classList.add('active'); // Activate curtains
+
+    // Wait for the curtains to fully come in
+    setTimeout(() => {
+        // Change the page here to show the new content
+        setTimeout(() => {
+            transitionOverlay.classList.remove('active');
+        }, 0); 
+        window.location.href = url; // Navigate to the new page
+
+        // Now remove the active class to start exit animation
+// Immediately start the exit animation after changing the page
+    }, 1400); // Duration for curtains coming in
+}

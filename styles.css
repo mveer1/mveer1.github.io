@@ -313,3 +313,93 @@ button {
   padding: 10px;
   cursor: pointer;
 }
+
+/* Overlay for page transition */
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.page-transition-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.curtain-top {
+  position: absolute;
+  width: 100%;
+  height: 70vh; /* 70% of viewport height */
+  background-color: #313131; /* Dark color for curtains */
+  /*transition: transform 0.7s ease; /* Animation duration */
+  top: 0;
+  right: 0; /* Start from the right */
+  transform: translateX(100%); /* Slide in from the right */
+  z-index: 9999;
+}
+
+.curtain-bottom {
+  position: absolute;
+  height: 50vh; /* 30% of viewport height */
+  width: 100%;
+  background-color: #9c9a9a; /* Dark color for curtains */
+  /*transition: transform 0.7s ease; /* Animation duration */
+  bottom: 0;
+  left: 0; /* Start from the left */
+  transform: translateX(-100%); /* Slide in from the left */
+  z-index: 9999;
+}
+
+.page-transition-overlay.active .curtain-top {
+  transform: translateX(0); /* Slide in */
+}
+
+.page-transition-overlay.active .curtain-bottom {
+  transform: translateX(0); /* Slide in */
+}
+
+.page-transition-overlay.active .curtain-top {
+  animation: curtain-animation 1.4s ease forwards;
+}
+
+.page-transition-overlay.active .curtain-bottom {
+  animation: curtain-bottom-animation 1.4s ease forwards;
+}
+
+/* New CSS for the curtain animation */
+@keyframes curtain-animation {
+  0% {
+      transform: translateX(100%); /* Initial position for top curtain */
+  }
+  40% {
+      transform: translateX(0); /* Curtains meet in the middle */
+  }
+  60% {
+    transform: translateX(0); /* Curtains meet in the middle */
+}
+  100% {
+      transform: translateX(-100%); /* Move away to reveal new page */
+  }
+}
+
+@keyframes curtain-bottom-animation {
+  0% {
+      transform: translateX(-100%); /* Initial position for bottom curtain */
+  }
+  40% {
+      transform: translateX(0); /* Curtains meet in the middle */
+  }
+  60% {
+    transform: translateX(0); /* Curtains meet in the middle */
+}
+  100% {
+      transform: translateX(100%); /* Move away to reveal new page */
+  }
+}
