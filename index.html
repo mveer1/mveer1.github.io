@@ -1,36 +1,51 @@
-<!--
-    Author: Mahavir
-    Date: October 30, 2024
-    Why are you reading this?
-    
-    Also this is actually just the loading file. real index.html is in home.html
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loading...</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Data Engineer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Loading Overlay -->
-    <div id="loading-screen">
-      <div class="loading-logo">
-        <img src="./logo.png" alt="Your Logo" />
-      </div>
-      <div class="progress-bar">
-        <div class="progress"></div>
-      </div>
+    <header>
+        <h1>Mahavir Chaudhari</h1>
+        <div class="burger-menu" id="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+    
+    <div class="content-wrapper">
+        <main>
+            <section id="about">
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+            </section>
+            
+            <section id="projects">
+                <div class="project-grid">
+                    <div class="project-block"></div>
+                    <div class="project-block"></div>
+                    <div class="project-block"></div>
+                    <div class="project-block"></div>
+                    <div class="project-block"></div>
+                    <div class="project-block"></div>
+                </div>
+            </section>
+        </main>
+        
+        <aside id="timeline">
+            <div class="timeline-line">
+                <div class="year-marker">2020</div>
+                <div class="year-marker">2021</div>
+                <div class="year-marker">2022</div>
+                <div class="year-marker">2023</div>
+                <div class="year-marker">2024</div>
+                <div class="year-marker">2025</div>
+            </div>
+        </aside>
     </div>
-  
-    <script>
-      // Simulate loading time with a timeout, then redirect to index.html
-      setTimeout(() => {
-        window.location.href = "home.html"; // Redirect to the main page
-      }, 3000); // Adjust the time (3000ms = 3s) as needed
-    </script>
-  </body>
-  
+    
+    <script src="script.js"></script>
+</body>
 </html>
