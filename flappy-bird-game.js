@@ -339,6 +339,11 @@ class FlappyBirdGame {
     }
     
     update(timestamp) {
+        if (this.gameOver) {
+            this.promptForName();
+            return;
+        }
+
         if (!this.lastUpdateTime) this.lastUpdateTime = timestamp;
         const elapsed = timestamp - this.lastUpdateTime;
         
@@ -362,6 +367,8 @@ class FlappyBirdGame {
         if (this.isRunning) {
             this.animationId = requestAnimationFrame(this.update.bind(this));
         }
+
+
     }
     
     resetGame() {
@@ -384,7 +391,7 @@ class FlappyBirdGame {
             this.startGame();
         }
     }
-    
+
     promptForName() {
         // Create name input container
         const container = document.createElement('div');
@@ -401,13 +408,18 @@ class FlappyBirdGame {
         const submitBtn = document.createElement('button');
         submitBtn.textContent = 'Submit Score';
         
+        const skipBtn = document.createElement('button');
+        skipBtn.textContent = 'Skip';
+        // skipBtn.style.marginLeft = '10px';
+        
         container.appendChild(heading);
         container.appendChild(input);
         container.appendChild(submitBtn);
+        container.appendChild(skipBtn);
         
-        // Add to the game canvas area
-        const gameSection = document.querySelector('.game-section');
-        gameSection.appendChild(container);
+        // Add to the name form area instead of game section
+        const nameFormArea = document.getElementById('nameFormArea') || document.querySelector('.highscore-section');
+        nameFormArea.appendChild(container);
         
         // Focus the input
         input.focus();
@@ -418,7 +430,13 @@ class FlappyBirdGame {
             this.highScoreManager.saveScore(name, this.score);
             this.highScoreManager.renderScoreList(document.getElementById('highScoresList'));
             container.remove();
-            this.resetGame();
+            this.resetGameState();
+        });
+        
+        // Skip option
+        skipBtn.addEventListener('click', () => {
+            container.remove();
+            this.resetGameState();
         });
         
         // Also submit on Enter key
