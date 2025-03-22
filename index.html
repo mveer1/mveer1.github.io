@@ -26,7 +26,10 @@
             <section id="projects">
                 <div class="project-grid">
                     <div class="project-block"></div>
-                    <div class="project-block"></div>
+                    <div class="project-block flappy-game-poster" id="openFlappyGame">
+                        <h3>Flappy Bird</h3>
+                        <p>Click to play</p>
+                    </div>
                     <div class="project-block"></div>
                     <div class="project-block"></div>
                     <div class="project-block"></div>
@@ -49,6 +52,33 @@
             </div>
         </aside>
     </div>
+    
+    <!-- Flappy Bird Modal -->
+    <div id="flappyBirdModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="game-section">
+                    <canvas id="flappyCanvas" width="400" height="600"></canvas>
+                </div>
+                <div class="highscore-section">
+                    <h3>High Scores</h3>
+                    <div id="highScoresList"></div>
+                    <div class="game-controls">
+                        <button id="playPauseBtn" class="flappy-game-btn">▶</button>
+                        <button id="resetBtn" class="flappy-game-btn">↻</button>
+                        <select id="difficultySelect" class="flappy-difficulty-select">
+                            <option value="easy">Easy</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <p class="flappy-instructions">Click or press Space to jump</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script src="convoy_GOI.js"></script>
     <script src="flappy-bird-game.js"></script>
     <script src="script.js"></script>

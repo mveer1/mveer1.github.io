@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create canvas for the game
         const conwayCanvas = document.createElement('canvas');
         conwayCanvas.width = 300;
-        conwayCanvas.height = 300;
+        conwayCanvas.height = 400;
         conwayCanvas.className = 'conway-game-canvas';
         
         // Create controls

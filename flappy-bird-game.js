@@ -1,28 +1,96 @@
+// High score management
+class HighScoreManager {
+    constructor(gameName, maxScores = 5) {
+        this.storageKey = `${gameName}HighScores`;
+        this.maxScores = maxScores;
+        this.scores = this.loadScores();
+    }
+
+    loadScores() {
+        const savedScores = localStorage.getItem(this.storageKey);
+        return savedScores ? JSON.parse(savedScores) : [];
+    }
+
+    saveScore(name, score) {
+        const newScore = { name, score, date: new Date().toISOString() };
+        this.scores.push(newScore);
+        
+        // Sort scores (highest first)
+        this.scores.sort((a, b) => b.score - a.score);
+        
+        // Keep only top scores
+        if (this.scores.length > this.maxScores) {
+            this.scores = this.scores.slice(0, this.maxScores);
+        }
+        
+        // Save to localStorage
+        localStorage.setItem(this.storageKey, JSON.stringify(this.scores));
+        return this.isHighScore(score);
+    }
+
+    isHighScore(score) {
+        return this.scores.length < this.maxScores || score > this.scores[this.scores.length - 1].score;
+    }
+
+    renderScoreList(container) {
+        const list = document.createElement('ul');
+        
+        if (this.scores.length === 0) {
+            const emptyItem = document.createElement('li');
+            emptyItem.textContent = 'No high scores yet!';
+            list.appendChild(emptyItem);
+        } else {
+            this.scores.forEach((score, index) => {
+                const item = document.createElement('li');
+                
+                const rank = document.createElement('span');
+                rank.textContent = `#${index + 1}`;
+                
+                const name = document.createElement('span');
+                name.textContent = score.name;
+                
+                const points = document.createElement('span');
+                points.textContent = score.score;
+                
+                item.appendChild(rank);
+                item.appendChild(name);
+                item.appendChild(points);
+                
+                list.appendChild(item);
+            });
+        }
+        
+        container.innerHTML = '';
+        container.appendChild(list);
+    }
+}
+
 // Flappy Bird Game Implementation
 class FlappyBirdGame {
-    constructor(canvas, difficulty = 'medium') {
-        this.birdCanvas = canvas;
-        this.birdContext = canvas.getContext('2d');
-        this.canvasWidth = canvas.width;
-        this.canvasHeight = canvas.height;
+    constructor(canvas, highScoreManager, difficulty = 'medium') {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.width = canvas.width;
+        this.height = canvas.height;
+        this.highScoreManager = highScoreManager;
         
         // Game state
-        this.isGameRunning = false;
+        this.isRunning = false;
         this.gameOver = false;
         this.score = 0;
         this.highScore = localStorage.getItem('flappyBirdHighScore') || 0;
         
         // Animation properties
-        this.birdAnimationId = null;
-        this.lastBirdUpdateTime = 0;
+        this.animationId = null;
+        this.lastUpdateTime = 0;
         
         // Set difficulty
         this.setDifficulty(difficulty);
         
         // Bird properties
         this.birdSize = 20;
-        this.birdX = this.canvasWidth / 4;
-        this.birdY = this.canvasHeight / 2;
+        this.birdX = this.width / 4;
+        this.birdY = this.height / 2;
         this.birdVelocity = 0;
         this.birdGravity = 0.5;
         this.birdJumpStrength = -8;
@@ -31,13 +99,36 @@ class FlappyBirdGame {
         this.pipes = [];
         this.pipeWidth = 50;
         this.pipeGap = 150;
-        this.pipeSpawnInterval = 1500; // milliseconds
+        this.pipeSpawnInterval = 1500;
         this.lastPipeSpawnTime = 0;
+        
+        // Road properties
+        this.roadStripes = [];
+        this.stripeWidth = 30;
+        this.stripeHeight = 5;
+        this.stripeGap = 30;
+        this.initRoadStripes();
         
         // Initialize event listeners
         this.setupEventListeners();
     }
     
+    pauseGame() {
+        this.isRunning = false;
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+            this.animationId = null;
+        }
+    }
+
+    startGame() {
+        if (!this.isRunning) {
+            this.isRunning = true;
+            this.gameOver = false;
+            this.animationId = requestAnimationFrame(this.update.bind(this));
+        }
+    }
+
     setDifficulty(difficulty) {
         switch(difficulty) {
             case 'easy':
@@ -58,9 +149,40 @@ class FlappyBirdGame {
         }
     }
     
+    initRoadStripes() {
+        const totalStripes = Math.ceil(this.width / (this.stripeWidth + this.stripeGap)) + 1;
+        for (let i = 0; i < totalStripes; i++) {
+            this.roadStripes.push({
+                x: i * (this.stripeWidth + this.stripeGap),
+                y: this.height - 20
+            });
+        }
+    }
+    
+    updateRoadStripes() {
+        if (!this.gameOver) {
+            for (let stripe of this.roadStripes) {
+                stripe.x -= this.gameSpeed;
+                if (stripe.x + this.stripeWidth < 0) {
+                    stripe.x = this.width;
+                }
+            }
+        }
+    }
+    
+    drawRoadStripes() {
+        this.ctx.fillStyle = '#555555';
+        this.ctx.fillRect(0, this.height - 25, this.width, 25);
+        
+        this.ctx.fillStyle = '#FFFFFF';
+        for (let stripe of this.roadStripes) {
+            this.ctx.fillRect(stripe.x, stripe.y, this.stripeWidth, this.stripeHeight);
+        }
+    }
+    
     setupEventListeners() {
         // Jump on click/tap
-        this.birdCanvas.addEventListener('click', () => {
+        this.canvas.addEventListener('click', () => {
             if (this.gameOver) {
                 this.resetGame();
             } else {
@@ -87,11 +209,11 @@ class FlappyBirdGame {
     
     spawnPipe() {
         const minHeight = 50;
-        const maxHeight = this.canvasHeight - this.pipeGap - minHeight;
+        const maxHeight = this.height - this.pipeGap - minHeight - 25; // Account for road
         const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
         
         this.pipes.push({
-            x: this.canvasWidth,
+            x: this.width,
             topHeight: topHeight,
             bottomY: topHeight + this.pipeGap,
             passed: false
@@ -109,8 +231,8 @@ class FlappyBirdGame {
             this.birdVelocity = 0;
         }
         
-        if (this.birdY + this.birdSize > this.canvasHeight) {
-            this.birdY = this.canvasHeight - this.birdSize;
+        if (this.birdY + this.birdSize > this.height - 25) { // Account for road
+            this.birdY = this.height - this.birdSize - 25;
             this.gameOver = true;
         }
     }
@@ -146,78 +268,85 @@ class FlappyBirdGame {
     }
     
     drawBird() {
-        this.birdContext.fillStyle = '#bada55';
-        this.birdContext.beginPath();
-        this.birdContext.arc(
+        this.ctx.fillStyle = '#FF4136'; // Red bird
+        this.ctx.beginPath();
+        this.ctx.arc(
             this.birdX + this.birdSize/2, 
             this.birdY + this.birdSize/2, 
             this.birdSize/2, 
             0, 
             Math.PI * 2
         );
-        this.birdContext.fill();
+        this.ctx.fill();
     }
     
     drawPipes() {
-        this.birdContext.fillStyle = '#bada55';
+        this.ctx.fillStyle = '#2ECC40'; // Green pipes
         
         for (const pipe of this.pipes) {
             // Top pipe
-            this.birdContext.fillRect(pipe.x, 0, this.pipeWidth, pipe.topHeight);
+            this.ctx.fillRect(pipe.x, 0, this.pipeWidth, pipe.topHeight);
             
             // Bottom pipe
-            this.birdContext.fillRect(
+            this.ctx.fillRect(
                 pipe.x, 
                 pipe.bottomY, 
                 this.pipeWidth, 
-                this.canvasHeight - pipe.bottomY
+                this.height - pipe.bottomY - 25 // Account for road
             );
         }
     }
     
     drawScore() {
-        this.birdContext.fillStyle = '#bada55';
-        this.birdContext.font = '24px Courier New';
-        this.birdContext.textAlign = 'center';
-        this.birdContext.fillText(
+        this.ctx.fillStyle = '#FFFFFF';
+        this.ctx.font = '24px Courier New';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText(
             `Score: ${this.score}`, 
-            this.canvasWidth / 2, 
+            this.width / 2, 
             30
         );
         
         if (this.gameOver) {
-            this.birdContext.fillText(
-                `High Score: ${this.highScore}`, 
-                this.canvasWidth / 2, 
-                60
+            this.ctx.fillText(
+                `Game Over`, 
+                this.width / 2, 
+                this.height / 2 - 50
             );
-            this.birdContext.fillText(
-                'Click to restart', 
-                this.canvasWidth / 2, 
-                this.canvasHeight / 2 + 50
+            this.ctx.fillText(
+                `Click to restart`, 
+                this.width / 2, 
+                this.height / 2 + 50
             );
         }
     }
     
     drawBackground() {
-        // Draw a simple background
-        this.birdContext.fillStyle = '#2d2d2d';
-        this.birdContext.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+        // Sky gradient
+        const gradient = this.ctx.createLinearGradient(0, 0, 0, this.height - 25);
+        gradient.addColorStop(0, '#001f3f');
+        gradient.addColorStop(1, '#0074D9');
+        this.ctx.fillStyle = gradient;
+        this.ctx.fillRect(0, 0, this.width, this.height - 25);
     }
     
     draw() {
         this.drawBackground();
         this.drawPipes();
+        this.drawRoadStripes();
         this.drawBird();
         this.drawScore();
     }
     
     update(timestamp) {
-        if (!this.lastBirdUpdateTime) this.lastBirdUpdateTime = timestamp;
-        const elapsed = timestamp - this.lastBirdUpdateTime;
+        if (!this.lastUpdateTime) this.lastUpdateTime = timestamp;
+        const elapsed = timestamp - this.lastUpdateTime;
+        
+        // Update road stripes only if game is not over
+        this.updateRoadStripes();
         
         // Spawn pipes at intervals
-        if (timestamp - this.lastPipeSpawnTime > this.pipeFrequency) {
+        if (!this.gameOver && timestamp - this.lastPipeSpawnTime > this.pipeFrequency) {
             this.spawnPipe();
             this.lastPipeSpawnTime = timestamp;
         }
@@ -228,135 +357,139 @@ class FlappyBirdGame {
         }
         
         this.draw();
-        this.lastBirdUpdateTime = timestamp;
+        this.lastUpdateTime = timestamp;
         
-        if (this.isGameRunning) {
-            this.birdAnimationId = requestAnimationFrame(this.update.bind(this));
-        }
-    }
-    
-    startGame() {
-        if (!this.isGameRunning) {
-            this.isGameRunning = true;
-            this.birdAnimationId = requestAnimationFrame(this.update.bind(this));
-        }
-    }
-    
-    pauseGame() {
-        this.isGameRunning = false;
-        if (this.birdAnimationId) {
-            cancelAnimationFrame(this.birdAnimationId);
-            this.birdAnimationId = null;
+        if (this.isRunning) {
+            this.animationId = requestAnimationFrame(this.update.bind(this));
         }
     }
     
     resetGame() {
+        if (this.gameOver && this.score > 0) {
+            const isHighScore = this.highScoreManager.isHighScore(this.score);
+            if (isHighScore) {
+                this.promptForName();
+                return;
+            }
+        }
+        
         this.gameOver = false;
         this.score = 0;
-        this.birdY = this.canvasHeight / 2;
+        this.birdY = this.height / 2;
         this.birdVelocity = 0;
         this.pipes = [];
         this.lastPipeSpawnTime = 0;
         
-        if (!this.isGameRunning) {
+        if (!this.isRunning) {
             this.startGame();
         }
     }
-}
-
-// Initialize Flappy Bird Game when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    const secondProjectBlock = document.querySelector('.project-block:nth-child(2)');
     
-    if (secondProjectBlock) {
-        // Clear any existing content
-        secondProjectBlock.innerHTML = '';
+    promptForName() {
+        // Create name input container
+        const container = document.createElement('div');
+        container.className = 'name-input-container';
         
-        // Create container for the game
-        const flappyGameContainer = document.createElement('div');
-        flappyGameContainer.className = 'flappy-game-container';
+        const heading = document.createElement('h4');
+        heading.textContent = 'New High Score!';
         
-        // Create title
-        const gameTitle = document.createElement('h3');
-        gameTitle.className = 'project-title';
-        gameTitle.textContent = "Flappy Bird";
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = 'Enter your name';
+        input.maxLength = 15;
         
-        // Create canvas for the game
-        const flappyCanvas = document.createElement('canvas');
-        flappyCanvas.width = 300;
-        flappyCanvas.height = 300;
-        flappyCanvas.className = 'flappy-game-canvas';
+        const submitBtn = document.createElement('button');
+        submitBtn.textContent = 'Submit Score';
         
-        // Create controls
-        const gameControls = document.createElement('div');
-        gameControls.className = 'flappy-game-controls';
+        container.appendChild(heading);
+        container.appendChild(input);
+        container.appendChild(submitBtn);
         
-        const playPauseButton = document.createElement('button');
-        playPauseButton.className = 'flappy-game-btn play-pause';
-        playPauseButton.innerHTML = '▶';
+        // Add to the game canvas area
+        const gameSection = document.querySelector('.game-section');
+        gameSection.appendChild(container);
         
-        const resetButton = document.createElement('button');
-        resetButton.className = 'flappy-game-btn reset';
-        resetButton.innerHTML = '↻';
+        // Focus the input
+        input.focus();
         
-        const difficultySelector = document.createElement('select');
-        difficultySelector.className = 'flappy-difficulty-select';
-        
-        const difficultyLevels = [
-            { value: 'easy', text: 'Easy' },
-            { value: 'medium', text: 'Medium' },
-            { value: 'hard', text: 'Hard' }
-        ];
-        
-        difficultyLevels.forEach(level => {
-            const option = document.createElement('option');
-            option.value = level.value;
-            option.text = level.text;
-            difficultySelector.appendChild(option);
+        // Handle submission
+        submitBtn.addEventListener('click', () => {
+            const name = input.value.trim() || 'Anonymous';
+            this.highScoreManager.saveScore(name, this.score);
+            this.highScoreManager.renderScoreList(document.getElementById('highScoresList'));
+            container.remove();
+            this.resetGame();
         });
         
-        // Create instructions
-        const instructions = document.createElement('p');
-        instructions.className = 'flappy-instructions';
-        instructions.textContent = 'Click or press Space to jump';
-        
-        // Append elements
-        gameControls.appendChild(playPauseButton);
-        gameControls.appendChild(resetButton);
-        gameControls.appendChild(difficultySelector);
-        
-        flappyGameContainer.appendChild(gameTitle);
-        flappyGameContainer.appendChild(flappyCanvas);
-        flappyGameContainer.appendChild(instructions);
-        flappyGameContainer.appendChild(gameControls);
-        
-        secondProjectBlock.appendChild(flappyGameContainer);
-        
-        // Initialize game
-        const flappyGame = new FlappyBirdGame(flappyCanvas, 'medium');
-        flappyGame.draw(); // Initial draw
-        
-        // Add event listeners
-        playPauseButton.addEventListener('click', function() {
-            if (flappyGame.isGameRunning) {
-                flappyGame.pauseGame();
-                playPauseButton.innerHTML = '▶';
-            } else {
-                flappyGame.startGame();
-                playPauseButton.innerHTML = '❚❚';
+        // Also submit on Enter key
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                submitBtn.click();
             }
-        });
-        
-        resetButton.addEventListener('click', function() {
-            flappyGame.resetGame();
-            if (!flappyGame.isGameRunning) {
-                flappyGame.startGame();
-                playPauseButton.innerHTML = '❚❚';
-            }
-        });
-        
-        difficultySelector.addEventListener('change', function() {
-            flappyGame.setDifficulty(this.value);
         });
     }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the modal elements
+    const modal = document.getElementById('flappyBirdModal');
+    const openButton = document.getElementById('openFlappyGame');
+    const closeButton = document.querySelector('.close-modal');
+    const canvas = document.getElementById('flappyCanvas');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const difficultySelect = document.getElementById('difficultySelect');
+    
+    let game;
+    let highScoreManager;
+
+    openButton.addEventListener('click', function() {
+        modal.style.display = 'block';
+        if (!game) {
+            highScoreManager = new HighScoreManager('FlappyBird');
+            game = new FlappyBirdGame(canvas, highScoreManager);
+            game.draw(); // Initial draw
+            highScoreManager.renderScoreList(document.getElementById('highScoresList'));
+        }
+    });
+
+    // Add event listeners for buttons
+    playPauseBtn.addEventListener('click', function() {
+        if (game.isRunning) {
+            game.pauseGame();
+            playPauseBtn.innerHTML = '▶';
+        } else {
+            game.startGame();
+            playPauseBtn.innerHTML = '❚❚';
+        }
+    });
+
+    resetBtn.addEventListener('click', function() {
+        game.resetGame();
+        playPauseBtn.innerHTML = '▶';
+    });
+
+    difficultySelect.addEventListener('change', function() {
+        game.setDifficulty(this.value);
+    });
+
+    // Close modal when clicking the close button
+    closeButton.addEventListener('click', function() {
+        modal.style.display = 'none';
+        if (game && game.isRunning) {
+            game.pauseGame();
+            playPauseBtn.innerHTML = '▶';
+        }
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            if (game && game.isRunning) {
+                game.pauseGame();
+                playPauseBtn.innerHTML = '▶';
+            }
+        }
+    });
 });
