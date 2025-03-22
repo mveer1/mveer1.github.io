@@ -152,12 +152,14 @@ main {
 }
 
 .year-marker:nth-child(1) { top: 0%; }
-.year-marker:nth-child(2) { top: 20%; }
-.year-marker:nth-child(3) { top: 35%; }
-.year-marker:nth-child(4) { top: 45%; }
-.year-marker:nth-child(5) { top: 55%; }
-.year-marker:nth-child(6) { top: 75%; }
-.year-marker:nth-child(7) { top: 90%; }
+.year-marker:nth-child(2) { top: 15%; }
+.year-marker:nth-child(3) { top: 25%; }
+.year-marker:nth-child(4) { top: 35%; }
+.year-marker:nth-child(5) { top: 45%; }
+.year-marker:nth-child(6) { top: 60%; }
+.year-marker:nth-child(7) { top: 70%; }
+.year-marker:nth-child(8) { top: 80%; }
+.year-marker:nth-child(9) { top: 90%; }
 
 #projects {
   margin-top: 6rem;
