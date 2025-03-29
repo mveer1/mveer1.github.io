@@ -22,5 +22,5 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => {
             loadingScreen.style.display = 'none';
         }, 500);
-    }, 30); //change it to 3000 after development.
+    }, 3000); //change it to 3000 after development.
 });
