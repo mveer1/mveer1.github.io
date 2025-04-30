@@ -116,6 +116,30 @@
                         </div>
                     </div>
 
+                    <!-- Project 3 with tilt effect -->
+                   <div class="project-block tilt-card glass-effect">
+                        <div class="project-content">
+                            <h3>Smalldata</h3>
+                            <p>AI bot that does quality check on your data, and answers any question you ask</p>
+                            <div class="project-links">
+                                <a href="#" class="btn-neon">Demo</a>
+                                <a href="#" class="btn-neon">Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Project 3 with tilt effect -->
+                    <div class="project-block tilt-card glass-effect">
+                        <div class="project-content">
+                            <h3>Text summarizer</h3>
+                            <p>Use this AI to summarize your papers, chats, news, and more</p>
+                            <div class="project-links">
+                                <a href="#" class="btn-neon">Demo</a>
+                                <a href="#" class="btn-neon">Code</a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Project 5 with tilt effect -->
                     <div class="project-block tilt-card glass-effect">
                         <div class="project-content">
@@ -149,23 +173,47 @@
                             <!-- <p></p> -->
                         </div>
                     </div>
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Your Name" required>
-                            <label for="name">Your Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Your Email" required>
-                            <label for="email">Your Email</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" placeholder="Your Message" required></textarea>
-                            <label for="message">Your Message</label>
-                        </div>
-                        <button type="submit" class="btn-magnetic">
-                            <span>Send Message</span>
-                        </button>
+                    
+                    <!-- Contact Form with Formspree integration and Thank You message -->
+                <div id="contact-form-wrapper">
+                    <form
+                    class="contact-form"
+                    action="https://formspree.io/f/mdkgabeb" 
+                    method="POST"
+                    id="contact-form"
+                    autocomplete="off"
+                    target="_self"
+                    >
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn-magnetic">
+                        <span>Send Message</span>
+                    </button>
                     </form>
+                
+                    <!-- Thank You message, hidden by default -->
+                    <div id="thank-you-message" style="display:none; text-align:center;">
+                    <h3 style="color:#bada55;">Thank you for reaching out!</h3>
+                    <p>Your message was sent successfully.</p>
+                    <button id="submit-another" class="btn-magnetic" type="button">
+                        <span>Submit Another</span>
+                    </button>
+                    </div>
+                </div>
+                <!-- END Contact Form Block -->
+
+
+
                 </div>
             </section>
         </main>
