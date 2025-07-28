@@ -1001,7 +1001,7 @@ body {
 .nav-link:hover,
 .nav-link.active {
   color: var(--primary-cyber);
-  transform: scale(1.2);
+  transform: scale(1.4);
 }
 
 .nav-icon {
