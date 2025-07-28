@@ -3,225 +3,443 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahavir's Portfolio</title>
-    <link rel="stylesheet" href="./styles.css">
-    <!-- Added Google Fonts for more modern typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Added Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Data Engineer | Futuristic Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Added canvas background for animated particles -->
-    <canvas id="background-canvas"></canvas>
-
-    <header>
-        <a href="#">
-            <h1 class="glitch-text">Mahavir Chaudhari</h1>
-        </a>
-        <!-- Enhanced burger menu with animation classes -->
-        <div class="burger-menu" id="burger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-        
-        <!-- Added custom cursor elements -->
-        <div class="cursor-dot"></div>
-        <div class="cursor-outline"></div>
-    </header>
-
-    <div class="content-wrapper">
-        <main>
-            <!-- About section with reveal animations -->
-            <section id="about" class="reveal-section">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-content">
-                    <div class="text-reveal">
-                        <p>Hi, I'm a data engineer who enjoys working behind the scenes — building the systems that make data move, talk, and tell stories. I graduated from a place called BITS Pilani in 2023, and ever since, I've been having a lot of fun working on personal and professional projects around data engineering and cloud systems.</p>
-                        <p>I mostly work with Python, SQL, Azure, and cloud data warehousing tools — with an ever-growing toolkit that stretches into big data, machine learning, and AI. I enjoy solving problems that don't come with step-by-step guides, and I'm always curious about how complex systems fit together.</p>
-                        <p>These days, I'm focusing more on backend data architectures and scaling systems that deal with massive amounts of information — the kind of work that's invisible when it works right (and unforgettable when it doesn't). This site is just a little window into that journey — not a finished story, but the parts I'm excited to share right now.
-                        Thanks for reading that extremely long description
-                        </p>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- Timeline with enhanced styling -->
-            <div id="timeline" class="glass-effect">
-                <div class="timeline-line">
-                    <div class="year-marker"><span class="year">2024</span> Still solving problems at Providence but as Data Engineer 2</div>
-                    <div class="year-marker"><span class="year">2023</span> Started working full time as a Data Engineer 1 at Providence Healthcare, in Hyderabad, India</div>
-                    <div class="year-marker"><span class="year">2023</span> Graduated + Internship with Fortanix in Bangalore, India</div>
-                    <div class="year-marker"><span class="year">2022</span> Junior year of college + continued part-time work with streamn.ai as Jr. Software Engineer</div>
-                    <div class="year-marker"><span class="year">2021</span> First internship with Streamn.ai and helix tech Software Engineering Intern</div>
-                    <div class="year-marker"><span class="year">2020</span> Spent covid hours learning tech and playing chess</div>
-                    <div class="year-marker"><span class="year">2019</span> Started college in Computer Science major at BITS-Pilani, Hyderabad, India</div>
-                    <div class="year-marker"><span class="year">2017</span> Studied for the entrance exams and completed my school</div>
-                    <div class="year-marker"><span class="year">2015</span> till 2015 I dont know what was I doing</div>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="terminal-loading">
+            <div class="terminal-header">
+                <span class="terminal-title">NEURAL_NET.EXE</span>
+                <div class="terminal-controls">
+                    <span class="control minimize"></span>
+                    <span class="control maximize"></span>
+                    <span class="control close"></span>
                 </div>
             </div>
-
-            <!-- Projects section with tilt effect cards -->
-            <section id="projects" class="reveal-section">
-                <h2 class="section-title">Projects</h2>
-                <div class="project-grid">
-                    <!-- Project 1 with tilt effect -->
-                    <div class="project-block tilt-card glass-effect">
-                        <div class="project-content">
-                            <h3>Flappy Bird</h3>
-                            <p>Interactive game built with JavaScript</p>
-                            <div class="project-links">
-                                <a href="#" class="btn-neon">Demo</a>
-                                <a href="#" class="btn-neon">Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 2 with tilt effect -->
-                    <div class="project-block tilt-card glass-effect">
-                        <div class="project-content">
-                            <h3>Conway's Game of Life</h3>
-                            <p>Cellular automaton simulation</p>
-                            <div class="project-links">
-                                <a href="#" class="btn-neon">Demo</a>
-                                <a href="#" class="btn-neon">Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 4 with tilt effect -->
-                    <div class="project-block tilt-card glass-effect">
-                        <div class="project-content">
-                            <h3>Physics Hyperion</h3>
-                            <p>A physics simulation website</p>
-                            <div class="project-links">
-                                <a href="https://mveer1.github.io/hypelab/" class="btn-neon">Demo</a>
-                                <a href="https://github.com/mveer1/hypelab/" class="btn-neon">Code/Contribute</a>
-                            </div>
-                        </div>
-                    </div>
-
-                   <!-- Project 3 with tilt effect -->
-                   <div class="project-block tilt-card glass-effect">
-                        <div class="project-content">
-                            <h3>Portfolio Website</h3>
-                            <p>This website</p>
-                            <div class="project-links">
-                                <a href="#" class="btn-neon">Demo</a>
-                                <a href="#" class="btn-neon">Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 with tilt effect -->
-                   <div class="project-block tilt-card glass-effect">
-                        <div class="project-content">
-                            <h3>Smalldata</h3>
-                            <p>AI bot that does quality check on your data, and answers any question you ask</p>
-                            <div class="project-links">
-                                <a href="#" class="btn-neon">Demo</a>
-                                <a href="#" class="btn-neon">Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- Project 3 with tilt effect -->
-                    <div class="project-block tilt-card glass-effect">
-                        <div class="project-content">
-                            <h3>Text summarizer</h3>
-                            <p>Use this AI to summarize your papers, chats, news, and more</p>
-                            <div class="project-links">
-                                <a href="#" class="btn-neon">Demo</a>
-                                <a href="#" class="btn-neon">Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 5 with tilt effect -->
-                    <div class="project-block tilt-card glass-effect">
-                        <div class="project-content">
-                            <h3>Future Project</h3>
-                            <p>Coming soon...</p>
-                            <!-- <div class="project-links">
-                                <a href="#" class="btn-neon">Demo</a>
-                                <a href="#" class="btn-neon">Code</a> 
-                            </div> -->
-                        </div>
-                    </div>
+            <div class="terminal-body">
+                <div class="boot-sequence">
+                    <div class="boot-line">$ initializing_neural_interface...</div>
+                    <div class="boot-line">$ loading_quantum_processors...</div>
+                    <div class="boot-line">$ establishing_data_connection...</div>
+                    <div class="boot-line">$ activating_holographic_display...</div>
+                    <div class="boot-line success">$ SYSTEM_READY</div>
                 </div>
-            </section>
-            
-            <!-- Added contact section -->
-            <section id="contact" class="reveal-section">
-                <h2 class="section-title">Contact Me</h2>
-                <div class="contact-container glass-effect">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <p>mveer.rc@gmail.com</p>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-github"></i>
-                            <a href="https://github.com/mveer1" class="btn-neon">My github</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-linkedin"></i>
-                            <a href="linkedin.com/in/mahavir01" class="btn-neon">My linkedin</a>
-                            <!-- <p></p> -->
-                        </div>
-                    </div>
-                    
-                    <!-- Contact Form with Formspree integration and Thank You message -->
-                <div id="contact-form-wrapper">
-                    <form
-                    class="contact-form"
-                    action="https://formspree.io/f/mdkgabeb" 
-                    method="POST"
-                    id="contact-form"
-                    autocomplete="off"
-                    >
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" required>
-                        <label for="name">Your Name</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" required>
-                        <label for="email">Your Email</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" required></textarea>
-                        <label for="message">Your Message</label>
-                    </div>
-                    <button type="submit" class="btn-magnetic">
-                        <span>Send Message</span>
-                    </button>
-                    </form>
-                
-                    <!-- Thank You message, hidden by default -->
-                    <div id="thank-you-message" style="display:none; text-align:center;">
-                        <h3 style="color:#bada55;">Thank you for reaching out!</h3>
-                        <p>Your message was sent successfully.</p>
-                        <button id="submit-another" class="btn-magnetic" type="button">
-                          <span>Submit Another</span>
-                        </button>
-                      </div>
+                <div class="loading-progress">
+                    <div class="progress-bar"></div>
                 </div>
-                <!-- END Contact Form Block -->
-
-
-
-                </div>
-            </section>
-        </main>
+            </div>
+        </div>
+        <div class="neural-bg"></div>
     </div>
 
-    <!-- Keep your existing scripts -->
-    <script src="script.js"></script>
-    
-    <!-- Added new script for enhanced features -->
-    <script src="enhanced-features.js"></script>
+    <!-- Cursor Trail -->
+    <div class="cursor-trail"></div>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <div class="nav-particles"></div>
+        <a href="#hero" class="nav-link active" data-section="hero">
+            <span class="nav-icon">◉</span>
+            <span class="nav-label">Start</span>
+        </a>
+        <a href="#about" class="nav-link" data-section="about">
+            <span class="nav-icon">◎</span>
+            <span class="nav-label">About</span>
+        </a>
+        <a href="#projects" class="nav-link" data-section="projects">
+            <span class="nav-icon">◈</span>
+            <span class="nav-label">Projects</span>
+        </a>
+        <a href="#contact" class="nav-link" data-section="contact">
+            <span class="nav-icon">◇</span>
+            <span class="nav-label">Contact</span>
+        </a>
+    </nav>
+
+    <!-- Matrix Background -->
+    <div class="matrix-bg">
+        <canvas id="matrix-canvas"></canvas>
+    </div>
+
+    <!-- Neural Network Background -->
+    <div class="neural-network">
+        <canvas id="neural-canvas"></canvas>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="glitch-container">
+                    <h1 class="hero-title glitch" data-text="DATA ENGINEER">DATA ENGINEER</h1>
+                </div>
+                <div class="hero-subtitle">
+                    <span class="typing-animation"></span>
+                    <span class="cursor-blink">|</span>
+                </div>
+                <div class="hero-description">
+                    <p>Building the invisible systems that make data dance</p>
+                </div>
+                <div class="hero-cta">
+                    <button class="btn btn--primary holo-btn" onclick="scrollToSection('about')">
+                        <span class="btn-text">ENTER NEURAL NET</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hologram-cube">
+                    <div class="cube-face cube-front"></div>
+                    <div class="cube-face cube-back"></div>
+                    <div class="cube-face cube-right"></div>
+                    <div class="cube-face cube-left"></div>
+                    <div class="cube-face cube-top"></div>
+                    <div class="cube-face cube-bottom"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Timeline Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <!-- About Me -->
+                    <div class="about-content">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <span class="title-bracket">[</span>
+                                ABOUT_ME
+                                <span class="title-bracket">]</span>
+                            </h2>
+                        </div>
+                        <div class="terminal-window">
+                            <div class="terminal-header">
+                                <span class="terminal-title">profile.exe</span>
+                                <div class="terminal-controls">
+                                    <span class="control minimize"></span>
+                                    <span class="control maximize"></span>
+                                    <span class="control close"></span>
+                                </div>
+                            </div>
+                            <div class="terminal-content">
+                                <div class="terminal-line">
+                                    <span class="prompt">user@neural-net:~$</span>
+                                    <span class="command">cat profile.txt</span>
+                                </div>
+                                <div class="terminal-output">
+                                    <p>Hi, I'm a data engineer who enjoys working behind the scenes — building the systems that make data move, talk, and tell stories. I graduated from a place called BITS Pilani in 2023, and ever since, I've been having a lot of fun working on personal and professional projects around data engineering and cloud systems.</p>
+                                    <p>I mostly work with Python, SQL, Azure, and cloud data warehousing tools — with an ever-growing toolkit that stretches into big data, machine learning, and AI. I enjoy solving problems that don't come with step-by-step guides, and I'm always curious about how complex systems fit together.</p>
+                                    <p>These days, I'm focusing more on backend data architectures and scaling systems that deal with massive amounts of information — the kind of work that's invisible when it works right (and unforgettable when it doesn't).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills Section -->
+                        <div class="skills-section">
+                            <h3 class="skills-title">NEURAL_PATHWAYS.exe</h3>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Python</span>
+                                        <span class="skill-level">90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-level="90"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">SQL</span>
+                                        <span class="skill-level">85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-level="85"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Azure</span>
+                                        <span class="skill-level">80%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-level="80"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Big Data</span>
+                                        <span class="skill-level">75%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-level="75"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Machine Learning</span>
+                                        <span class="skill-level">70%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-level="70"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">AI Systems</span>
+                                        <span class="skill-level">65%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-level="65"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="timeline-content">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <span class="title-bracket">[</span>
+                                NEURAL_TIMELINE
+                                <span class="title-bracket">]</span>
+                            </h2>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-line"></div>
+                            <div class="timeline-item" data-year="2023">
+                                <div class="timeline-marker">
+                                    <div class="marker-core"></div>
+                                    <div class="marker-ring"></div>
+                                </div>
+                                <div class="timeline-content-item">
+                                    <div class="timeline-year">2023</div>
+                                    <div class="timeline-title">Graduated from BITS Pilani</div>
+                                    <div class="timeline-description">Completed engineering degree with focus on data systems</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="2023">
+                                <div class="timeline-marker">
+                                    <div class="marker-core"></div>
+                                    <div class="marker-ring"></div>
+                                </div>
+                                <div class="timeline-content-item">
+                                    <div class="timeline-year">2023</div>
+                                    <div class="timeline-title">Started Data Engineering Career</div>
+                                    <div class="timeline-description">Began professional journey in data engineering</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="2024">
+                                <div class="timeline-marker">
+                                    <div class="marker-core"></div>
+                                    <div class="marker-ring"></div>
+                                </div>
+                                <div class="timeline-content-item">
+                                    <div class="timeline-year">2024</div>
+                                    <div class="timeline-title">Cloud Architecture Specialization</div>
+                                    <div class="timeline-description">Specialized in Azure and cloud data warehousing</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="2024">
+                                <div class="timeline-marker">
+                                    <div class="marker-core"></div>
+                                    <div class="marker-ring"></div>
+                                </div>
+                                <div class="timeline-content-item">
+                                    <div class="timeline-year">2024</div>
+                                    <div class="timeline-title">Big Data & ML Focus</div>
+                                    <div class="timeline-description">Expanded into big data processing and machine learning</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item active" data-year="2025">
+                                <div class="timeline-marker">
+                                    <div class="marker-core"></div>
+                                    <div class="marker-ring"></div>
+                                </div>
+                                <div class="timeline-content-item">
+                                    <div class="timeline-year">2025</div>
+                                    <div class="timeline-title">Advanced AI Systems</div>
+                                    <div class="timeline-description">Currently working on advanced AI and backend architectures</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-bracket">[</span>
+                        DIGITAL_ARTIFACTS
+                        <span class="title-bracket">]</span>
+                    </h2>
+                    <p class="section-subtitle">Holographic projections of my digital creations</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-project="physics">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="project-visual">
+                                    <div class="physics-simulation">
+                                        <div class="particle-system">
+                                            <div class="particle"></div>
+                                            <div class="particle"></div>
+                                            <div class="particle"></div>
+                                            <div class="particle"></div>
+                                            <div class="particle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <h3 class="project-title">Physics Hyperion</h3>
+                                    <p class="project-type">PHYSICS_SIMULATION.exe</p>
+                                </div>
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="card-back">
+                                <div class="project-details">
+                                    <h3>Physics Hyperion</h3>
+                                    <p>A sophisticated physics simulation website featuring real-time particle interactions, gravitational fields, and quantum mechanics visualization.</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">WebGL</span>
+                                        <span class="tech-tag">JavaScript</span>
+                                        <span class="tech-tag">Physics Engine</span>
+                                    </div>
+                                    <button class="btn btn--outline project-btn">
+                                        VIEW_SIMULATION
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="future">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="project-visual">
+                                    <div class="future-preview">
+                                        <div class="loading-dots">
+                                            <div class="dot"></div>
+                                            <div class="dot"></div>
+                                            <div class="dot"></div>
+                                        </div>
+                                        <div class="hologram-text">COMING SOON</div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <h3 class="project-title">Future Project</h3>
+                                    <p class="project-type">CLASSIFIED.exe</p>
+                                </div>
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="card-back">
+                                <div class="project-details">
+                                    <h3>Future Project</h3>
+                                    <p>A revolutionary data engineering project currently in development. Features advanced AI integration and real-time analytics.</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">AI/ML</span>
+                                        <span class="tech-tag">Big Data</span>
+                                        <span class="tech-tag">Cloud</span>
+                                    </div>
+                                    <button class="btn btn--outline project-btn disabled">
+                                        INITIALIZING...
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-bracket">[</span>
+                        NEURAL_INTERFACE
+                        <span class="title-bracket">]</span>
+                    </h2>
+                    <p class="section-subtitle">Establish a connection to the neural network</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="terminal-window">
+                            <div class="terminal-header">
+                                <span class="terminal-title">contact.exe</span>
+                                <div class="terminal-controls">
+                                    <span class="control minimize"></span>
+                                    <span class="control maximize"></span>
+                                    <span class="control close"></span>
+                                </div>
+                            </div>
+                            <div class="terminal-content">
+                                <div class="terminal-line">
+                                    <span class="prompt">user@neural-net:~$</span>
+                                    <span class="command">cat contact_info.txt</span>
+                                </div>
+                                <div class="terminal-output">
+                                    <div class="contact-item">
+                                        <span class="contact-label">EMAIL:</span>
+                                        <a href="mailto:mveer.rc@gmail.com" class="contact-value">mveer.rc@gmail.com</a>
+                                    </div>
+                                    <div class="contact-item">
+                                        <span class="contact-label">STATUS:</span>
+                                        <span class="contact-value online">ONLINE</span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <span class="contact-label">LOCATION:</span>
+                                        <span class="contact-value">GLOBAL_NETWORK</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form class="neural-form" id="contactForm">
+                            <div class="form-group">
+                                <label class="form-label">IDENTIFIER</label>
+                                <input type="text" class="form-control neural-input" placeholder="Enter your name..." required>
+                                <div class="input-glow"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">TRANSMISSION_ENDPOINT</label>
+                                <input type="email" class="form-control neural-input" placeholder="Enter your email..." required>
+                                <div class="input-glow"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">MESSAGE_PAYLOAD</label>
+                                <textarea class="form-control neural-input" rows="5" placeholder="Enter your message..." required></textarea>
+                                <div class="input-glow"></div>
+                            </div>
+                            <button type="submit" class="btn btn--primary holo-btn full-width">
+                                <span class="btn-text">TRANSMIT_DATA</span>
+                                <div class="btn-glow"></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-particle"></div>
+        <div class="floating-particle"></div>
+        <div class="floating-particle"></div>
+        <div class="floating-particle"></div>
+        <div class="floating-particle"></div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
