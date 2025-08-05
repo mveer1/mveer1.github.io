@@ -39,34 +39,42 @@
 
     <!-- Floating Navigation -->
     <nav class="floating-nav">
-        <div class="nav-particles"></div>
-        <a href="#hero" class="nav-link active" data-section="hero">
-            <span class="nav-icon">◈</span>
-            <span class="nav-label">Start</span>
+        <div class="nav-glow"></div>
+        <a href="#hero" class="nav-link active" data-section="hero" style="font-size: 1.2em; padding: 15px;">
+            <div class="nav-button" style="transform: scale(1.2);">
+                <div class="button-glow"></div>
+                <span class="nav-icon" style="font-size: 1.4em;">⬡</span>
+                <span class="nav-label">HOME</span>
+                <div class="nav-indicator"></div>
+            </div>
         </a>
-        <a href="#about" class="nav-link" data-section="about">
-            <span class="nav-icon">◇</span>
-            <span class="nav-label">About</span>
+        <a href="#about" class="nav-link" data-section="about" style="font-size: 1.2em; padding: 15px;">
+            <div class="nav-button" style="transform: scale(1.2);">
+                <div class="button-glow"></div>
+                <span class="nav-icon" style="font-size: 1.4em;">⬢</span>
+                <span class="nav-label">PROFILE</span>
+                <div class="nav-indicator"></div>
+            </div>
         </a>
-        <a href="#projects" class="nav-link" data-section="projects">
-            <span class="nav-icon">◇</span>
-            <span class="nav-label">Projects</span>
+        <a href="#projects" class="nav-link" data-section="projects" style="font-size: 1.2em; padding: 15px;">
+            <div class="nav-button" style="transform: scale(1.2);">
+                <div class="button-glow"></div>
+                <span class="nav-icon" style="font-size: 1.4em;">⬢</span>
+                <span class="nav-label">PROJECTS</span>
+                <div class="nav-indicator"></div>
+            </div>
         </a>
-        <a href="#contact" class="nav-link" data-section="contact">
-            <span class="nav-icon">◇</span>
-            <span class="nav-label">Contact</span>
+        <a href="#contact" class="nav-link" data-section="contact" style="font-size: 1.2em; padding: 15px;">
+            <div class="nav-button" style="transform: scale(1.2);">
+                <div class="button-glow"></div>
+                <span class="nav-icon" style="font-size: 1.4em;">⬢</span>
+                <span class="nav-label">CONNECT</span>
+                <div class="nav-indicator"></div>
+            </div>
         </a>
     </nav>
 
-    <!-- Matrix Background -->
-    <div class="matrix-bg">
-        <canvas id="matrix-canvas"></canvas>
-    </div>
-
-    <!-- Neural Network Background -->
-    <div class="neural-network">
-        <canvas id="neural-canvas"></canvas>
-    </div>
+    
 
     <!-- Main Content -->
     <main class="main-content">
@@ -86,6 +94,15 @@
                 <div class="hero-cta">
                     <button class="btn btn--primary holo-btn" onclick="scrollToSection('about')">
                         <span class="btn-text">ENTER NEURAL NET</span>
+                        <style>
+                        .btn.btn--primary .btn-text {
+                            color: #fff;
+                            transition: color 0.2s;
+                        }
+                        .btn.btn--primary:hover .btn-text {
+                            color: #000;
+                        }
+                        </style>
                         <div class="btn-glow"></div>
                     </button>
                 </div>
@@ -351,6 +368,14 @@
             </div>
         </section>
 
+        <div class="matrix-bg">
+            <canvas id="matrix-canvas"></canvas>
+        </div>
+        
+        <div class="neural-network">
+            <canvas id="neural-canvas"></canvas>
+        </div>
+        
         <!-- Projects Section -->
         <section id="projects" class="projects-section">
             <div class="container">
@@ -392,9 +417,9 @@
                                         <span class="tech-tag">JavaScript</span>
                                         <span class="tech-tag">Physics Engine</span>
                                     </div>
-                                    <button class="btn btn--outline project-btn">
+                                    <a href="https://mveer1.github.io/hypelab/" class="btn btn--outline project-btn">
                                         VIEW_SIMULATION
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -416,29 +441,29 @@
                                     </div>
                                 </div>
                                 <div class="project-info">
-                                    <h3 class="project-title">Physics Hyperion</h3>
-                                    <p class="project-type">PHYSICS_SIMULATION.exe</p>
+                                    <h3 class="project-title">Echo Journal</h3>
+                                    <p class="project-type">echo-journal.exe</p>
                                 </div>
                                 <div class="card-glow"></div>
                             </div>
                             <div class="card-back">
                                 <div class="project-details">
-                                    <h3>Physics Hyperion</h3>
-                                    <p>A sophisticated physics simulation website featuring real-time particle interactions, gravitational fields, and quantum mechanics visualization.</p>
+                                    <h3>Echo Journal</h3>
+                                    <p>An advanced AI-powered mood journal that leverages natural language processing and sentiment analysis to help users track, understand, and reflect on their emotional well-being. Echo Journal offers personalized insights, mood trend visualizations, and intelligent prompts based on the latest psychological research, making self-reflection intuitive and deeply meaningful.</p>
                                     <div class="project-tech">
-                                        <span class="tech-tag">WebGL</span>
-                                        <span class="tech-tag">JavaScript</span>
-                                        <span class="tech-tag">Physics Engine</span>
+                                        <span class="tech-tag">React</span>
+                                        <span class="tech-tag">Python</span>
+                                        <!-- <span class="tech-tag">Phys</span> -->
                                     </div>
-                                    <button class="btn btn--outline project-btn">
-                                        VIEW_SIMULATION
-                                    </button>
+                                    <a href="https://mveer1.github.io/echo-journal/" class="btn btn--outline project-btn">
+                                        Visit application
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="project-card" data-project="physics">
+                    <!-- <div class="project-card" data-project="physics">
                         <div class="card-inner">
                             <div class="card-front">
                                 <div class="project-visual">
@@ -587,7 +612,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
 
                     <div class="project-card" data-project="future">

@@ -968,7 +968,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 #neural-canvas {
@@ -1111,7 +1111,14 @@ body {
   height: 200px;
   position: relative;
   transform-style: preserve-3d;
+  /* animation: rotateCube 10s infinite ease;         smooth acceleration and deceleration */
+  /* animation: rotateCube 10s infinite ease-in;      gradual acceleration */
+  /* animation: rotateCube 10s infinite ease-out;     gradual deceleration */
+  /* animation: rotateCube 10s infinite ease-in-out;  smooth start and end */
+  /* animation: rotateCube 10s infinite cubic-bezier(0.4, 0.6, 0.2, 1); custom easing */
+  /* animation: rotateCube 10s infinite steps(12);    stepped rotation */
   animation: rotateCube 10s infinite linear;
+  transform-origin: center center;
 }
 
 .cube-face {

@@ -232,7 +232,13 @@ function initTypingAnimation() {
         'Scaling cloud architectures...',
         'Processing big data streams...',
         'Training neural networks...',
-        'Optimizing data workflows...'
+        'Optimizing data workflows...',
+        'Creating universes with code...',
+        'Solving problems mere mortals fear...',
+        'Turning coffee into miracles...',
+        'Debugging reality itself...',
+        'Writing code that shapes worlds...',
+        'Hello, world!',
     ];
     
     let textIndex = 0;
