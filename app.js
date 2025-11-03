@@ -19,6 +19,7 @@ function initializeApp() {
     initNavigation();
     initScrollAnimations();
     initSkillBars();
+    initAnimatedSkillsList();
     initTimeline();
     initProjects();
     initContactForm();
@@ -362,7 +363,311 @@ function initScrollAnimations() {
     elementsToAnimate.forEach(el => observer.observe(el));
 }
 
-// Skills Bar Animation
+// Animated Skills List
+function initAnimatedSkillsList() {
+    const skillsContainer = document.getElementById('animatedSkillsList');
+    const skillsList = document.getElementById('skillsScrollList');
+    const topGradient = document.getElementById('topGradient');
+    const bottomGradient = document.getElementById('bottomGradient');
+    
+    if (!skillsContainer || !skillsList) return;
+    
+    // Skills data with percentages
+    const skills = [
+        { name: 'Python', level: 90 },
+        { name: 'SQL', level: 88 },
+        { name: 'Golang', level: 75 },
+        { name: 'Java', level: 80 },
+        { name: 'Rust', level: 70 },
+        { name: 'React', level: 75 },
+        { name: 'Flask', level: 82 },
+        { name: 'Streamlit', level: 85 },
+        { name: 'PySpark', level: 80 },
+        { name: 'dbt', level: 85 },
+        { name: 'PyTorch', level: 78 },
+        { name: 'Snowflake', level: 85 },
+        { name: 'Databricks', level: 82 },
+        { name: 'Azure Data Factory', level: 83 },
+        { name: 'AWS', level: 80 },
+        { name: 'GCP (BigQuery, Firebase)', level: 78 },
+        { name: 'LLMs', level: 80 },
+        { name: 'SLMs', level: 75 },
+        { name: 'RAGs', level: 82 },
+        { name: 'MCPs', level: 75 },
+        { name: 'Data Quality Automation', level: 85 }
+    ];
+    
+    let selectedIndex = -1;
+    let keyboardNav = false;
+    let isScrolling = false;
+    
+    // Clear existing content
+    skillsList.innerHTML = '';
+    
+    // Create skill item element
+    function createSkillItem(skill, index, isDuplicate = false) {
+        const item = document.createElement('div');
+        item.className = 'animated-skill-item';
+        item.setAttribute('data-index', isDuplicate ? index + skills.length : index);
+        item.setAttribute('data-original-index', index);
+        item.style.setProperty('--skill-level', skill.level + '%');
+        
+        const fillDiv = document.createElement('div');
+        fillDiv.className = 'skill-fill-bg';
+        fillDiv.style.width = '0%'; // Start at 0, will animate to skill.level
+        fillDiv.setAttribute('data-level', skill.level + '%');
+        
+        const textP = document.createElement('p');
+        textP.className = 'animated-skill-text';
+        textP.textContent = skill.name;
+        
+        item.appendChild(fillDiv);
+        item.appendChild(textP);
+        
+        // Mouse enter
+        item.addEventListener('mouseenter', () => {
+            if (!keyboardNav && !isScrolling) {
+                setSelectedIndex(index);
+            }
+        });
+        
+        // Click
+        item.addEventListener('click', () => {
+            setSelectedIndex(index);
+            console.log('Selected skill:', skill.name, index);
+        });
+        
+        return item;
+    }
+    
+    // Generate skill items - create multiple copies for infinite scroll
+    const copies = 3; // Create 3 copies for seamless looping
+    for (let copy = 0; copy < copies; copy++) {
+        skills.forEach((skill, index) => {
+            const item = createSkillItem(skill, index, copy > 0);
+            skillsList.appendChild(item);
+        });
+    }
+    
+    // Set selected index
+    function setSelectedIndex(index) {
+        // Remove previous selection from all copies
+        const prevSelected = skillsList.querySelectorAll('.animated-skill-item.selected');
+        prevSelected.forEach(item => {
+            item.classList.remove('selected');
+            const textEl = item.querySelector('.animated-skill-text');
+            if (textEl) textEl.classList.remove('selected');
+        });
+        
+        // Set new selection - select all copies with same original index
+        selectedIndex = index;
+        if (index >= 0 && index < skills.length) {
+            const items = skillsList.querySelectorAll(`[data-original-index="${index}"]`);
+            items.forEach(item => {
+                item.classList.add('selected');
+                const textEl = item.querySelector('.animated-skill-text');
+                if (textEl) textEl.classList.add('selected');
+            });
+            
+            // Scroll to first visible instance
+            if (keyboardNav) {
+                const firstItem = Array.from(items).find(item => {
+                    const rect = item.getBoundingClientRect();
+                    const containerRect = skillsList.getBoundingClientRect();
+                    return rect.top >= containerRect.top && rect.top <= containerRect.bottom;
+                }) || items[0];
+                
+                if (firstItem) {
+                    scrollToItem(firstItem);
+                }
+            }
+        }
+    }
+    
+    // Scroll to item
+    function scrollToItem(item) {
+        if (!keyboardNav || !item) return;
+        
+        const container = skillsList;
+        const extraMargin = 50;
+        const containerScrollTop = container.scrollTop;
+        const containerHeight = container.clientHeight;
+        const itemTop = item.offsetTop;
+        const itemBottom = itemTop + item.offsetHeight;
+        
+        if (itemTop < containerScrollTop + extraMargin) {
+            container.scrollTo({ top: itemTop - extraMargin, behavior: 'smooth' });
+        } else if (itemBottom > containerScrollTop + containerHeight - extraMargin) {
+            container.scrollTo({
+                top: itemBottom - containerHeight + extraMargin,
+                behavior: 'smooth'
+            });
+        }
+        
+        keyboardNav = false;
+    }
+    
+    // Handle scroll for gradients
+    function handleScroll() {
+        const scrollTop = skillsList.scrollTop;
+        const scrollHeight = skillsList.scrollHeight;
+        const clientHeight = skillsList.clientHeight;
+        
+        // Top gradient
+        const topOpacity = Math.min(scrollTop / 50, 1);
+        topGradient.style.opacity = topOpacity;
+        
+        // Bottom gradient
+        const bottomDistance = scrollHeight - (scrollTop + clientHeight);
+        const bottomOpacity = scrollHeight <= clientHeight ? 0 : Math.min(bottomDistance / 50, 1);
+        bottomGradient.style.opacity = bottomOpacity;
+    }
+    
+    // Infinite scroll logic
+    function setupInfiniteScroll() {
+        let singleListHeight = 0;
+        
+        // Calculate actual height of one copy
+        function calculateListHeight() {
+            const firstItem = skillsList.querySelector('[data-original-index="0"]');
+            const lastItem = skillsList.querySelector(`[data-original-index="${skills.length - 1}"]`);
+            
+            if (firstItem && lastItem) {
+                const firstTop = firstItem.offsetTop;
+                const lastTop = lastItem.offsetTop;
+                const lastHeight = lastItem.offsetHeight;
+                singleListHeight = (lastTop - firstTop) + lastHeight + 16; // Add margin
+            } else {
+                // Fallback calculation
+                singleListHeight = skills.length * 80;
+            }
+        }
+        
+        // Calculate on load and resize
+        setTimeout(() => {
+            calculateListHeight();
+            // Start scroll position at middle copy for bidirectional scrolling
+            if (singleListHeight > 0) {
+                skillsList.scrollTop = singleListHeight;
+            }
+        }, 200);
+        
+        window.addEventListener('resize', () => {
+            setTimeout(() => {
+                calculateListHeight();
+            }, 100);
+        });
+        
+        skillsList.addEventListener('scroll', () => {
+            if (isScrolling) {
+                handleScroll();
+                return;
+            }
+            
+            // Recalculate if needed
+            if (singleListHeight === 0) {
+                calculateListHeight();
+                handleScroll();
+                return;
+            }
+            
+            const scrollTop = skillsList.scrollTop;
+            const scrollThreshold = singleListHeight * 2;
+            
+            // When scrolled past 2 copies, reset to first copy seamlessly
+            if (scrollTop >= scrollThreshold) {
+                isScrolling = true;
+                skillsList.scrollTop = scrollTop - singleListHeight;
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 50);
+            }
+            
+            // When scrolled to top, jump to middle copy for reverse scroll
+            if (scrollTop <= 0) {
+                isScrolling = true;
+                skillsList.scrollTop = singleListHeight;
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 50);
+            }
+            
+            // Update gradients
+            handleScroll();
+        });
+    }
+    
+    setupInfiniteScroll();
+    
+    // Keyboard navigation - only when skills section is in view
+    let isSkillsSectionInView = false;
+    const skillsSectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            isSkillsSectionInView = entry.isIntersecting;
+        });
+    }, { threshold: 0.1 });
+    
+    const skillsSection = document.querySelector('.skills-section');
+    if (skillsSection) {
+        skillsSectionObserver.observe(skillsSection);
+    }
+    
+    function handleKeyDown(e) {
+        // Only handle keyboard navigation when skills section is visible
+        if (!isSkillsSectionInView) return;
+        
+        if (e.key === 'ArrowDown' || (e.key === 'Tab' && !e.shiftKey)) {
+            e.preventDefault();
+            keyboardNav = true;
+            const newIndex = selectedIndex < 0 ? 0 : Math.min(selectedIndex + 1, skills.length - 1);
+            setSelectedIndex(newIndex);
+        } else if (e.key === 'ArrowUp' || (e.key === 'Tab' && e.shiftKey)) {
+            e.preventDefault();
+            keyboardNav = true;
+            const newIndex = selectedIndex < 0 ? skills.length - 1 : Math.max(selectedIndex - 1, 0);
+            setSelectedIndex(newIndex);
+        } else if (e.key === 'Enter') {
+            if (selectedIndex >= 0 && selectedIndex < skills.length) {
+                e.preventDefault();
+                console.log('Selected skill:', skills[selectedIndex].name, selectedIndex);
+            }
+        }
+    }
+    
+    window.addEventListener('keydown', handleKeyDown);
+    
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Animate fill when visible
+                const fillBg = entry.target.querySelector('.skill-fill-bg');
+                if (fillBg && fillBg.style.width === '0%') {
+                    const targetWidth = fillBg.getAttribute('data-level');
+                    setTimeout(() => {
+                        fillBg.style.width = targetWidth;
+                    }, 200);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all skill items
+    skillsList.querySelectorAll('.animated-skill-item').forEach((item) => {
+        observer.observe(item);
+    });
+    
+    // Initial gradient state
+    handleScroll();
+}
+
+// Skills Bar Animation (legacy)
 function initSkillBars() {
     // Skills will be animated when they come into view via scroll animations
 }

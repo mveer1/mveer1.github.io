@@ -1231,9 +1231,35 @@ section {
 /* About Section */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 60px;
   align-items: start;
+}
+
+/* About Me at full width */
+.about-content {
+  grid-column: 1 / -1;
+}
+
+/* Skills and Timeline side by side (50-50) on desktop */
+.skills-section,
+.timeline-content {
+  grid-column: span 1;
+}
+
+@media (min-width: 769px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .about-content {
+    grid-column: 1 / -1; /* Full width */
+  }
+  
+  .skills-section,
+  .timeline-content {
+    grid-column: span 1; /* Each takes 1 column */
+  }
 }
 
 .terminal-window {
@@ -1285,6 +1311,139 @@ section {
   text-transform: uppercase;
 }
 
+/* Animated Skills List */
+.animated-skills-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.animated-skills-list {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 16px;
+  position: relative;
+}
+
+.animated-skills-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.animated-skills-list::-webkit-scrollbar-track {
+  background: rgba(6, 0, 16, 0.8);
+}
+
+.animated-skills-list::-webkit-scrollbar-thumb {
+  background: rgba(186, 218, 85, 0.3);
+  border-radius: 4px;
+}
+
+.animated-skills-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(186, 218, 85, 0.5);
+}
+
+.animated-skill-item {
+  padding: 16px;
+  background-color: rgba(23, 13, 39, 0.8);
+  border: 1px solid var(--border-cyber);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0;
+  transform: scale(0.7);
+  animation: fadeInScale 0.3s ease forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-skill-item.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.animated-skill-item.selected {
+  background-color: rgba(39, 30, 55, 0.9);
+  border-color: var(--primary-cyber);
+  box-shadow: 0 0 15px var(--primary-cyber-glow);
+}
+
+.animated-skill-item:hover {
+  border-color: var(--primary-cyber);
+  transform: scale(1.02);
+}
+
+/* Skill fill background */
+.skill-fill-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--primary-cyber);
+  opacity: 0.5;
+  z-index: 0;
+  transition: width 0.5s ease;
+  border-radius: 8px;
+}
+
+.animated-skill-item .animated-skill-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.animated-skill-text {
+  color: var(--text-cyber);
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-family: var(--font-cyber);
+  text-align: center;
+  font-weight: bold;
+}
+
+.animated-skill-text.selected {
+  color: var(--primary-cyber);
+}
+
+.top-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--background-dark), transparent);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  z-index: 10;
+}
+
+.bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, var(--background-dark), transparent);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  z-index: 10;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Legacy styles for backward compatibility */
 .skills-grid {
   display: grid;
   gap: 20px;
@@ -1838,6 +1997,28 @@ section {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+  
+  /* Mobile order: About Me (1), Timeline (2), Skills (3) */
+  .about-content {
+    order: 1;
+  }
+  
+  .timeline-content {
+    order: 2;
+  }
+  
+  .skills-section {
+    order: 3;
+  }
+  
+  /* Mobile styles for animated skills */
+  .animated-skills-container {
+    max-width: 100%;
+  }
+  
+  .animated-skills-list {
+    max-height: 375px;
   }
   
   .projects-grid {
