@@ -595,20 +595,20 @@
                         </div>
                     </div>
                     <div class="contact-form">
-                        <form class="neural-form" id="contactForm">
+                        <form class="neural-form" id="contactForm" action="https://formspree.io/f/xnjnezwz" method="POST">
                             <div class="form-group">
                                 <label class="form-label">IDENTIFIER</label>
-                                <input type="text" class="form-control neural-input" placeholder="Enter your name..." required>
+                                <input type="text" name="name" class="form-control neural-input" placeholder="Enter your name..." required>
                                 <div class="input-glow"></div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">TRANSMISSION_ENDPOINT</label>
-                                <input type="email" class="form-control neural-input" placeholder="Enter your email..." required>
+                                <input type="email" name="_replyto" class="form-control neural-input" placeholder="Enter your email..." required>
                                 <div class="input-glow"></div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">MESSAGE_PAYLOAD</label>
-                                <textarea class="form-control neural-input" rows="5" placeholder="Enter your message..." required></textarea>
+                                <textarea name="message" class="form-control neural-input" rows="5" placeholder="Enter your message..." required></textarea>
                                 <div class="input-glow"></div>
                             </div>
                             <button type="submit" class="btn btn--primary holo-btn full-width">

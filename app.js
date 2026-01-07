@@ -852,7 +852,7 @@ function initContactForm() {
     });
 }
 
-function handleFormSubmission(form) {
+async function handleFormSubmission(form) {
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.querySelector('.btn-text').textContent;
     
@@ -860,22 +860,54 @@ function handleFormSubmission(form) {
     submitBtn.querySelector('.btn-text').textContent = 'TRANSMITTING...';
     submitBtn.disabled = true;
     
-    // Simulate form submission
-    setTimeout(() => {
-        submitBtn.querySelector('.btn-text').textContent = 'TRANSMISSION_COMPLETE';
-        submitBtn.style.background = '#00ccff';
+    try {
+        // Submit form to Formspree
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
         
-        // Show success message
-        showNotification('Message transmitted successfully!', 'success');
+        if (response.ok) {
+            // Success
+            submitBtn.querySelector('.btn-text').textContent = 'TRANSMISSION_COMPLETE';
+            submitBtn.style.background = '#00ccff';
+            
+            // Show success message
+            showNotification('Message transmitted successfully!', 'success');
+            
+            // Reset form after delay
+            setTimeout(() => {
+                form.reset();
+                submitBtn.querySelector('.btn-text').textContent = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.background = '';
+            }, 3000);
+        } else {
+            // Handle Formspree errors
+            const data = await response.json();
+            throw new Error(data.error || 'Failed to send message');
+        }
+    } catch (error) {
+        // Error handling
+        submitBtn.querySelector('.btn-text').textContent = 'TRANSMISSION_FAILED';
+        submitBtn.style.background = '#ff0040';
         
-        // Reset form after delay
+        // Show error message
+        showNotification('Transmission failed. Please try again or contact directly.', 'error');
+        
+        // Reset button after delay
         setTimeout(() => {
-            form.reset();
             submitBtn.querySelector('.btn-text').textContent = originalText;
             submitBtn.disabled = false;
             submitBtn.style.background = '';
         }, 3000);
-    }, 2000);
+        
+        console.error('Form submission error:', error);
+    }
 }
 
 // Floating Particles
@@ -919,19 +951,34 @@ function showNotification(message, type = 'info') {
     notification.className = `notification notification--${type}`;
     notification.textContent = message;
     
+    // Set colors based on notification type
+    let color = '#bada55'; // Default green
+    let borderColor = '#bada55';
+    let shadowColor = 'rgba(186, 218, 85, 0.3)';
+    
+    if (type === 'error') {
+        color = '#ff0040';
+        borderColor = '#ff0040';
+        shadowColor = 'rgba(255, 0, 64, 0.3)';
+    } else if (type === 'success') {
+        color = '#00ccff';
+        borderColor = '#00ccff';
+        shadowColor = 'rgba(0, 204, 255, 0.3)';
+    }
+    
     notification.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
         background: rgba(0, 0, 0, 0.9);
-        color: #bada55;
+        color: ${color};
         padding: 15px 25px;
-        border: 1px solid #bada55;
+        border: 1px solid ${borderColor};
         border-radius: 6px;
         z-index: 10001;
         font-family: var(--font-cyber);
         font-size: 14px;
-        box-shadow: 0 0 20px rgba(186, 218, 85, 0.3);
+        box-shadow: 0 0 20px ${shadowColor};
         transform: translateX(100%);
         transition: transform 0.3s ease;
     `;
