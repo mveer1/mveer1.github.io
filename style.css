@@ -1319,7 +1319,7 @@ section {
 }
 
 .animated-skills-list {
-  max-height: 500px;
+  max-height: 700px;
   overflow-y: auto;
   padding: 16px;
   position: relative;
@@ -1396,7 +1396,7 @@ section {
 .animated-skill-text {
   color: var(--text-cyber);
   margin: 0;
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
   font-family: var(--font-cyber);
   text-align: center;
   font-weight: bold;
@@ -2018,7 +2018,7 @@ section {
   }
   
   .animated-skills-list {
-    max-height: 375px;
+    max-height: 525px;
   }
   
   .projects-grid {
