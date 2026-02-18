@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahavir Chaudhari</title>
+    <title>Mahavir Chaudhari — Data Engineer</title>
+    <meta name="description"
+        content="Mahavir Chaudhari — Data Engineer specializing in building scalable data pipelines, cloud architectures, and AI-powered data systems.">
+    <meta name="theme-color" content="#bada55">
+    <meta property="og:title" content="Mahavir Chaudhari — Data Engineer">
+    <meta property="og:description"
+        content="Building the invisible systems that make data dance. Data Engineer specializing in pipelines, cloud, and AI.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mveer1.github.io">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <!-- Skip to Content -->
+    <a href="#hero" class="skip-to-content">Skip to content</a>
+
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="terminal-loading">
@@ -40,74 +55,71 @@
     <!-- Floating Navigation -->
     <nav class="floating-nav">
         <div class="nav-glow"></div>
-        <a href="#hero" class="nav-link active" data-section="hero" style="font-size: 1.2em; padding: 15px;">
-            <div class="nav-button" style="transform: scale(1.2);">
+        <a href="#hero" class="nav-link active" data-section="hero" aria-label="Home">
+            <div class="nav-button">
                 <div class="button-glow"></div>
-                <span class="nav-icon" style="font-size: 1.4em;">⬡</span>
+                <span class="nav-icon">⬡</span>
                 <span class="nav-label">HOME</span>
                 <div class="nav-indicator"></div>
             </div>
         </a>
-        <a href="#about" class="nav-link" data-section="about" style="font-size: 1.2em; padding: 15px;">
-            <div class="nav-button" style="transform: scale(1.2);">
+        <a href="#about" class="nav-link" data-section="about" aria-label="Profile">
+            <div class="nav-button">
                 <div class="button-glow"></div>
-                <span class="nav-icon" style="font-size: 1.4em;">⬢</span>
+                <span class="nav-icon">⬢</span>
                 <span class="nav-label">PROFILE</span>
                 <div class="nav-indicator"></div>
             </div>
         </a>
-        <a href="#projects" class="nav-link" data-section="projects" style="font-size: 1.2em; padding: 15px;">
-            <div class="nav-button" style="transform: scale(1.2);">
+        <a href="#projects" class="nav-link" data-section="projects" aria-label="Projects">
+            <div class="nav-button">
                 <div class="button-glow"></div>
-                <span class="nav-icon" style="font-size: 1.4em;">⬢</span>
+                <span class="nav-icon">⬢</span>
                 <span class="nav-label">PROJECTS</span>
                 <div class="nav-indicator"></div>
             </div>
         </a>
-        <a href="#contact" class="nav-link" data-section="contact" style="font-size: 1.2em; padding: 15px;">
-            <div class="nav-button" style="transform: scale(1.2);">
+        <a href="#contact" class="nav-link" data-section="contact" aria-label="Contact">
+            <div class="nav-button">
                 <div class="button-glow"></div>
-                <span class="nav-icon" style="font-size: 1.4em;">⬢</span>
+                <span class="nav-icon">⬢</span>
                 <span class="nav-label">CONNECT</span>
                 <div class="nav-indicator"></div>
             </div>
         </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+            <span class="theme-icon theme-icon--dark">☾</span>
+            <span class="theme-icon theme-icon--light">☀</span>
+        </button>
     </nav>
 
-    
+
 
     <!-- Main Content -->
     <main class="main-content">
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
+            <div class="hero-bg-image" aria-hidden="true"></div>
             <div class="hero-content">
-                <div class="glitch-container">
+                <p class="hero-intro hero-anim hero-anim-1">Hi, I'm <span class="name-highlight">Mahavir</span></p>
+                <div class="glitch-container hero-anim hero-anim-2">
                     <h1 class="hero-title glitch" data-text="DATA ENGINEER">DATA ENGINEER</h1>
                 </div>
-                <div class="hero-subtitle">
+                <div class="hero-subtitle hero-anim hero-anim-3">
                     <span class="typing-animation"></span>
                     <span class="cursor-blink">|</span>
                 </div>
-                <div class="hero-description">
+                <div class="hero-description hero-anim hero-anim-4">
                     <p>Building the invisible systems that make data dance</p>
                 </div>
-                <div class="hero-cta">
+                <div class="hero-cta hero-anim hero-anim-5">
                     <button class="btn btn--primary holo-btn" onclick="scrollToSection('about')">
                         <span class="btn-text">ENTER NEURAL NET</span>
-                        <style>
-                        .btn.btn--primary .btn-text {
-                            color: #fff;
-                            transition: color 0.2s;
-                        }
-                        .btn.btn--primary:hover .btn-text {
-                            color: #000;
-                        }
-                        </style>
                         <div class="btn-glow"></div>
                     </button>
                 </div>
             </div>
-            <div class="hero-visual">
+            <div class="hero-visual hero-anim hero-anim-3">
                 <div class="hologram-cube">
                     <div class="cube-face cube-front"></div>
                     <div class="cube-face cube-back"></div>
@@ -119,8 +131,10 @@
             </div>
         </section>
 
+        <hr class="section-divider" aria-hidden="true">
+
         <!-- About & Timeline Section -->
-        <section id="about" class="about-section">
+        <section id="about" class="about-section reveal">
             <div class="container">
                 <div class="about-grid">
                     <!-- About Me -->
@@ -147,9 +161,18 @@
                                     <span class="command">cat profile.txt</span>
                                 </div>
                                 <div class="terminal-output">
-                                    <p>Hi, I'm a data engineer who enjoys working behind the scenes — building the systems that make data move, talk, and tell stories. I graduated from a place called BITS Pilani in 2023, and ever since, I've been having a lot of fun working on personal and professional projects around data engineering and cloud systems.</p>
-                                    <p>I mostly work with Python, SQL, Azure, and cloud data warehousing tools — with an ever-growing toolkit that stretches into big data, machine learning, and AI. I enjoy solving problems that don't come with step-by-step guides, and I'm always curious about how complex systems fit together.</p>
-                                    <p>These days, I'm focusing more on backend data architectures and scaling systems that deal with massive amounts of information — the kind of work that's invisible when it works right (and unforgettable when it doesn't).</p>
+                                    <p>Hi, I'm a data engineer who enjoys working behind the scenes — building the
+                                        systems that make data move, talk, and tell stories. I graduated from a place
+                                        called BITS Pilani in 2023, and ever since, I've been having a lot of fun
+                                        working on personal and professional projects around data engineering and cloud
+                                        systems.</p>
+                                    <p>I mostly work with Python, SQL, Azure, and cloud data warehousing tools — with an
+                                        ever-growing toolkit that stretches into big data, machine learning, and AI. I
+                                        enjoy solving problems that don't come with step-by-step guides, and I'm always
+                                        curious about how complex systems fit together.</p>
+                                    <p>These days, I'm focusing more on backend data architectures and scaling systems
+                                        that deal with massive amounts of information — the kind of work that's
+                                        invisible when it works right (and unforgettable when it doesn't).</p>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +208,8 @@
                                 <div class="timeline-content-item">
                                     <div class="timeline-year">2020</div>
                                     <div class="timeline-title">Covid Data Exploration Phase</div>
-                                    <div class="timeline-description">Lockdown-driven deep dive into data, ML, and systems through self-learning and projects.</div>
+                                    <div class="timeline-description">Lockdown-driven deep dive into data, ML, and
+                                        systems through self-learning and projects.</div>
                                 </div>
                             </div>
                             <div class="timeline-item" data-year="2021">
@@ -196,7 +220,8 @@
                                 <div class="timeline-content-item">
                                     <div class="timeline-year">2021</div>
                                     <div class="timeline-title">Machine Learning Engineer Intern</div>
-                                    <div class="timeline-description">Worked on applied ML problems and joined Streamn.ai as a part-time engineering intern.</div>
+                                    <div class="timeline-description">Worked on applied ML problems and joined
+                                        Streamn.ai as a part-time engineering intern.</div>
                                 </div>
                             </div>
                             <div class="timeline-item" data-year="2022">
@@ -207,7 +232,8 @@
                                 <div class="timeline-content-item">
                                     <div class="timeline-year">2022</div>
                                     <div class="timeline-title">Engineering Intern, Streamn.ai</div>
-                                    <div class="timeline-description">Shipped backend APIs, data pipelines, and performance optimizations across ML systems.</div>
+                                    <div class="timeline-description">Shipped backend APIs, data pipelines, and
+                                        performance optimizations across ML systems.</div>
                                 </div>
                             </div>
                             <div class="timeline-item" data-year="2023">
@@ -217,8 +243,11 @@
                                 </div>
                                 <div class="timeline-content-item">
                                     <div class="timeline-year">2023</div>
-                                    <div class="timeline-title">Computer Science Graduate & Software Engineer Intern</div>
-                                    <div class="timeline-description">Graduated from BITS Pilani; interned at Fortanix working on Rust, testing, and CI/CD before joining Providence as Data Engineer I.</div>
+                                    <div class="timeline-title">Computer Science Graduate & Software Engineer Intern
+                                    </div>
+                                    <div class="timeline-description">Graduated from BITS Pilani; interned at Fortanix
+                                        working on Rust, testing, and CI/CD before joining Providence as Data Engineer
+                                        I.</div>
                                 </div>
                             </div>
                             <div class="timeline-item" data-year="2024">
@@ -229,7 +258,8 @@
                                 <div class="timeline-content-item">
                                     <div class="timeline-year">2024</div>
                                     <div class="timeline-title">Data Engineer I</div>
-                                    <div class="timeline-description">Built and optimized healthcare and financial data systems at production scale.</div>
+                                    <div class="timeline-description">Built and optimized healthcare and financial data
+                                        systems at production scale.</div>
                                 </div>
                             </div>
                             <div class="timeline-item" data-year="2025">
@@ -240,7 +270,8 @@
                                 <div class="timeline-content-item">
                                     <div class="timeline-year">2025</div>
                                     <div class="timeline-title">Data Engineer II</div>
-                                    <div class="timeline-description">Promoted to lead larger systems, mentor engineers, and drive automation initiatives.</div>
+                                    <div class="timeline-description">Promoted to lead larger systems, mentor engineers,
+                                        and drive automation initiatives.</div>
                                 </div>
                             </div>
                             <div class="timeline-item active" data-year="2026">
@@ -251,7 +282,8 @@
                                 <div class="timeline-content-item">
                                     <div class="timeline-year">2026</div>
                                     <div class="timeline-title">Senior Data Engineering Work</div>
-                                    <div class="timeline-description">Working on staffing, workforce optimization, and healthcare data platforms.</div>
+                                    <div class="timeline-description">Working on staffing, workforce optimization, and
+                                        healthcare data platforms.</div>
                                 </div>
                             </div>
                         </div>
@@ -264,11 +296,11 @@
         <div class="matrix-bg">
             <canvas id="matrix-canvas"></canvas>
         </div>
-        
+
         <div class="neural-network">
             <canvas id="neural-canvas"></canvas>
         </div>
-        
+
         <!-- Projects Section -->
         <section id="projects" class="projects-section">
             <div class="container">
@@ -304,7 +336,8 @@
                             <div class="card-back">
                                 <div class="project-details">
                                     <h3>Physics Hyperion</h3>
-                                    <p>A sophisticated physics simulation website featuring real-time particle interactions, gravitational fields, and quantum mechanics visualization.</p>
+                                    <p>A sophisticated physics simulation website featuring real-time particle
+                                        interactions, gravitational fields, and quantum mechanics visualization.</p>
                                     <div class="project-tech">
                                         <span class="tech-tag">WebGL</span>
                                         <span class="tech-tag">JavaScript</span>
@@ -319,7 +352,7 @@
                     </div>
 
 
-                    <div class="project-card" data-project="physics">
+                    <div class="project-card" data-project="echo">
                         <div class="card-inner">
                             <div class="card-front">
                                 <div class="project-visual">
@@ -342,21 +375,26 @@
                             <div class="card-back">
                                 <div class="project-details">
                                     <h3>Echo Journal</h3>
-                                    <p>An advanced AI-powered mood journal that leverages natural language processing and sentiment analysis to help users track, understand, and reflect on their emotional well-being. Echo Journal offers personalized insights, mood trend visualizations, and intelligent prompts based on the latest psychological research, making self-reflection intuitive and deeply meaningful.</p>
+                                    <p>An advanced AI-powered mood journal that leverages natural language processing
+                                        and sentiment analysis to help users track, understand, and reflect on their
+                                        emotional well-being. Echo Journal offers personalized insights, mood trend
+                                        visualizations, and intelligent prompts based on the latest psychological
+                                        research, making self-reflection intuitive and deeply meaningful.</p>
                                     <div class="project-tech">
                                         <span class="tech-tag">React</span>
                                         <span class="tech-tag">Python</span>
                                         <!-- <span class="tech-tag">Phys</span> -->
                                     </div>
-                                    <a href="https://mveer1.github.io/echo-journal/" class="btn btn--outline project-btn">
+                                    <a href="https://mveer1.github.io/echo-journal/"
+                                        class="btn btn--outline project-btn">
                                         Visit application
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="project-card" data-project="physics">
+
+                    <div class="project-card" data-project="scout">
                         <div class="card-inner">
                             <div class="card-front">
                                 <div class="project-visual">
@@ -371,22 +409,25 @@
                                     </div>
                                 </div>
                                 <div class="project-info">
-                                    <h3 class="project-title">AI research scout</h3>
+                                    <h3 class="project-title">AI Research Scout</h3>
                                     <p class="project-type">scout.exe</p>
                                 </div>
                                 <div class="card-glow"></div>
                             </div>
                             <div class="card-back">
                                 <div class="project-details">
-                                    <h3>Smart research assistant</h3>
-                                    <p>A sophisticated physics simulation website featuring real-time particle interactions, gravitational fields, and quantum mechanics visualization.</p>
+                                    <h3>AI Research Scout</h3>
+                                    <p>An intelligent research assistant that scans, summarizes, and organizes academic
+                                        papers using NLP and LLM-powered analysis to accelerate scientific discovery.
+                                    </p>
                                     <div class="project-tech">
-                                        <span class="tech-tag">WebGL</span>
-                                        <span class="tech-tag">JavaScript</span>
-                                        <span class="tech-tag">Physics Engine</span>
+                                        <span class="tech-tag">Python</span>
+                                        <span class="tech-tag">LangChain</span>
+                                        <span class="tech-tag">NLP</span>
                                     </div>
-                                    <a href="https://mveer1.github.io/AI-research-scout/" class="btn btn--outline project-btn">
-                                        VIEW_SIMULATION
+                                    <a href="https://mveer1.github.io/AI-research-scout/"
+                                        class="btn btn--outline project-btn">
+                                        EXPLORE_SCOUT
                                     </a>
                                 </div>
                             </div>
@@ -530,7 +571,8 @@
                             <div class="card-back">
                                 <div class="project-details">
                                     <h3>Future Project</h3>
-                                    <p>A revolutionary data engineering project currently in development. Features advanced AI integration and real-time analytics.</p>
+                                    <p>A revolutionary data engineering project currently in development. Features
+                                        advanced AI integration and real-time analytics.</p>
                                     <div class="project-tech">
                                         <span class="tech-tag">AI/ML</span>
                                         <span class="tech-tag">Big Data</span>
@@ -547,8 +589,10 @@
             </div>
         </section>
 
+        <hr class="section-divider" aria-hidden="true">
+
         <!-- Contact Section -->
-        <section id="contact" class="contact-section">
+        <section id="contact" class="contact-section reveal">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">
@@ -588,27 +632,41 @@
                                     </div>
                                     <div class="contact-item">
                                         <span class="contact-label">LINKEDIN</span>
-                                        <a href="https://www.linkedin.com/in/mahavir01" class="contact-value">LINKEDIN.com/mahavir01</a>
+                                        <a href="https://www.linkedin.com/in/mahavir01"
+                                            class="contact-value">LINKEDIN.com/mahavir01</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="contact-form">
-                        <form class="neural-form" id="contactForm" action="https://formspree.io/f/xnjnezwz" method="POST">
+                        <form class="neural-form" id="contactForm" action="https://formspree.io/f/xnjnezwz"
+                            method="POST">
                             <div class="form-group">
-                                <label class="form-label">IDENTIFIER</label>
-                                <input type="text" name="name" class="form-control neural-input" placeholder="Enter your name..." required>
+                                <label class="form-label" for="contact-name">
+                                    IDENTIFIER
+                                    <span class="form-label-hint">Your name</span>
+                                </label>
+                                <input type="text" id="contact-name" name="name" class="form-control neural-input"
+                                    placeholder="Enter your name..." required>
                                 <div class="input-glow"></div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">TRANSMISSION_ENDPOINT</label>
-                                <input type="email" name="_replyto" class="form-control neural-input" placeholder="Enter your email..." required>
+                                <label class="form-label" for="contact-email">
+                                    COMM_CHANNEL
+                                    <span class="form-label-hint">Your email address</span>
+                                </label>
+                                <input type="email" id="contact-email" name="_replyto" class="form-control neural-input"
+                                    placeholder="Enter your email..." required>
                                 <div class="input-glow"></div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">MESSAGE_PAYLOAD</label>
-                                <textarea name="message" class="form-control neural-input" rows="5" placeholder="Enter your message..." required></textarea>
+                                <label class="form-label" for="contact-message">
+                                    DATA_PAYLOAD
+                                    <span class="form-label-hint">Your message</span>
+                                </label>
+                                <textarea id="contact-message" name="message" class="form-control neural-input" rows="5"
+                                    placeholder="Enter your message..." required></textarea>
                                 <div class="input-glow"></div>
                             </div>
                             <button type="submit" class="btn btn--primary holo-btn full-width">
@@ -622,6 +680,26 @@
         </section>
     </main>
 
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://github.com/mveer1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    ⟨/⟩
+                </a>
+                <a href="https://www.linkedin.com/in/mahavir01" target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn">
+                    in
+                </a>
+                <a href="mailto:mveer.rc@gmail.com" aria-label="Email">
+                    @
+                </a>
+            </div>
+            <p class="footer-tagline">// built with caffeine & curiosity</p>
+            <p class="footer-copyright">&copy; 2025 Mahavir Chaudhari. All systems operational.</p>
+        </div>
+    </footer>
+
     <!-- Floating Elements -->
     <div class="floating-elements">
         <div class="floating-particle"></div>
@@ -633,4 +711,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>
