@@ -647,7 +647,7 @@ body:not(.loading) .hero-anim-5 {
 }
 
 .holo-btn .btn-text {
-  color: #fff;
+  color: var(--text-cyber);
   transition: color 0.25s ease;
 }
 
@@ -709,7 +709,7 @@ section {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 60px;
+  gap: 80px;
   align-items: start;
 }
 
@@ -742,12 +742,13 @@ section {
 }
 
 .terminal-window {
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--surface-card);
   border: 1px solid var(--primary-cyber);
   border-radius: 8px;
   box-shadow: 0 0 30px var(--primary-cyber-glow);
   margin-bottom: 40px;
-  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.4s ease;
   will-change: transform;
 }
 
@@ -757,31 +758,35 @@ section {
 }
 
 .terminal-content {
-  padding: 20px;
+  padding: 32px 28px;
 }
 
 .terminal-line {
-  margin-bottom: 10px;
-  font-size: var(--font-size-sm);
+  margin-bottom: 16px;
+  font-size: var(--font-size-base);
 }
 
 .prompt {
   color: var(--primary-cyber);
+  font-family: var(--font-cyber);
 }
 
 .command {
   color: var(--secondary-cyber);
   margin-left: 10px;
+  font-family: var(--font-cyber);
 }
 
 .terminal-output {
-  margin-top: 15px;
-  font-size: var(--font-size-sm);
-  line-height: 1.6;
+  margin-top: 20px;
+  font-size: var(--font-size-lg);
+  line-height: 1.85;
+  font-family: var(--font-body);
+  max-width: 80ch;
 }
 
 .terminal-output p {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: var(--text-cyber);
 }
 
@@ -1900,9 +1905,9 @@ section {
 /* Improved Terminal Text */
 .terminal-output p {
   font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.7;
-  color: rgba(224, 224, 224, 0.9);
+  font-size: var(--font-size-lg);
+  line-height: 1.85;
+  color: var(--text-cyber);
 }
 
 .terminal-line {
@@ -2141,18 +2146,23 @@ section {
 
 /* ===== Theme Toggle Button ===== */
 .theme-toggle {
-  position: relative;
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1001;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: transparent;
+  width: 44px;
+  height: 44px;
+  background: var(--surface-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-cyber);
   border-radius: 50%;
   color: var(--text-cyber-dim);
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   transition: color 0.3s ease,
     border-color 0.3s ease,
     box-shadow 0.3s ease,
@@ -2161,6 +2171,7 @@ section {
   will-change: transform;
   padding: 0;
   line-height: 1;
+  box-shadow: 0 2px 12px var(--shadow-color);
 }
 
 .theme-toggle:hover {
@@ -2252,6 +2263,78 @@ section {
 
 [data-theme="light"] .theme-toggle:hover {
   background: rgba(90, 138, 21, 0.1);
+}
+
+/* Light mode: fix boot/loading text contrast */
+[data-theme="light"] .boot-line {
+  color: var(--text-cyber-dim);
+}
+
+[data-theme="light"] .progress-bar {
+  background: var(--primary-cyber);
+}
+
+/* Light mode: terminal header */
+[data-theme="light"] .terminal-header {
+  background: rgba(90, 138, 21, 0.08);
+  border-bottom-color: var(--border-cyber);
+}
+
+/* Light mode: holo-btn text visibility */
+[data-theme="light"] .holo-btn {
+  background: rgba(90, 138, 21, 0.08);
+}
+
+/* Light mode: scrollbar */
+[data-theme="light"] .animated-skills-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .animated-skills-list::-webkit-scrollbar-thumb {
+  background: rgba(90, 138, 21, 0.3);
+}
+
+/* Light mode: timeline */
+[data-theme="light"] .timeline-dot {
+  background: var(--primary-cyber);
+  box-shadow: 0 0 8px var(--primary-cyber-glow);
+}
+
+[data-theme="light"] .timeline-line {
+  background: var(--border-cyber);
+}
+
+/* Light mode: project cards */
+[data-theme="light"] .project-info h3 {
+  color: var(--text-cyber);
+}
+
+[data-theme="light"] .project-info p {
+  color: var(--text-cyber-dim);
+}
+
+/* Light mode: contact values */
+[data-theme="light"] .contact-value a {
+  color: var(--primary-cyber);
+}
+
+/* Light mode: section divider */
+[data-theme="light"] .section-divider {
+  border-image-source: linear-gradient(to right,
+      transparent,
+      var(--border-cyber),
+      transparent);
+}
+
+/* Mobile toggle position */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
 }
 
 /* ===== Reduced Motion Accessibility ===== */
