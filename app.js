@@ -28,7 +28,9 @@ function initializeApp() {
     initProjects();
     initContactForm();
     initFloatingParticles();
+    initProfileModal();
     initParallax();
+    initThreeHeroScene();
 
     // Handle mobile detection
     if (window.innerWidth <= 768) {
@@ -1038,6 +1040,60 @@ function initFloatingParticles() {
     });
 }
 
+// Profile Summary Modal handling
+function initProfileModal() {
+    const modalBtn = document.getElementById('profileSummaryBtn');
+    const modal = document.getElementById('profileSummaryModal');
+    const closeBtn = document.getElementById('closeSummaryModal');
+    const container = document.getElementById('floatingSummaryContainer');
+    const dismissBtn = document.getElementById('closeFloatingSummaryBtn');
+
+    if (!modalBtn || !modal || !closeBtn) return;
+
+    // Open modal
+    modalBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        if (typeof createRipple === 'function') {
+            createRipple(modalBtn);
+        }
+    });
+
+    // Dismiss floating button
+    if (dismissBtn && container) {
+        dismissBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            container.classList.add('hidden');
+        });
+    }
+
+    // Close modal via control button
+    closeBtn.addEventListener('click', () => {
+        closeProfileModal();
+    });
+
+    // Close modal via overlay click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeProfileModal();
+        }
+    });
+
+    // Close modal via Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeProfileModal();
+        }
+    });
+
+    function closeProfileModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore background scrolling
+    }
+}
+
 // Utility Functions
 function createRipple(element) {
     const ripple = document.createElement('div');
@@ -1260,3 +1316,133 @@ window.addEventListener('load', () => {
 
 // Export functions for global access
 window.scrollToSection = scrollToSection;
+
+// ==========================================
+// Three.js Hero Canvas Implementation
+// ==========================================
+function initThreeHeroScene() {
+    const container = document.getElementById('three-hero-container');
+    if (!container) return;
+
+    // Create scene, camera, renderer
+    const scene = new THREE.Scene();
+
+    // Camera setup
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.z = 5;
+
+    // Renderer setup
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    // Create a 3D Cyber-Brain / Node Structure
+    // Increased size by ~30% from (2, 1) to (2.6, 1)
+    const geometry = new THREE.IcosahedronGeometry(2.6, 1);
+
+    // Create material with texture if possible, or a glowing wireframe
+    const textureLoader = new THREE.TextureLoader();
+    const cyberTexture = textureLoader.load('cyber_texture.png');
+
+    const material = new THREE.MeshStandardMaterial({
+        color: 0x00ffcc,
+        wireframe: true,
+        emissive: 0x004433,
+        emissiveIntensity: 0.8,
+        transparent: true,
+        opacity: 0.8
+    });
+
+    const nodeMesh = new THREE.Mesh(geometry, material);
+    scene.add(nodeMesh);
+
+    // Inner glowing sphere - Increased size by 30% (from 1.2 to 1.56) and made it brighter
+    const innerGeo = new THREE.SphereGeometry(1.56, 32, 32);
+    const innerMat = new THREE.MeshBasicMaterial({
+        color: 0x22ff88, // Brighter, more vibrant color
+        transparent: true,
+        opacity: 1.0,    // Fully opaque for brightness
+        map: cyberTexture
+    });
+    const innerSphere = new THREE.Mesh(innerGeo, innerMat);
+    scene.add(innerSphere);
+
+    // Particles around it
+    const particlesGeo = new THREE.BufferGeometry();
+    const particleCount = 200;
+    const posArray = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 10;
+    }
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMat = new THREE.PointsMaterial({
+        size: 0.05,
+        color: 0x00ffcc,
+        transparent: true,
+        opacity: 0.6
+    });
+    const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particlesMesh);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0x00ffcc, 2, 50);
+    pointLight.position.set(2, 3, 4);
+    scene.add(pointLight);
+
+    // Parallax logic
+    let targetX = 0;
+    let targetY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+        targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    // Animation loop
+    const clock = new THREE.Clock();
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        const elapsedTime = clock.getElapsedTime();
+
+        // Base rotation
+        nodeMesh.rotation.y += 0.002;
+        nodeMesh.rotation.x += 0.001;
+
+        innerSphere.rotation.y -= 0.005;
+
+        particlesMesh.rotation.y = elapsedTime * 0.05;
+
+        // Interactive mouse rotation (Parallax offset)
+        // For mobile, we keep a steady pace if targetX/Y are 0 (no mouse movement)
+        let isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            nodeMesh.rotation.x += 0.005;
+            nodeMesh.rotation.y += 0.01;
+        } else {
+            nodeMesh.rotation.x += 0.05 * (targetY - nodeMesh.rotation.x);
+            nodeMesh.rotation.y += 0.05 * (targetX - nodeMesh.rotation.y);
+        }
+
+        // Float effect
+        nodeMesh.position.y = Math.sin(elapsedTime) * 0.2;
+        innerSphere.position.y = Math.sin(elapsedTime) * 0.2;
+
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Window resize handling
+    window.addEventListener('resize', () => {
+        if (!container) return;
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+}

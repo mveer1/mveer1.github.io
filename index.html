@@ -122,14 +122,7 @@
                 </div>
             </div>
             <div class="hero-visual hero-anim hero-anim-3">
-                <div class="hologram-cube">
-                    <div class="cube-face cube-front"></div>
-                    <div class="cube-face cube-back"></div>
-                    <div class="cube-face cube-right"></div>
-                    <div class="cube-face cube-left"></div>
-                    <div class="cube-face cube-top"></div>
-                    <div class="cube-face cube-bottom"></div>
-                </div>
+                <div id="three-hero-container"></div>
             </div>
         </section>
 
@@ -711,6 +704,51 @@
         <div class="floating-particle"></div>
     </div>
 
+    <!-- Profile Summary Modal & Trigger -->
+    <div id="floatingSummaryContainer" class="floating-summary-container">
+        <button id="profileSummaryBtn" class="floating-summary-btn" aria-label="Profile Summary">
+            <div class="btn-glow"></div>
+            <span class="icon">⬢</span>
+            <span class="text">SUMMARY</span>
+        </button>
+        <button id="closeFloatingSummaryBtn" class="close-floating-summary-btn" aria-label="Dismiss Summary">
+            ✕
+        </button>
+    </div>
+
+    <div id="profileSummaryModal" class="summary-modal-overlay">
+        <div class="summary-modal-content terminal-window">
+            <div class="terminal-header">
+                <span class="terminal-title">profile_summary.exe</span>
+                <div class="terminal-controls">
+                    <span class="control minimize" aria-label="Minimize"></span>
+                    <span class="control maximize" aria-label="Maximize"></span>
+                    <span class="control close" id="closeSummaryModal" aria-label="Close" title="Close summary"></span>
+                </div>
+            </div>
+            <div class="terminal-body terminal-content">
+                <div class="terminal-line">
+                    <span class="prompt">user@neural-net:~$</span>
+                    <span class="command">cat quick_summary.txt</span>
+                </div>
+                <div class="terminal-output">
+                    <p><strong>Status:</strong> Senior Data Engineer @ Providence</p>
+                    <p><strong>Core Stack:</strong> Python, SQL, Azure, Big Data, Gen-AI</p>
+                    <p><strong>Focus:</strong> Scalable Pipelines & Cloud Architecture</p>
+                    <p>Building the invisible systems that make data dance.</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn--primary holo-btn"
+                        onclick="document.getElementById('profileSummaryModal').classList.remove('active'); document.body.style.overflow = '';">
+                        <span class="btn-text">ACKNOWLEDGE</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="app.js"></script>
 </body>
 
