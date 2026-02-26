@@ -398,21 +398,67 @@ function initTypingAnimation() {
     setTimeout(typeText, 2000);
 }
 
-// Navigation
+// Navigation — Burger Menu + Modal
 function initNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
+    const burger = document.getElementById('burgerMenu');
+    const modal = document.getElementById('navModal');
+    const modalLinks = document.querySelectorAll('.nav-modal-link');
 
-    navLinks.forEach(link => {
+    if (!burger || !modal) return;
+
+    // Toggle burger menu + modal
+    burger.addEventListener('click', () => {
+        const isOpen = burger.classList.contains('active');
+        if (isOpen) {
+            closeBurgerMenu(burger, modal);
+        } else {
+            openBurgerMenu(burger, modal);
+        }
+    });
+
+    // Navigate on link click
+    modalLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            scrollToSection(targetId);
+            const href = link.getAttribute('href');
+            // Resume PDF opens in new tab (already handled by target=_blank)
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                closeBurgerMenu(burger, modal);
+                // Small delay so modal close animation plays first
+                setTimeout(() => scrollToSection(targetId), 300);
+            } else {
+                // External link (like resume) — just close the modal
+                closeBurgerMenu(burger, modal);
+            }
         });
     });
 
-    // Update active nav on scroll
-    window.addEventListener('scroll', updateActiveNav);
+    // Close on overlay click (outside modal)
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeBurgerMenu(burger, modal);
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && burger.classList.contains('active')) {
+            closeBurgerMenu(burger, modal);
+        }
+    });
+}
+
+function openBurgerMenu(burger, modal) {
+    burger.classList.add('active');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeBurgerMenu(burger, modal) {
+    burger.classList.remove('active');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
 }
 
 function scrollToSection(sectionId) {
@@ -425,29 +471,8 @@ function scrollToSection(sectionId) {
     }
 }
 
-function updateActiveNav() {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    let currentSectionId = '';
-    const scrollPosition = window.scrollY + 100;
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            currentSectionId = section.id;
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + currentSectionId) {
-            link.classList.add('active');
-        }
-    });
-}
+// updateActiveNav is no longer needed (burger menu replaces active-section highlighting)
+function updateActiveNav() { }
 
 // Scroll Animations
 function initScrollAnimations() {
@@ -840,41 +865,254 @@ function animateSkillBar(skillItem) {
     }, 200);
 }
 
-// Timeline
+// ============================================
+// TIMELINE — Interactive Scroll-Reactive
+// ============================================
+let currentTimelineMode = 'impact';
+let timelineObserver = null;
+let timelineScrollHandler = null;
+
 function initTimeline() {
-    const timelineItems = document.querySelectorAll('.timeline-item');
+    const data = window.TIMELINE_DATA;
+    if (!data || !data.length) return;
 
-    timelineItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            // Remove active class from all items
-            timelineItems.forEach(ti => ti.classList.remove('active'));
-            // Add active class to clicked item
-            item.classList.add('active');
+    // Render timeline with default mode (impact)
+    renderTimeline(data, currentTimelineMode);
 
-            // Add ripple effect
-            createRipple(item);
+    // Init scroll-driven progress line
+    initTimelineProgressLine();
+}
+
+/**
+ * Render all timeline items from data for a given mode
+ */
+function renderTimeline(data, mode) {
+    const container = document.getElementById('timeline');
+    if (!container) return;
+
+    // Preserve progress track
+    const progressTrack = container.querySelector('.timeline-progress-track');
+
+    // Remove old items
+    container.querySelectorAll('.timeline-item').forEach(el => el.remove());
+
+    // Build items
+    data.forEach((entry, index) => {
+        const item = createTimelineItem(entry, mode, index);
+        container.appendChild(item);
+    });
+
+    // Re-attach progress track at start
+    if (progressTrack) {
+        container.insertBefore(progressTrack, container.firstChild);
+    }
+
+    // Setup observers and interactions
+    initTimelineObserver();
+    initTimelineExpand();
+
+    // Stagger reveal animation
+    const items = container.querySelectorAll('.timeline-item');
+    items.forEach((item, i) => {
+        setTimeout(() => {
+            item.classList.add('visible');
+        }, 80 * i);
+    });
+}
+
+/**
+ * Create a single timeline item DOM element
+ */
+function createTimelineItem(entry, mode, index) {
+    const item = document.createElement('div');
+    item.className = 'timeline-item';
+    item.dataset.year = entry.year;
+    item.dataset.index = index;
+
+    // Marker
+    const marker = document.createElement('div');
+    marker.className = 'timeline-marker';
+    marker.innerHTML = '<div class="marker-core"></div><div class="marker-ring"></div>';
+    item.appendChild(marker);
+
+    // Card
+    const card = document.createElement('div');
+    card.className = 'timeline-card';
+
+    // Card header (titles + impact pill)
+    const header = document.createElement('div');
+    header.className = 'timeline-card-header';
+
+    const titles = document.createElement('div');
+    titles.className = 'timeline-card-titles';
+    titles.innerHTML = `
+        <div class="timeline-year">${entry.year}</div>
+        <div class="timeline-title">${entry.title}</div>
+        <div class="timeline-subtitle">${entry.subtitle}</div>
+    `;
+    header.appendChild(titles);
+
+    // Impact pill
+    const impactPill = document.createElement('div');
+    impactPill.className = 'timeline-impact';
+    impactPill.innerHTML = `
+        <span class="impact-metric">${entry.impact.metric}</span>
+        <span class="impact-label">${entry.impact.label}</span>
+    `;
+    header.appendChild(impactPill);
+
+    card.appendChild(header);
+
+    // Description (mode-specific)
+    const desc = document.createElement('div');
+    desc.className = 'timeline-description';
+    desc.textContent = entry.description[mode] || entry.description.impact;
+    card.appendChild(desc);
+
+    // Tech stack tags
+    const techStack = document.createElement('div');
+    techStack.className = 'timeline-tech-stack';
+    entry.techStack.forEach(tech => {
+        const tag = document.createElement('span');
+        tag.className = 'timeline-tech-tag';
+        tag.textContent = tech;
+        techStack.appendChild(tag);
+    });
+    card.appendChild(techStack);
+
+    // Expand button
+    const expandBtn = document.createElement('button');
+    expandBtn.className = 'timeline-expand-btn';
+    expandBtn.innerHTML = '<span>Details</span><span class="expand-icon">▼</span>';
+    card.appendChild(expandBtn);
+
+    // Expandable section
+    const expanded = document.createElement('div');
+    expanded.className = 'timeline-card-expanded';
+
+    let expandedHTML = `<div class="expanded-details">${entry.expanded.details}</div>`;
+    if (entry.expanded.highlights && entry.expanded.highlights.length) {
+        expandedHTML += '<div class="expanded-highlights">';
+        entry.expanded.highlights.forEach(h => {
+            expandedHTML += `<div class="highlight-item"><span class="highlight-icon">◆</span><span>${h}</span></div>`;
         });
+        expandedHTML += '</div>';
+    }
+    expanded.innerHTML = expandedHTML;
+    card.appendChild(expanded);
 
-        // Hover effects
-        item.addEventListener('mouseenter', () => {
-            item.style.transform = 'translateX(15px) scale(1.02)';
+    item.appendChild(card);
+    return item;
+}
+
+/**
+ * IntersectionObserver: activate one item at a time on scroll
+ */
+function initTimelineObserver() {
+    // Disconnect any previous observer
+    if (timelineObserver) {
+        timelineObserver.disconnect();
+    }
+
+    const items = document.querySelectorAll('#timeline .timeline-item');
+    if (!items.length) return;
+
+    timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove active from all
+                items.forEach(i => i.classList.remove('active'));
+                // Set this one as active
+                entry.target.classList.add('active');
+            }
         });
+    }, {
+        threshold: 0.4,
+        rootMargin: '0px 0px -20% 0px'
+    });
 
-        item.addEventListener('mouseleave', () => {
-            item.style.transform = 'translateX(0) scale(1)';
+    items.forEach(item => timelineObserver.observe(item));
+}
+
+/**
+ * Scroll-driven progress line
+ */
+function initTimelineProgressLine() {
+    // Remove any old handler
+    if (timelineScrollHandler) {
+        window.removeEventListener('scroll', timelineScrollHandler);
+    }
+
+    const fill = document.getElementById('timelineProgressFill');
+    const timeline = document.getElementById('timeline');
+    if (!fill || !timeline) return;
+
+    let ticking = false;
+
+    timelineScrollHandler = function () {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const rect = timeline.getBoundingClientRect();
+                const windowH = window.innerHeight;
+
+                // Calculate progress: 0 when timeline top enters viewport, 1 when timeline bottom reaches center
+                const timelineTop = rect.top;
+                const timelineHeight = rect.height;
+
+                // Start progress when the top of the timeline enters the viewport
+                const start = windowH;
+                const end = -timelineHeight + windowH * 0.5;
+
+                let progress = (start - timelineTop) / (start - end);
+                progress = Math.max(0, Math.min(1, progress));
+
+                fill.style.height = (progress * 100) + '%';
+                ticking = false;
+            });
+            ticking = true;
+        }
+    };
+
+    window.addEventListener('scroll', timelineScrollHandler, { passive: true });
+    // Initial call
+    timelineScrollHandler();
+}
+
+/**
+ * Expand/collapse accordion — one card at a time
+ */
+function initTimelineExpand() {
+    const container = document.getElementById('timeline');
+    if (!container) return;
+
+    container.querySelectorAll('.timeline-expand-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const item = btn.closest('.timeline-item');
+            if (!item) return;
+
+            const wasExpanded = item.classList.contains('expanded');
+
+            // Collapse all
+            container.querySelectorAll('.timeline-item.expanded').forEach(el => {
+                el.classList.remove('expanded');
+            });
+
+            // Toggle clicked
+            if (!wasExpanded) {
+                item.classList.add('expanded');
+            }
         });
     });
 }
 
-function animateTimelineItem(item) {
-    item.style.opacity = '0';
-    item.style.transform = 'translateX(-50px)';
+// initModeSwitcher removed — mode switcher UI was removed
 
-    setTimeout(() => {
-        item.style.transition = 'all 0.6s ease';
-        item.style.opacity = '1';
-        item.style.transform = 'translateX(0)';
-    }, 100);
+// Legacy compat — animateTimelineItem is no longer used but referenced by initScrollAnimations
+function animateTimelineItem(item) {
+    if (!item.classList.contains('visible')) {
+        item.classList.add('visible');
+    }
 }
 
 // Projects

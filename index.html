@@ -52,50 +52,57 @@
     <!-- Cursor Trail -->
     <div class="cursor-trail"></div>
 
-    <!-- Floating Navigation -->
-    <nav class="floating-nav">
-        <div class="nav-glow"></div>
-        <a href="#hero" class="nav-link active" data-section="hero" aria-label="Home">
-            <div class="nav-button">
-                <div class="button-glow"></div>
-                <span class="nav-icon">⬡</span>
-                <span class="nav-label">HOME</span>
-                <div class="nav-indicator"></div>
-            </div>
-        </a>
-        <a href="#about" class="nav-link" data-section="about" aria-label="Profile">
-            <div class="nav-button">
-                <div class="button-glow"></div>
-                <span class="nav-icon">⬢</span>
-                <span class="nav-label">PROFILE</span>
-                <div class="nav-indicator"></div>
-            </div>
-        </a>
-        <a href="#projects" class="nav-link" data-section="projects" aria-label="Projects">
-            <div class="nav-button">
-                <div class="button-glow"></div>
-                <span class="nav-icon">⬢</span>
-                <span class="nav-label">PROJECTS</span>
-                <div class="nav-indicator"></div>
-            </div>
-        </a>
-        <a href="#contact" class="nav-link" data-section="contact" aria-label="Contact">
-            <div class="nav-button">
-                <div class="button-glow"></div>
-                <span class="nav-icon">⬢</span>
-                <span class="nav-label">CONNECT</span>
-                <div class="nav-indicator"></div>
-            </div>
-        </a>
-    </nav>
+    <!-- Top-Right Controls -->
+    <div class="top-controls">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+            <span class="theme-icon theme-icon--dark">☾</span>
+            <span class="theme-icon theme-icon--light">☀</span>
+        </button>
 
-    <!-- Theme Toggle (fixed top-right) -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
-        <span class="theme-icon theme-icon--dark">☾</span>
-        <span class="theme-icon theme-icon--light">☀</span>
-    </button>
+        <!-- Burger Menu -->
+        <button class="burger-menu" id="burgerMenu" aria-label="Open navigation menu" title="Menu">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+    </div>
 
-
+    <!-- Navigation Modal -->
+    <div class="nav-modal-overlay" id="navModal">
+        <nav class="nav-modal">
+            <div class="nav-modal-header">
+                <span class="nav-modal-title">NAVIGATION</span>
+            </div>
+            <div class="nav-modal-links">
+                <a href="#hero" class="nav-modal-link" data-section="hero">
+                    <span class="nav-modal-icon">⬡</span>
+                    <span class="nav-modal-label">HOME</span>
+                    <span class="nav-modal-arrow">→</span>
+                </a>
+                <a href="#about" class="nav-modal-link" data-section="about">
+                    <span class="nav-modal-icon">⬢</span>
+                    <span class="nav-modal-label">PROFILE</span>
+                    <span class="nav-modal-arrow">→</span>
+                </a>
+                <a href="#projects" class="nav-modal-link" data-section="projects">
+                    <span class="nav-modal-icon">⬢</span>
+                    <span class="nav-modal-label">PROJECTS</span>
+                    <span class="nav-modal-arrow">→</span>
+                </a>
+                <a href="#contact" class="nav-modal-link" data-section="contact">
+                    <span class="nav-modal-icon">⬢</span>
+                    <span class="nav-modal-label">CONNECT</span>
+                    <span class="nav-modal-arrow">→</span>
+                </a>
+                <a href="mahavir.pdf" target="_blank" class="nav-modal-link nav-modal-link--resume">
+                    <span class="nav-modal-icon">📄</span>
+                    <span class="nav-modal-label">RESUME</span>
+                    <span class="nav-modal-arrow">→</span>
+                </a>
+            </div>
+        </nav>
+    </div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -193,94 +200,12 @@
                                 <span class="title-bracket">]</span>
                             </h2>
                         </div>
-                        <div class="timeline">
-                            <div class="timeline-line"></div>
-                            <div class="timeline-item" data-year="2020">
-                                <div class="timeline-marker">
-                                    <div class="marker-core"></div>
-                                    <div class="marker-ring"></div>
-                                </div>
-                                <div class="timeline-content-item">
-                                    <div class="timeline-year">2020</div>
-                                    <div class="timeline-title">Covid Data Exploration Phase</div>
-                                    <div class="timeline-description">Lockdown-driven deep dive into data, ML, and
-                                        systems through self-learning and projects.</div>
-                                </div>
+                        <!-- Timeline Container (populated by JS from timeline-data.js) -->
+                        <div class="timeline" id="timeline">
+                            <div class="timeline-progress-track">
+                                <div class="timeline-progress-fill" id="timelineProgressFill"></div>
                             </div>
-                            <div class="timeline-item" data-year="2021">
-                                <div class="timeline-marker">
-                                    <div class="marker-core"></div>
-                                    <div class="marker-ring"></div>
-                                </div>
-                                <div class="timeline-content-item">
-                                    <div class="timeline-year">2021</div>
-                                    <div class="timeline-title">Machine Learning Engineer Intern</div>
-                                    <div class="timeline-description">Worked on applied ML problems and joined
-                                        Streamn.ai as a part-time engineering intern.</div>
-                                </div>
-                            </div>
-                            <div class="timeline-item" data-year="2022">
-                                <div class="timeline-marker">
-                                    <div class="marker-core"></div>
-                                    <div class="marker-ring"></div>
-                                </div>
-                                <div class="timeline-content-item">
-                                    <div class="timeline-year">2022</div>
-                                    <div class="timeline-title">Engineering Intern, Streamn.ai</div>
-                                    <div class="timeline-description">Shipped backend APIs, data pipelines, and
-                                        performance optimizations across ML systems.</div>
-                                </div>
-                            </div>
-                            <div class="timeline-item" data-year="2023">
-                                <div class="timeline-marker">
-                                    <div class="marker-core"></div>
-                                    <div class="marker-ring"></div>
-                                </div>
-                                <div class="timeline-content-item">
-                                    <div class="timeline-year">2023</div>
-                                    <div class="timeline-title">Computer Science Graduate & Software Engineer Intern
-                                    </div>
-                                    <div class="timeline-description">Graduated from BITS Pilani; interned at Fortanix
-                                        working on Rust, testing, and CI/CD before joining Providence as Data Engineer
-                                        I.</div>
-                                </div>
-                            </div>
-                            <div class="timeline-item" data-year="2024">
-                                <div class="timeline-marker">
-                                    <div class="marker-core"></div>
-                                    <div class="marker-ring"></div>
-                                </div>
-                                <div class="timeline-content-item">
-                                    <div class="timeline-year">2024</div>
-                                    <div class="timeline-title">Data Engineer I</div>
-                                    <div class="timeline-description">Built and optimized healthcare and financial data
-                                        systems at production scale.</div>
-                                </div>
-                            </div>
-                            <div class="timeline-item" data-year="2025">
-                                <div class="timeline-marker">
-                                    <div class="marker-core"></div>
-                                    <div class="marker-ring"></div>
-                                </div>
-                                <div class="timeline-content-item">
-                                    <div class="timeline-year">2025</div>
-                                    <div class="timeline-title">Data Engineer II</div>
-                                    <div class="timeline-description">Promoted to lead larger systems, mentor engineers,
-                                        and drive automation initiatives.</div>
-                                </div>
-                            </div>
-                            <div class="timeline-item active" data-year="2026">
-                                <div class="timeline-marker">
-                                    <div class="marker-core"></div>
-                                    <div class="marker-ring"></div>
-                                </div>
-                                <div class="timeline-content-item">
-                                    <div class="timeline-year">2026</div>
-                                    <div class="timeline-title">Senior Data Engineering Work</div>
-                                    <div class="timeline-description">Working on staffing, workforce optimization, and
-                                        healthcare data platforms.</div>
-                                </div>
-                            </div>
+                            <!-- Items rendered dynamically -->
                         </div>
                     </div>
 
@@ -749,6 +674,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="timeline-data.js"></script>
     <script src="app.js"></script>
 </body>
 
