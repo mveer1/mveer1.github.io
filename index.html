@@ -9,12 +9,13 @@
         content="Mahavir Chaudhari — Data Engineer specializing in building scalable data pipelines, cloud architectures, and AI-powered data systems.">
     <meta name="theme-color" content="#bada55">
     <meta property="og:title" content="Mahavir Chaudhari — Data Engineer">
-    <meta property="og:description"
-        content="Building the invisible systems that make data dance. Data Engineer specializing in pipelines, cloud, and AI.">
+    <meta property="og:description" content="Data Engineer specializing in pipelines, cloud, and AI.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mveer1.github.io">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -24,49 +25,46 @@
 
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
-        <div class="terminal-loading">
-            <div class="terminal-header">
-                <span class="terminal-title">NEURAL_NET.EXE</span>
-                <div class="terminal-controls">
-                    <span class="control minimize"></span>
-                    <span class="control maximize"></span>
-                    <span class="control close"></span>
-                </div>
-            </div>
-            <div class="terminal-body">
-                <div class="boot-sequence">
-                    <div class="boot-line">$ initializing_neural_interface...</div>
-                    <div class="boot-line">$ loading_quantum_processors...</div>
-                    <div class="boot-line">$ establishing_data_connection...</div>
-                    <div class="boot-line">$ activating_holographic_display...</div>
-                    <div class="boot-line success">$ SYSTEM_READY</div>
-                </div>
-                <div class="loading-progress">
-                    <div class="progress-bar"></div>
-                </div>
-            </div>
+        <div class="loading-progress">
+            <div class="progress-bar"></div>
         </div>
-        <div class="neural-bg"></div>
     </div>
 
     <!-- Cursor Trail -->
     <div class="cursor-trail"></div>
 
-    <!-- Top-Right Controls -->
-    <div class="top-controls">
-        <!-- Theme Toggle -->
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
-            <span class="theme-icon theme-icon--dark">☾</span>
-            <span class="theme-icon theme-icon--light">☀</span>
-        </button>
-
-        <!-- Burger Menu -->
-        <button class="burger-menu" id="burgerMenu" aria-label="Open navigation menu" title="Menu">
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-        </button>
-    </div>
+    <!-- Site Header -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <div class="header-brand">
+                <span class="material-symbols-outlined header-logo-icon">hub</span>
+                <span class="header-brand-name">MAHAVIR</span>
+            </div>
+            <nav class="header-nav">
+                <a href="#hero" class="header-nav-link">Kernel</a>
+                <a href="#about" class="header-nav-link">About me</a>
+                <a href="#projects" class="header-nav-link">Pipelines</a>
+                <a href="#skills" class="header-nav-link">Nodes</a>
+                <a href="#timeline" class="header-nav-link">Chronicles</a>
+                <a href="#contact" class="header-nav-link">Signals</a>
+                <a href="mahavir.pdf" target="_blank" class="header-resume-btn">
+                    <span class="material-symbols-outlined" style="font-size:16px">description</span>
+                    Extract_CV.pdf
+                </a>
+            </nav>
+            <div class="header-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+                    <span class="theme-icon theme-icon--dark">☾</span>
+                    <span class="theme-icon theme-icon--light">☀</span>
+                </button>
+                <button class="burger-menu" id="burgerMenu" aria-label="Open navigation menu" title="Menu">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
     <!-- Navigation Modal -->
     <div class="nav-modal-overlay" id="navModal">
@@ -77,27 +75,37 @@
             <div class="nav-modal-links">
                 <a href="#hero" class="nav-modal-link" data-section="hero">
                     <span class="nav-modal-icon">⬡</span>
-                    <span class="nav-modal-label">HOME</span>
+                    <span class="nav-modal-label">KERNEL</span>
                     <span class="nav-modal-arrow">→</span>
                 </a>
                 <a href="#about" class="nav-modal-link" data-section="about">
                     <span class="nav-modal-icon">⬢</span>
-                    <span class="nav-modal-label">PROFILE</span>
+                    <span class="nav-modal-label">ABOUT ME</span>
                     <span class="nav-modal-arrow">→</span>
                 </a>
                 <a href="#projects" class="nav-modal-link" data-section="projects">
                     <span class="nav-modal-icon">⬢</span>
-                    <span class="nav-modal-label">PROJECTS</span>
+                    <span class="nav-modal-label">PIPELINES</span>
+                    <span class="nav-modal-arrow">→</span>
+                </a>
+                <a href="#skills" class="nav-modal-link" data-section="skills">
+                    <span class="nav-modal-icon">⬢</span>
+                    <span class="nav-modal-label">NODES</span>
+                    <span class="nav-modal-arrow">→</span>
+                </a>
+                <a href="#timeline" class="nav-modal-link" data-section="timeline">
+                    <span class="nav-modal-icon">⬢</span>
+                    <span class="nav-modal-label">CHRONICLES</span>
                     <span class="nav-modal-arrow">→</span>
                 </a>
                 <a href="#contact" class="nav-modal-link" data-section="contact">
                     <span class="nav-modal-icon">⬢</span>
-                    <span class="nav-modal-label">CONNECT</span>
+                    <span class="nav-modal-label">SIGNALS</span>
                     <span class="nav-modal-arrow">→</span>
                 </a>
                 <a href="mahavir.pdf" target="_blank" class="nav-modal-link nav-modal-link--resume">
                     <span class="nav-modal-icon">📄</span>
-                    <span class="nav-modal-label">RESUME</span>
+                    <span class="nav-modal-label">Extract_CV.pdf</span>
                     <span class="nav-modal-arrow">→</span>
                 </a>
             </div>
@@ -108,7 +116,6 @@
     <main class="main-content">
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
-            <div class="hero-bg-image" aria-hidden="true"></div>
             <div class="hero-content">
                 <p class="hero-intro hero-anim hero-anim-1">Hi, I'm <span class="name-highlight">Mahavir</span></p>
                 <div class="glitch-container hero-anim hero-anim-2">
@@ -118,13 +125,13 @@
                     <span class="typing-animation"></span>
                     <span class="cursor-blink">|</span>
                 </div>
-                <div class="hero-description hero-anim hero-anim-4">
-                    <p>Building the invisible systems that make data dance</p>
-                </div>
+
                 <div class="hero-cta hero-anim hero-anim-5">
-                    <button class="btn btn--primary holo-btn" onclick="scrollToSection('about')">
-                        <span class="btn-text">ENTER NEURAL NET</span>
-                        <div class="btn-glow"></div>
+                    <button class="btn btn--neural-enter group" onclick="scrollToSection('about')">
+                        <span class="btn-text">
+                            ENTER NEURAL NET
+                            <span class="material-symbols-outlined icon">bolt</span>
+                        </span>
                     </button>
                 </div>
             </div>
@@ -133,82 +140,78 @@
             </div>
         </section>
 
+        <!-- Terminal Index -->
+        <div class="terminal-index-wrapper">
+            <div class="terminal-window terminal-index">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title">NEURAL DATA GATEWAY V2.4.0</span>
+                </div>
+                <div class="terminal-content terminal-index-body">
+                    <a href="#hero" class="terminal-index-line"><span class="prompt">user@neural-net:~$</span> <span
+                            class="command">cd Kernel</span></a>
+                    <a href="#about" class="terminal-index-line"><span class="prompt">user@neural-net:~$</span> <span
+                            class="command">cat Profile.md</span></a>
+                    <a href="#projects" class="terminal-index-line"><span class="prompt">user@neural-net:~$</span> <span
+                            class="command">ls ./Pipelines</span></a>
+                    <a href="#skills" class="terminal-index-line"><span class="prompt">user@neural-net:~$</span> <span
+                            class="command">tree ./Nodes</span></a>
+                    <a href="#timeline" class="terminal-index-line"><span class="prompt">user@neural-net:~$</span> <span
+                            class="command">tail Chronicles.log</span></a>
+                    <a href="#contact" class="terminal-index-line"><span class="prompt">user@neural-net:~$</span> <span
+                            class="command">ping Signals</span></a>
+                    <a href="mahavir.pdf" target="_blank" class="terminal-index-line"><span
+                            class="prompt">user@neural-net:~$</span> <span class="command">open
+                            Extract_CV.pdf</span></a>
+                </div>
+            </div>
+        </div>
+
         <hr class="section-divider" aria-hidden="true">
 
-        <!-- About & Timeline Section -->
+        <!-- About Section -->
         <section id="about" class="about-section reveal">
             <div class="container">
-                <div class="about-grid">
-                    <!-- About Me -->
-                    <div class="about-content">
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <span class="title-bracket">[</span>
-                                ABOUT_ME
-                                <span class="title-bracket">]</span>
-                            </h2>
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-bracket">[</span>
+                        ABOUT_ME
+                        <span class="title-bracket">]</span>
+                    </h2>
+                </div>
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
                         </div>
-                        <div class="terminal-window">
-                            <div class="terminal-header">
-                                <span class="terminal-title">profile.exe</span>
-                                <div class="terminal-controls">
-                                    <span class="control minimize"></span>
-                                    <span class="control maximize"></span>
-                                    <span class="control close"></span>
-                                </div>
-                            </div>
-                            <div class="terminal-content">
-                                <div class="terminal-line">
-                                    <span class="prompt">user@neural-net:~$</span>
-                                    <span class="command">cat profile.txt</span>
-                                </div>
-                                <div class="terminal-output">
-                                    <p>Hi, I'm a data engineer who enjoys working behind the scenes — building the
-                                        systems that make data move, talk, and tell stories. I graduated from a place
-                                        called BITS Pilani in 2023, and ever since, I've been having a lot of fun
-                                        working on personal and professional projects around data engineering and cloud
-                                        systems.</p>
-                                    <p>I mostly work with Python, SQL, Azure, and cloud data warehousing tools — with an
-                                        ever-growing toolkit that stretches into big data, machine learning, and AI. I
-                                        enjoy solving problems that don't come with step-by-step guides, and I'm always
-                                        curious about how complex systems fit together.</p>
-                                    <p>These days, I'm focusing more on backend data architectures and scaling systems
-                                        that deal with massive amounts of information — the kind of work that's
-                                        invisible when it works right (and unforgettable when it doesn't).</p>
-                                </div>
-                            </div>
+                        <span class="terminal-title">profile.exe</span>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="terminal-line">
+                            <span class="prompt">user@neural-net:~$</span>
+                            <span class="command">cat profile.txt</span>
+                        </div>
+                        <div class="terminal-output">
+                            <p>Hi, I'm a data engineer who enjoys working behind the scenes — building the
+                                systems that make data move, talk, and tell stories. I graduated from a place
+                                called BITS Pilani in 2023, and ever since, I've been having a lot of fun
+                                working on personal and professional projects around data engineering and cloud
+                                systems.</p>
+                            <p>I mostly work with Python, SQL, Azure, and cloud data warehousing tools — with an
+                                ever-growing toolkit that stretches into big data, machine learning, and AI. I
+                                enjoy solving problems that don't come with step-by-step guides, and I'm always
+                                curious about how complex systems fit together.</p>
+                            <p>These days, I'm focusing more on backend data architectures and scaling systems
+                                that deal with massive amounts of information — the kind of work that's
+                                invisible when it works right (and unforgettable when it doesn't).</p>
                         </div>
                     </div>
-
-                    <!-- Skills Section -->
-                    <div class="skills-section">
-                        <h3 class="skills-title">NEURAL_PATHWAYS.exe [Skills]</h3>
-                        <div class="animated-skills-container" id="animatedSkillsList">
-                            <div class="animated-skills-list" id="skillsScrollList">
-                                <!-- Skills will be generated by JavaScript -->
-                            </div>
-                            <div class="top-gradient" id="topGradient"></div>
-                            <div class="bottom-gradient" id="bottomGradient"></div>
-                        </div>
-                    </div>
-                    <!-- Timeline -->
-                    <div class="timeline-content">
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <span class="title-bracket">[</span>
-                                NEURAL_TIMELINE
-                                <span class="title-bracket">]</span>
-                            </h2>
-                        </div>
-                        <!-- Timeline Container (populated by JS from timeline-data.js) -->
-                        <div class="timeline" id="timeline">
-                            <div class="timeline-progress-track">
-                                <div class="timeline-progress-fill" id="timelineProgressFill"></div>
-                            </div>
-                            <!-- Items rendered dynamically -->
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
@@ -221,7 +224,9 @@
             <canvas id="neural-canvas"></canvas>
         </div>
 
-        <!-- Projects Section -->
+        <hr class="section-divider" aria-hidden="true">
+
+        <!-- Projects Section (Pipelines) -->
         <section id="projects" class="projects-section">
             <div class="container">
                 <div class="section-header">
@@ -232,277 +237,102 @@
                     </h2>
                     <p class="section-subtitle">Holographic projections of my digital creations</p>
                 </div>
-                <div class="projects-grid">
-                    <div class="project-card" data-project="physics">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="project-visual">
-                                    <div class="physics-simulation">
-                                        <div class="particle-system">
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-info">
-                                    <h3 class="project-title">Physics Hyperion</h3>
-                                    <p class="project-type">PHYSICS_SIMULATION.exe</p>
-                                </div>
-                                <div class="card-glow"></div>
+                <div class="projects-grid-v2">
+                    <!-- Project Card 1: Physics Hyperion -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(186,218,85,0.25), rgba(0,204,255,0.15));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">science</span>
+                            <span class="pv2-badge pv2-badge--live">Live System</span>
+                        </div>
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">Physics Hyperion</h3>
+                            <p class="pv2-desc">A sophisticated physics simulation website featuring real-time particle
+                                interactions, gravitational fields, and quantum mechanics visualization.</p>
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">WebGL</span>
+                                <span class="pv2-tag">JavaScript</span>
+                                <span class="pv2-tag">Physics Engine</span>
                             </div>
-                            <div class="card-back">
-                                <div class="project-details">
-                                    <h3>Physics Hyperion</h3>
-                                    <p>A sophisticated physics simulation website featuring real-time particle
-                                        interactions, gravitational fields, and quantum mechanics visualization.</p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">WebGL</span>
-                                        <span class="tech-tag">JavaScript</span>
-                                        <span class="tech-tag">Physics Engine</span>
-                                    </div>
-                                    <a href="https://mveer1.github.io/hypelab/" class="btn btn--outline project-btn">
-                                        VIEW_SIMULATION
-                                    </a>
-                                </div>
-                            </div>
+                            <a href="https://mveer1.github.io/hypelab/" target="_blank" class="pv2-btn">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
                         </div>
                     </div>
 
-
-                    <div class="project-card" data-project="echo">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="project-visual">
-                                    <div class="physics-simulation">
-                                        <div class="particle-system">
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-info">
-                                    <h3 class="project-title">Echo Journal</h3>
-                                    <p class="project-type">echo-journal.exe</p>
-                                </div>
-                                <div class="card-glow"></div>
+                    <!-- Project Card 2: Echo Journal -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(0,204,255,0.25), rgba(138,43,226,0.15));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">psychology</span>
+                            <span class="pv2-badge pv2-badge--live">Live System</span>
+                        </div>
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">Echo Journal</h3>
+                            <p class="pv2-desc">An advanced AI-powered mood journal that leverages natural language
+                                processing and sentiment analysis to help users track and reflect on their emotional
+                                well-being.</p>
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">React</span>
+                                <span class="pv2-tag">Python</span>
+                                <span class="pv2-tag">NLP</span>
                             </div>
-                            <div class="card-back">
-                                <div class="project-details">
-                                    <h3>Echo Journal</h3>
-                                    <p>An advanced AI-powered mood journal that leverages natural language processing
-                                        and sentiment analysis to help users track, understand, and reflect on their
-                                        emotional well-being. Echo Journal offers personalized insights, mood trend
-                                        visualizations, and intelligent prompts based on the latest psychological
-                                        research, making self-reflection intuitive and deeply meaningful.</p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">React</span>
-                                        <span class="tech-tag">Python</span>
-                                        <!-- <span class="tech-tag">Phys</span> -->
-                                    </div>
-                                    <a href="https://mveer1.github.io/echo-journal/"
-                                        class="btn btn--outline project-btn">
-                                        Visit application
-                                    </a>
-                                </div>
-                            </div>
+                            <a href="https://mveer1.github.io/echo-journal/" target="_blank" class="pv2-btn">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="project-card" data-project="scout">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="project-visual">
-                                    <div class="physics-simulation">
-                                        <div class="particle-system">
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-info">
-                                    <h3 class="project-title">AI Research Scout</h3>
-                                    <p class="project-type">scout.exe</p>
-                                </div>
-                                <div class="card-glow"></div>
+                    <!-- Project Card 3: AI Research Scout -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(99,102,241,0.2));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">search_insights</span>
+                            <span class="pv2-badge pv2-badge--live">Live System</span>
+                        </div>
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">AI Research Scout</h3>
+                            <p class="pv2-desc">An intelligent research assistant that scans, summarizes, and organizes
+                                academic papers using NLP and LLM-powered analysis to accelerate scientific discovery.
+                            </p>
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">Python</span>
+                                <span class="pv2-tag">LangChain</span>
+                                <span class="pv2-tag">NLP</span>
                             </div>
-                            <div class="card-back">
-                                <div class="project-details">
-                                    <h3>AI Research Scout</h3>
-                                    <p>An intelligent research assistant that scans, summarizes, and organizes academic
-                                        papers using NLP and LLM-powered analysis to accelerate scientific discovery.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">Python</span>
-                                        <span class="tech-tag">LangChain</span>
-                                        <span class="tech-tag">NLP</span>
-                                    </div>
-                                    <a href="https://mveer1.github.io/AI-research-scout/"
-                                        class="btn btn--outline project-btn">
-                                        EXPLORE_SCOUT
-                                    </a>
-                                </div>
-                            </div>
+                            <a href="https://mveer1.github.io/AI-research-scout/" target="_blank" class="pv2-btn">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
                         </div>
                     </div>
 
-
-                    <!-- <div class="project-card" data-project="physics">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="project-visual">
-                                    <div class="physics-simulation">
-                                        <div class="particle-system">
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-info">
-                                    <h3 class="project-title">Physics Hyperion</h3>
-                                    <p class="project-type">PHYSICS_SIMULATION.exe</p>
-                                </div>
-                                <div class="card-glow"></div>
-                            </div>
-                            <div class="card-back">
-                                <div class="project-details">
-                                    <h3>Physics Hyperion</h3>
-                                    <p>A sophisticated physics simulation website featuring real-time particle interactions, gravitational fields, and quantum mechanics visualization.</p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">WebGL</span>
-                                        <span class="tech-tag">JavaScript</span>
-                                        <span class="tech-tag">Physics Engine</span>
-                                    </div>
-                                    <button class="btn btn--outline project-btn">
-                                        VIEW_SIMULATION
-                                    </button>
-                                </div>
-                            </div>
+                    <!-- Project Card 4: Future Project (Coming Soon) -->
+                    <div class="project-card-v2 pv2-coming-soon">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(100,100,120,0.2), rgba(60,60,80,0.15));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">rocket_launch</span>
+                            <span class="pv2-badge pv2-badge--soon">Coming Soon</span>
                         </div>
-                    </div>
-
-
-                    <div class="project-card" data-project="physics">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="project-visual">
-                                    <div class="physics-simulation">
-                                        <div class="particle-system">
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-info">
-                                    <h3 class="project-title">Physics Hyperion</h3>
-                                    <p class="project-type">PHYSICS_SIMULATION.exe</p>
-                                </div>
-                                <div class="card-glow"></div>
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">Future Project</h3>
+                            <p class="pv2-desc">A revolutionary data engineering project currently in development.
+                                Features advanced AI integration and real-time analytics.</p>
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">AI/ML</span>
+                                <span class="pv2-tag">Big Data</span>
+                                <span class="pv2-tag">Cloud</span>
                             </div>
-                            <div class="card-back">
-                                <div class="project-details">
-                                    <h3>Physics Hyperion</h3>
-                                    <p>A sophisticated physics simulation website featuring real-time particle interactions, gravitational fields, and quantum mechanics visualization.</p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">WebGL</span>
-                                        <span class="tech-tag">JavaScript</span>
-                                        <span class="tech-tag">Physics Engine</span>
-                                    </div>
-                                    <button class="btn btn--outline project-btn">
-                                        VIEW_SIMULATION
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="project-card" data-project="physics">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="project-visual">
-                                    <div class="physics-simulation">
-                                        <div class="particle-system">
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                            <div class="particle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-info">
-                                    <h3 class="project-title">Physics Hyperion</h3>
-                                    <p class="project-type">PHYSICS_SIMULATION.exe</p>
-                                </div>
-                                <div class="card-glow"></div>
-                            </div>
-                            <div class="card-back">
-                                <div class="project-details">
-                                    <h3>Physics Hyperion</h3>
-                                    <p>A sophisticated physics simulation website featuring real-time particle interactions, gravitational fields, and quantum mechanics visualization.</p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">WebGL</span>
-                                        <span class="tech-tag">JavaScript</span>
-                                        <span class="tech-tag">Physics Engine</span>
-                                    </div>
-                                    <button class="btn btn--outline project-btn">
-                                        VIEW_SIMULATION
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-
-                    <div class="project-card" data-project="future">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="project-visual">
-                                    <div class="future-preview">
-                                        <div class="loading-dots">
-                                            <div class="dot"></div>
-                                            <div class="dot"></div>
-                                            <div class="dot"></div>
-                                        </div>
-                                        <div class="hologram-text">COMING SOON</div>
-                                    </div>
-                                </div>
-                                <div class="project-info">
-                                    <h3 class="project-title">Future Project</h3>
-                                    <p class="project-type">CLASSIFIED.exe</p>
-                                </div>
-                                <div class="card-glow"></div>
-                            </div>
-                            <div class="card-back">
-                                <div class="project-details">
-                                    <h3>Future Project</h3>
-                                    <p>A revolutionary data engineering project currently in development. Features
-                                        advanced AI integration and real-time analytics.</p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">AI/ML</span>
-                                        <span class="tech-tag">Big Data</span>
-                                        <span class="tech-tag">Cloud</span>
-                                    </div>
-                                    <button class="btn btn--outline project-btn disabled">
-                                        INITIALIZING...
-                                    </button>
-                                </div>
-                            </div>
+                            <button class="pv2-btn pv2-btn--disabled" disabled>
+                                Initializing...
+                                <span class="material-symbols-outlined">hourglass_empty</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -511,89 +341,209 @@
 
         <hr class="section-divider" aria-hidden="true">
 
-        <!-- Contact Section -->
+        <!-- Skills Section (Nodes) -->
+        <section id="skills" class="skills-section-standalone reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-bracket">[</span>
+                        NEURAL_NODES
+                        <span class="title-bracket">]</span>
+                    </h2>
+                    <p class="section-subtitle">Cognitive architecture and technical ecosystem</p>
+                </div>
+                <div class="skills-glass-grid">
+                    <!-- Data Engineering -->
+                    <div class="skills-glass-card">
+                        <div class="skills-card-header">
+                            <div class="skills-card-icon"><span class="material-symbols-outlined">database</span></div>
+                            <h3>Data Engineering</h3>
+                        </div>
+                        <div class="skills-chip-grid">
+                            <span class="skill-chip"><span class="skill-dot"></span> ETL Pipelines</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Apache Spark</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Apache Kafka</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Data Lakes</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Airflow</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> dbt</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Snowflake</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Delta Lake</span>
+                        </div>
+                    </div>
+                    <!-- Machine Learning -->
+                    <div class="skills-glass-card">
+                        <div class="skills-card-header">
+                            <div class="skills-card-icon"><span class="material-symbols-outlined">neurology</span></div>
+                            <h3>Machine Learning</h3>
+                        </div>
+                        <div class="skills-chip-grid">
+                            <span class="skill-chip"><span class="skill-dot"></span> PyTorch</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> TensorFlow</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Transformers / LLMs</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Computer Vision</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> MLflow</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Feature Engineering</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Scikit-learn</span>
+                        </div>
+                    </div>
+                    <!-- Cloud & DevOps -->
+                    <div class="skills-glass-card">
+                        <div class="skills-card-header">
+                            <div class="skills-card-icon"><span class="material-symbols-outlined">cloud</span></div>
+                            <h3>Cloud & DevOps</h3>
+                        </div>
+                        <div class="skills-chip-grid">
+                            <span class="skill-chip"><span class="skill-dot"></span> AWS</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Azure ML</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> GCP</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Kubernetes</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Docker</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Terraform</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> CI/CD</span>
+                        </div>
+                    </div>
+                    <!-- Programming Languages -->
+                    <div class="skills-glass-card">
+                        <div class="skills-card-header">
+                            <div class="skills-card-icon"><span class="material-symbols-outlined">code</span></div>
+                            <h3>Languages</h3>
+                        </div>
+                        <div class="skills-chip-grid">
+                            <span class="skill-chip"><span class="skill-dot"></span> Python</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> SQL</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> JavaScript</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Rust</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Java</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Bash / Shell</span>
+                        </div>
+                    </div>
+                    <!-- Data Visualization & BI -->
+                    <div class="skills-glass-card">
+                        <div class="skills-card-header">
+                            <div class="skills-card-icon"><span class="material-symbols-outlined">monitoring</span>
+                            </div>
+                            <h3>Visualization & BI</h3>
+                        </div>
+                        <div class="skills-chip-grid">
+                            <span class="skill-chip"><span class="skill-dot"></span> Apache Superset</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Grafana</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Plotly</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Tableau</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Streamlit</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Looker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider" aria-hidden="true">
+
+        <!-- Timeline Section (Chronicles) -->
+        <section id="timeline" class="timeline-section-standalone reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-bracket">[</span>
+                        CHRONICLES
+                        <span class="title-bracket">]</span>
+                    </h2>
+                    <p class="section-subtitle">Sequential visualization of milestones</p>
+                </div>
+                <div class="timeline" id="timeline-container">
+                    <div class="timeline-progress-track">
+                        <div class="timeline-progress-fill" id="timelineProgressFill"></div>
+                    </div>
+                    <!-- Items rendered dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider" aria-hidden="true">
+
+        <!-- Contact Section (Signals) -->
         <section id="contact" class="contact-section reveal">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">
                         <span class="title-bracket">[</span>
-                        NEURAL_INTERFACE
+                        SIGNALS
                         <span class="title-bracket">]</span>
                     </h2>
                     <p class="section-subtitle">Establish a connection to the neural network</p>
                 </div>
                 <div class="contact-grid">
                     <div class="contact-info">
+                        <div class="contact-links-list">
+                            <a class="contact-link-card" href="mailto:mveer.rc@gmail.com">
+                                <div class="contact-link-icon">
+                                    <span class="material-symbols-outlined">alternate_email</span>
+                                </div>
+                                <div>
+                                    <p class="contact-link-label">EMAIL</p>
+                                    <p class="contact-link-value">mveer.rc@gmail.com</p>
+                                </div>
+                            </a>
+                            <a class="contact-link-card" href="https://www.linkedin.com/in/mahavir01" target="_blank">
+                                <div class="contact-link-icon">
+                                    <span class="material-symbols-outlined">link</span>
+                                </div>
+                                <div>
+                                    <p class="contact-link-label">LINKEDIN</p>
+                                    <p class="contact-link-value">linkedin.com/in/mahavir01</p>
+                                </div>
+                            </a>
+                            <a class="contact-link-card" href="https://github.com/mveer1" target="_blank">
+                                <div class="contact-link-icon">
+                                    <span class="material-symbols-outlined">code</span>
+                                </div>
+                                <div>
+                                    <p class="contact-link-label">GITHUB</p>
+                                    <p class="contact-link-value">github.com/mveer1</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
                         <div class="terminal-window">
                             <div class="terminal-header">
-                                <span class="terminal-title">contact.exe</span>
                                 <div class="terminal-controls">
+                                    <span class="control close"></span>
                                     <span class="control minimize"></span>
                                     <span class="control maximize"></span>
-                                    <span class="control close"></span>
                                 </div>
+                                <span class="terminal-title">contact_me.sh</span>
                             </div>
                             <div class="terminal-content">
                                 <div class="terminal-line">
                                     <span class="prompt">user@neural-net:~$</span>
-                                    <span class="command">cat contact_info.txt</span>
+                                    <span class="command">./contact_me.sh</span>
                                 </div>
-                                <div class="terminal-line">
-                                    <span class="prompt">--</span>
-                                </div>
-                                <div class="terminal-output">
-                                    <div class="contact-item">
-                                        <span class="contact-label">EMAIL:</span>
-                                        <a href="mailto:mveer.rc@gmail.com" class="contact-value">mveer.rc@gmail.com</a>
+                                <form class="neural-form" id="contactForm" action="https://formspree.io/f/xnjnezwz"
+                                    method="POST">
+                                    <div class="form-group">
+                                        <label class="form-label" for="contact-name">Full Name</label>
+                                        <input type="text" id="contact-name" name="name"
+                                            class="form-control neural-input" placeholder="John Doe" required>
                                     </div>
-                                    <div class="contact-item">
-                                        <span class="contact-label">STATUS:</span>
-                                        <span class="contact-value online">ONLINE</span>
+                                    <div class="form-group">
+                                        <label class="form-label" for="contact-email">Email Address</label>
+                                        <input type="email" id="contact-email" name="_replyto"
+                                            class="form-control neural-input" placeholder="john@example.com" required>
                                     </div>
-                                    <div class="contact-item">
-                                        <span class="contact-label">LINKEDIN</span>
-                                        <a href="https://www.linkedin.com/in/mahavir01"
-                                            class="contact-value">LINKEDIN.com/mahavir01</a>
+                                    <div class="form-group">
+                                        <label class="form-label" for="contact-message">Your Message</label>
+                                        <textarea id="contact-message" name="message" class="form-control neural-input"
+                                            rows="5" placeholder="Tell me about your project..." required></textarea>
                                     </div>
-                                </div>
+                                    <button type="submit" class="btn btn--primary holo-btn full-width">
+                                        <span class="material-symbols-outlined" style="font-size:18px">send</span>
+                                        <span class="btn-text">TRANSMIT_DATA</span>
+                                        <div class="btn-glow"></div>
+                                    </button>
+                                </form>
                             </div>
                         </div>
-                    </div>
-                    <div class="contact-form">
-                        <form class="neural-form" id="contactForm" action="https://formspree.io/f/xnjnezwz"
-                            method="POST">
-                            <div class="form-group">
-                                <label class="form-label" for="contact-name">
-                                    IDENTIFIER
-                                    <span class="form-label-hint">Your name</span>
-                                </label>
-                                <input type="text" id="contact-name" name="name" class="form-control neural-input"
-                                    placeholder="Enter your name..." required>
-                                <div class="input-glow"></div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="contact-email">
-                                    COMM_CHANNEL
-                                    <span class="form-label-hint">Your email address</span>
-                                </label>
-                                <input type="email" id="contact-email" name="_replyto" class="form-control neural-input"
-                                    placeholder="Enter your email..." required>
-                                <div class="input-glow"></div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="contact-message">
-                                    DATA_PAYLOAD
-                                    <span class="form-label-hint">Your message</span>
-                                </label>
-                                <textarea id="contact-message" name="message" class="form-control neural-input" rows="5"
-                                    placeholder="Enter your message..." required></textarea>
-                                <div class="input-glow"></div>
-                            </div>
-                            <button type="submit" class="btn btn--primary holo-btn full-width">
-                                <span class="btn-text">TRANSMIT_DATA</span>
-                                <div class="btn-glow"></div>
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -644,12 +594,12 @@
     <div id="profileSummaryModal" class="summary-modal-overlay">
         <div class="summary-modal-content terminal-window">
             <div class="terminal-header">
-                <span class="terminal-title">profile_summary.exe</span>
                 <div class="terminal-controls">
+                    <span class="control close" id="closeSummaryModal" aria-label="Close" title="Close summary"></span>
                     <span class="control minimize" aria-label="Minimize"></span>
                     <span class="control maximize" aria-label="Maximize"></span>
-                    <span class="control close" id="closeSummaryModal" aria-label="Close" title="Close summary"></span>
                 </div>
+                <span class="terminal-title">profile_summary.exe</span>
             </div>
             <div class="terminal-body terminal-content">
                 <div class="terminal-line">
@@ -660,7 +610,6 @@
                     <p><strong>Status:</strong> Senior Data Engineer @ Providence</p>
                     <p><strong>Core Stack:</strong> Python, SQL, Azure, Big Data, Gen-AI</p>
                     <p><strong>Focus:</strong> Scalable Pipelines & Cloud Architecture</p>
-                    <p>Building the invisible systems that make data dance.</p>
                 </div>
                 <div class="modal-actions">
                     <button class="btn btn--primary holo-btn"

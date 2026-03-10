@@ -41,13 +41,11 @@ function initializeApp() {
 // Loading Screen
 function initLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
-    const bootLines = document.querySelectorAll('.boot-line');
-    const progressBar = document.querySelector('.progress-bar');
 
     // Mark body as loading to hold hero entrance animations
     document.body.classList.add('loading');
 
-    // Simulate loading process
+    // Dismiss after 1s progress bar completes
     setTimeout(() => {
         loadingScreen.classList.add('fade-out');
         isLoading = false;
@@ -56,8 +54,8 @@ function initLoadingScreen() {
             loadingScreen.style.display = 'none';
             document.body.classList.remove('loading');
             startHeroAnimations();
-        }, 1000);
-    }, 2500);
+        }, 400);
+    }, 1100);
 }
 
 // Theme Toggle (Dark / Light)
@@ -167,8 +165,8 @@ function initCustomCursor() {
     });
 
     function updateCursor() {
-        currentX += (targetX - currentX) * 0.1;
-        currentY += (targetY - currentY) * 0.1;
+        currentX += (targetX - currentX) * 0.35;
+        currentY += (targetY - currentY) * 0.35;
 
         cursorTrail.style.left = currentX - 10 + 'px';
         cursorTrail.style.top = currentY - 10 + 'px';
@@ -887,7 +885,7 @@ function initTimeline() {
  * Render all timeline items from data for a given mode
  */
 function renderTimeline(data, mode) {
-    const container = document.getElementById('timeline');
+    const container = document.getElementById('timeline-container');
     if (!container) return;
 
     // Preserve progress track
@@ -921,87 +919,91 @@ function renderTimeline(data, mode) {
 }
 
 /**
- * Create a single timeline item DOM element
+ * Create a single timeline item DOM element — alternating left/right Stitch layout
  */
 function createTimelineItem(entry, mode, index) {
+    const isEven = index % 2 === 0;
     const item = document.createElement('div');
-    item.className = 'timeline-item';
+    item.className = `timeline-item timeline-item--${isEven ? 'left' : 'right'}`;
     item.dataset.year = entry.year;
     item.dataset.index = index;
 
-    // Marker
-    const marker = document.createElement('div');
-    marker.className = 'timeline-marker';
-    marker.innerHTML = '<div class="marker-core"></div><div class="marker-ring"></div>';
-    item.appendChild(marker);
+    // Choose an icon based on index rotation
+    const icons = ['psychology', 'analytics', 'cloud_done', 'data_object', 'neurology', 'hub', 'sensors'];
+    const icon = icons[index % icons.length];
+    const accentClass = isEven ? 'accent-primary' : 'accent-secondary';
 
-    // Card
+    // Year label (shown on the opposite side of the card on desktop)
+    const yearSide = document.createElement('div');
+    yearSide.className = 'timeline-year-side';
+    yearSide.innerHTML = `
+        <span class="timeline-year-label">${entry.year}</span>
+        <p class="timeline-year-subtitle">${entry.subtitle}</p>
+    `;
+
+    // Center node (dot on the central line)
+    const node = document.createElement('div');
+    node.className = `timeline-node ${accentClass}`;
+
+    // Card (glass panel)
     const card = document.createElement('div');
-    card.className = 'timeline-card';
+    card.className = `timeline-card-v2 ${accentClass}`;
 
-    // Card header (titles + impact pill)
-    const header = document.createElement('div');
-    header.className = 'timeline-card-header';
+    const descriptionText = entry.description[mode] || entry.description.impact;
 
-    const titles = document.createElement('div');
-    titles.className = 'timeline-card-titles';
-    titles.innerHTML = `
-        <div class="timeline-year">${entry.year}</div>
-        <div class="timeline-title">${entry.title}</div>
-        <div class="timeline-subtitle">${entry.subtitle}</div>
-    `;
-    header.appendChild(titles);
+    // Build expanded section HTML
+    let expandedHTML = '';
+    if (entry.expanded) {
+        const highlightsHTML = (entry.expanded.highlights || []).map(h =>
+            `<div class="tc-highlight-item">
+                <span class="material-symbols-outlined tc-highlight-icon">check_circle</span>
+                <span>${h}</span>
+            </div>`
+        ).join('');
 
-    // Impact pill
-    const impactPill = document.createElement('div');
-    impactPill.className = 'timeline-impact';
-    impactPill.innerHTML = `
-        <span class="impact-metric">${entry.impact.metric}</span>
-        <span class="impact-label">${entry.impact.label}</span>
-    `;
-    header.appendChild(impactPill);
-
-    card.appendChild(header);
-
-    // Description (mode-specific)
-    const desc = document.createElement('div');
-    desc.className = 'timeline-description';
-    desc.textContent = entry.description[mode] || entry.description.impact;
-    card.appendChild(desc);
-
-    // Tech stack tags
-    const techStack = document.createElement('div');
-    techStack.className = 'timeline-tech-stack';
-    entry.techStack.forEach(tech => {
-        const tag = document.createElement('span');
-        tag.className = 'timeline-tech-tag';
-        tag.textContent = tech;
-        techStack.appendChild(tag);
-    });
-    card.appendChild(techStack);
-
-    // Expand button
-    const expandBtn = document.createElement('button');
-    expandBtn.className = 'timeline-expand-btn';
-    expandBtn.innerHTML = '<span>Details</span><span class="expand-icon">▼</span>';
-    card.appendChild(expandBtn);
-
-    // Expandable section
-    const expanded = document.createElement('div');
-    expanded.className = 'timeline-card-expanded';
-
-    let expandedHTML = `<div class="expanded-details">${entry.expanded.details}</div>`;
-    if (entry.expanded.highlights && entry.expanded.highlights.length) {
-        expandedHTML += '<div class="expanded-highlights">';
-        entry.expanded.highlights.forEach(h => {
-            expandedHTML += `<div class="highlight-item"><span class="highlight-icon">◆</span><span>${h}</span></div>`;
-        });
-        expandedHTML += '</div>';
+        expandedHTML = `
+            <button class="tc-expand-btn" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('open');">
+                <span class="prompt">user@neural-net:~$</span>
+                <span class="command">inspect project</span>
+                <span class="material-symbols-outlined expand-arrow">expand_more</span>
+            </button>
+            <div class="tc-expanded-section">
+                <p class="tc-expanded-details">${entry.expanded.details}</p>
+                <div class="tc-expanded-highlights">
+                    ${highlightsHTML}
+                </div>
+            </div>
+        `;
     }
-    expanded.innerHTML = expandedHTML;
-    card.appendChild(expanded);
 
-    item.appendChild(card);
+    card.innerHTML = `
+        <div class="tc-header">
+            <span class="material-symbols-outlined tc-icon ${accentClass}">${icon}</span>
+            <span class="tc-mobile-year">${entry.year}</span>
+        </div>
+        <h3 class="tc-title">${entry.title}</h3>
+        <p class="tc-description">${descriptionText}</p>
+        <div class="tc-tags">
+            ${entry.techStack.map(t => `<span class="tc-tag ${accentClass}">${t}</span>`).join('')}
+        </div>
+        <div class="tc-impact-row">
+            <span class="tc-impact-metric ${accentClass}">${entry.impact.metric}</span>
+            <span class="tc-impact-label">${entry.impact.label}</span>
+        </div>
+        ${expandedHTML}
+    `;
+
+    // Assemble: order depends on side
+    if (isEven) {
+        item.appendChild(yearSide);
+        item.appendChild(node);
+        item.appendChild(card);
+    } else {
+        item.appendChild(card);
+        item.appendChild(node);
+        item.appendChild(yearSide);
+    }
+
     return item;
 }
 
@@ -1044,7 +1046,7 @@ function initTimelineProgressLine() {
     }
 
     const fill = document.getElementById('timelineProgressFill');
-    const timeline = document.getElementById('timeline');
+    const timeline = document.getElementById('timeline-container');
     if (!fill || !timeline) return;
 
     let ticking = false;
@@ -1082,7 +1084,7 @@ function initTimelineProgressLine() {
  * Expand/collapse accordion — one card at a time
  */
 function initTimelineExpand() {
-    const container = document.getElementById('timeline');
+    const container = document.getElementById('timeline-container');
     if (!container) return;
 
     container.querySelectorAll('.timeline-expand-btn').forEach(btn => {
@@ -1562,121 +1564,57 @@ function initThreeHeroScene() {
     const container = document.getElementById('three-hero-container');
     if (!container) return;
 
-    // Create scene, camera, renderer
     const scene = new THREE.Scene();
-
-    // Camera setup
     const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.z = 5;
-
-    // Renderer setup
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
 
-    // Create a 3D Cyber-Brain / Node Structure
-    // Increased size by ~30% from (2, 1) to (2.6, 1)
-    const geometry = new THREE.IcosahedronGeometry(2.6, 1);
+    // Create a high-detail sphere for the morphing effect — 40% larger (1.8 → 2.52)
+    const geometry = new THREE.SphereGeometry(2.52, 48, 48);
+    const originalPositions = JSON.parse(JSON.stringify(geometry.attributes.position.array));
 
-    // Create material with texture if possible, or a glowing wireframe
-    const textureLoader = new THREE.TextureLoader();
-    const cyberTexture = textureLoader.load('cyber_texture.png');
-
-    const material = new THREE.MeshStandardMaterial({
-        color: 0x00ffcc,
+    // Material for the core 'neural' structure (wireframe-like but organic)
+    const material = new THREE.MeshBasicMaterial({
+        color: 0x00ccff, // Secondary cyber color
         wireframe: true,
-        emissive: 0x004433,
-        emissiveIntensity: 0.8,
         transparent: true,
-        opacity: 0.8
+        opacity: 0.2
     });
+    const blob = new THREE.Mesh(geometry, material);
+    scene.add(blob);
 
-    const nodeMesh = new THREE.Mesh(geometry, material);
-    scene.add(nodeMesh);
+    camera.position.z = 5;
 
-    // Inner glowing sphere - Increased size by 30% (from 1.2 to 1.56) and made it brighter
-    const innerGeo = new THREE.SphereGeometry(1.56, 32, 32);
-    const innerMat = new THREE.MeshBasicMaterial({
-        color: 0x22ff88, // Brighter, more vibrant color
-        transparent: true,
-        opacity: 1.0,    // Fully opaque for brightness
-        map: cyberTexture
-    });
-    const innerSphere = new THREE.Mesh(innerGeo, innerMat);
-    scene.add(innerSphere);
-
-    // Particles around it
-    const particlesGeo = new THREE.BufferGeometry();
-    const particleCount = 200;
-    const posArray = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount * 3; i++) {
-        posArray[i] = (Math.random() - 0.5) * 10;
-    }
-    particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const particlesMat = new THREE.PointsMaterial({
-        size: 0.05,
-        color: 0x00ffcc,
-        transparent: true,
-        opacity: 0.6
-    });
-    const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
-    scene.add(particlesMesh);
-
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-
-    const pointLight = new THREE.PointLight(0x00ffcc, 2, 50);
-    pointLight.position.set(2, 3, 4);
-    scene.add(pointLight);
-
-    // Parallax logic
-    let targetX = 0;
-    let targetY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        targetX = (e.clientX / window.innerWidth - 0.5) * 2;
-        targetY = (e.clientY / window.innerHeight - 0.5) * 2;
-    });
-
-    // Animation loop
-    const clock = new THREE.Clock();
-
+    let time = 0;
     function animate() {
         requestAnimationFrame(animate);
+        time += 0.01;
 
-        const elapsedTime = clock.getElapsedTime();
+        // Morph the blob using a simple sine-based displacement
+        const pos = geometry.attributes.position.array;
 
-        // Base rotation
-        nodeMesh.rotation.y += 0.002;
-        nodeMesh.rotation.x += 0.001;
+        for (let i = 0; i < pos.length; i += 3) {
+            const x = originalPositions[i];
+            const y = originalPositions[i + 1];
+            const z = originalPositions[i + 2];
 
-        innerSphere.rotation.y -= 0.005;
+            // Organic displacement logic
+            const noise = Math.sin(x * 1.5 + time) * Math.cos(y * 1.5 + time) * Math.sin(z * 1.5 + time) * 0.3;
 
-        particlesMesh.rotation.y = elapsedTime * 0.05;
-
-        // Interactive mouse rotation (Parallax offset)
-        // For mobile, we keep a steady pace if targetX/Y are 0 (no mouse movement)
-        let isMobile = window.innerWidth <= 768;
-        if (isMobile) {
-            nodeMesh.rotation.x += 0.005;
-            nodeMesh.rotation.y += 0.01;
-        } else {
-            nodeMesh.rotation.x += 0.05 * (targetY - nodeMesh.rotation.x);
-            nodeMesh.rotation.y += 0.05 * (targetX - nodeMesh.rotation.y);
+            pos[i] = x * (1 + noise);
+            pos[i + 1] = y * (1 + noise);
+            pos[i + 2] = z * (1 + noise);
         }
 
-        // Float effect
-        nodeMesh.position.y = Math.sin(elapsedTime) * 0.2;
-        innerSphere.position.y = Math.sin(elapsedTime) * 0.2;
+        geometry.attributes.position.needsUpdate = true;
+
+        blob.rotation.y += 0.002;
 
         renderer.render(scene, camera);
     }
-
     animate();
 
-    // Window resize handling
     window.addEventListener('resize', () => {
         if (!container) return;
         camera.aspect = container.clientWidth / container.clientHeight;
