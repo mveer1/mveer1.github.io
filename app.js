@@ -976,11 +976,17 @@ function createTimelineItem(entry, mode, index) {
         `;
     }
 
+    // Domain badge HTML
+    const domainHTML = entry.domain
+        ? `<span class="tc-domain ${accentClass}">${entry.domain}</span>`
+        : '';
+
     card.innerHTML = `
         <div class="tc-header">
             <span class="material-symbols-outlined tc-icon ${accentClass}">${icon}</span>
-            <span class="tc-mobile-year">${entry.year}</span>
+            <span class="tc-mobile-year">${entry.year}<span class="tc-mobile-subtitle">${entry.subtitle}</span></span>
         </div>
+        ${domainHTML}
         <h3 class="tc-title">${entry.title}</h3>
         <p class="tc-description">${descriptionText}</p>
         <div class="tc-tags">

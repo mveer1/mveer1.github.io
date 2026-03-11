@@ -1425,6 +1425,39 @@ section {
   font-size: 14px;
 }
 
+.tc-mobile-subtitle {
+  display: block;
+  font-size: 10px;
+  color: var(--text-cyber-dim);
+  font-weight: 400;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+/* Domain badge */
+.tc-domain {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-family: var(--font-cyber);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.tc-domain.accent-primary {
+  background: linear-gradient(135deg, rgba(186, 218, 85, 0.12), rgba(186, 218, 85, 0.04));
+  color: var(--primary-cyber);
+  border: 1px solid rgba(186, 218, 85, 0.2);
+}
+
+.tc-domain.accent-secondary {
+  background: linear-gradient(135deg, rgba(0, 204, 255, 0.10), rgba(0, 204, 255, 0.03));
+  color: var(--secondary-cyber, #00ccff);
+  border: 1px solid rgba(0, 204, 255, 0.18);
+}
+
 .tc-title {
   color: var(--text-cyber);
   font-size: 18px;
@@ -3714,6 +3747,18 @@ html {
 [data-theme="light"] .tc-tag.accent-secondary {
   background: rgba(0, 136, 170, 0.06);
   border-color: rgba(0, 136, 170, 0.2);
+  color: var(--secondary-cyber);
+}
+
+[data-theme="light"] .tc-domain.accent-primary {
+  background: rgba(90, 138, 21, 0.08);
+  border-color: rgba(90, 138, 21, 0.22);
+  color: var(--primary-cyber);
+}
+
+[data-theme="light"] .tc-domain.accent-secondary {
+  background: rgba(0, 136, 170, 0.06);
+  border-color: rgba(0, 136, 170, 0.18);
   color: var(--secondary-cyber);
 }
 

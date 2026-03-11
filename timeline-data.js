@@ -6,114 +6,149 @@
 const TIMELINE_DATA = [
   {
     year: 2020,
-    title: "Covid Data Exploration Phase",
+    title: "Data Exploration & ML Foundations",
     subtitle: "Self-taught · Remote Learning",
+    domain: "Data Science · Machine Learning",
     description: {
-      impact: "Lockdown-driven deep dive into data science — built 5+ personal projects and completed 10+ online certifications in ML, Python, and data analysis.",
-      technical: "Learned Python, Pandas, Scikit-learn, SQL, and Jupyter notebooks from scratch. Built end-to-end ML pipelines for personal research projects.",
-      story: "When the world stopped, I started. The lockdown became my launchpad — hours of curiosity-driven exploration into data, ML, and the systems behind them."
+      impact: "Built multiple personal ML and data analysis projects during the pandemic, laying the technical foundation for a career in data engineering.",
+      technical: "Learned Python, Pandas, SQL, and Scikit-learn while building end-to-end ML experiments and data exploration pipelines in Jupyter.",
+      story: "Lockdown curiosity turned into technical obsession — long hours learning how data systems work, from simple analysis notebooks to full ML workflows."
     },
     impact: { metric: "5+", label: "Projects Built" },
     techStack: ["Python", "Pandas", "Scikit-learn", "SQL"],
     expanded: {
-      details: "Started with basic Python scripts and quickly moved into building complete data analysis pipelines. Explored NLP, computer vision, and classical ML algorithms through self-directed projects.",
-      highlights: ["10+ certifications completed", "First ML model deployed", "Open source contributions began"]
+      details: "Started with exploratory analysis and gradually built full ML workflows including data preprocessing, model training, and evaluation.",
+      highlights: [
+        "First ML models trained and evaluated",
+        "Developed strong Python and SQL foundations",
+        "Explored NLP and classical machine learning algorithms"
+      ]
     }
   },
   {
     year: 2021,
     title: "Machine Learning Engineer Intern",
-    subtitle: "Streamn.ai · Part-time",
+    subtitle: "Streamn.ai · Remote",
+    domain: "Media AI · Content Processing",
     description: {
-      impact: "Shipped 3 ML models into production and reduced data processing latency by 30% through pipeline optimization.",
-      technical: "Worked on applied ML problems — NLP classification, recommendation engines, and real-time inference pipelines using TensorFlow and FastAPI.",
-      story: "My first real engineering role. Moving from solo projects to a team taught me that shipping code is only half the job — the other half is making it work reliably at scale."
+      impact: "Built backend services supporting machine learning workflows handling 10K+ weekly API requests.",
+      technical: "Developed REST APIs using FastAPI and integrated ML pipelines for text recognition and multimedia processing.",
+      story: "First real engineering environment — learning that building ML models is easy compared to building reliable systems around them."
     },
-    impact: { metric: "3", label: "Models Shipped" },
-    techStack: ["TensorFlow", "FastAPI", "Docker", "PostgreSQL"],
+    impact: { metric: "10K+", label: "API Requests / Week" },
+    techStack: ["Python", "FastAPI", "Flask", "MySQL"],
     expanded: {
-      details: "Built and deployed ML models for content recommendation and text classification. Designed data pipelines that processed thousands of records daily with real-time inference capabilities.",
-      highlights: ["30% latency reduction", "Production ML deployment", "API design fundamentals"]
+      details: "Worked on ML inference pipelines and backend services that generated image outputs from incoming video streams.",
+      highlights: [
+        "Production ML API deployment",
+        "Backend service development",
+        "Real-world data pipeline experience"
+      ]
     }
   },
   {
     year: 2022,
-    title: "Engineering Intern",
-    subtitle: "Streamn.ai · Full-time",
+    title: "Machine Learning Engineer (Intern → Part-time)",
+    subtitle: "Streamn.ai · Remote",
+    domain: "Media Processing · Applied ML Systems",
     description: {
-      impact: "Shipped backend APIs serving 10K+ daily requests and optimized database queries reducing response times by 40%.",
-      technical: "Full-stack backend development — REST APIs, data pipelines, PostgreSQL optimization, and CI/CD pipeline setup with GitHub Actions.",
-      story: "Transitioned from ML-focused work to broader engineering. Learned that great data systems need great infrastructure — and I wanted to build both."
+      impact: "Optimized text recognition pipeline improving execution speed by 30% and supported media processing services used in production systems.",
+      technical: "Worked across Python, Bash scripting, and backend systems to optimize data processing and inference pipelines.",
+      story: "Shifted focus from pure ML experimentation to building practical engineering systems that deliver results at scale."
     },
-    impact: { metric: "40%", label: "Faster Queries" },
-    techStack: ["Node.js", "PostgreSQL", "Redis", "GitHub Actions"],
+    impact: { metric: "30%", label: "Pipeline Speed Improvement" },
+    techStack: ["Python", "Bash", "FastAPI", "SQLite"],
     expanded: {
-      details: "Owned multiple backend services end-to-end. Implemented caching layers, database indexing strategies, and automated deployment pipelines that reduced release cycles from days to hours.",
-      highlights: ["10K+ daily API requests", "CI/CD pipeline automation", "Database performance tuning"]
+      details: "Designed backend services for multimedia processing workflows and supported data pipelines used for automated content generation.",
+      highlights: [
+        "Pipeline performance optimization",
+        "Backend API development",
+        "Production ML systems exposure"
+      ]
     }
   },
   {
     year: 2023,
-    title: "CS Graduate & SWE Intern",
+    title: "CS Graduate & Systems Engineering",
     subtitle: "BITS Pilani · Fortanix · Providence",
+    domain: "Systems Security → Data Engineering",
     description: {
-      impact: "Graduated with distinction, shipped secure computing features in Rust at Fortanix, and joined Providence as Data Engineer I.",
-      technical: "Systems programming in Rust, confidential computing, CI/CD hardening, and transition into cloud data engineering with Azure and Databricks.",
-      story: "A year of three chapters — finishing my degree, diving into systems security at Fortanix, and finding my home in data engineering at Providence."
+      impact: "Graduated in Computer Science, worked on confidential computing systems in Rust at Fortanix, and joined Providence as a Data Engineer.",
+      technical: "Built Rust unit tests for encryption and key management modules and integrated them into CI/CD pipelines.",
+      story: "A transition year — from academic learning to real-world engineering across security systems and enterprise data platforms."
     },
-    impact: { metric: "3", label: "Major Milestones" },
-    techStack: ["Rust", "Azure", "Databricks", "CI/CD"],
+    impact: { metric: "35%", label: "Test Coverage Increase" },
+    techStack: ["Rust", "Docker", "GitHub Actions", "CI/CD"],
     expanded: {
-      details: "Graduated from BITS Pilani with a CS degree. Interned at Fortanix working on confidential computing in Rust. Joined Providence Health as Data Engineer I, beginning work on healthcare data platforms.",
-      highlights: ["BITS Pilani CS graduate", "Rust systems programming", "Healthcare data platform onboarding"]
+      details: "Improved reliability of encryption modules through automated testing and integrated secure build pipelines for production workflows.",
+      highlights: [
+        "Rust systems programming",
+        "Confidential computing exposure",
+        "Entry into enterprise data engineering"
+      ]
     }
   },
   {
     year: 2024,
     title: "Data Engineer I",
-    subtitle: "Providence · Healthcare & Finance",
+    subtitle: "Providence · Healthcare Workforce Systems",
+    domain: "Healthcare Operations Data",
     description: {
-      impact: "Built data pipelines processing 50M+ records daily across healthcare and financial systems, achieving 99.9% uptime.",
-      technical: "Azure Data Factory, Databricks, Spark, Delta Lake, and dbt for production-grade ETL/ELT pipelines with full data lineage and quality monitoring.",
-      story: "This was the year I stopped being a contributor and started being an owner. Building systems that directly impact patient care changes how you think about reliability."
+      impact: "Re-engineered workforce scheduling system used for 6k+ clinicians, reducing processing runtime by 92%.",
+      technical: "Built Snowflake SQL pipelines and Control-M workflows for operational healthcare data involving labor, staffing, and scheduling datasets.",
+      story: "First year owning production healthcare systems — where reliability directly affects real operational decisions."
     },
-    impact: { metric: "50M+", label: "Records/Day" },
-    techStack: ["Azure", "Spark", "Delta Lake", "dbt"],
+    impact: { metric: "92%", label: "Runtime Reduction" },
+    techStack: ["Snowflake", "SQL", "Oracle", "Control-M"],
     expanded: {
-      details: "Designed and maintained production data pipelines for healthcare analytics and financial reporting. Implemented data quality frameworks, automated testing, and monitoring dashboards.",
-      highlights: ["99.9% pipeline uptime", "Data quality framework", "Cross-functional leadership"]
+      details: "Redesigned scheduling logic for Mandatory Days Off system and led migration of time-entry datasets across multiple schemas.",
+      highlights: [
+        "End-to-end system ownership",
+        "Healthcare workforce analytics",
+        "Operational data modeling"
+      ]
     }
   },
   {
     year: 2025,
     title: "Data Engineer II",
-    subtitle: "Providence · Promoted",
+    subtitle: "Providence · Healthcare & Financial Data Systems",
+    domain: "Enterprise Data Platforms",
     description: {
-      impact: "Promoted to lead larger systems, mentoring 2 engineers and driving automation that saved 20+ engineering hours per week.",
-      technical: "Advanced orchestration with Airflow, infrastructure-as-code with Terraform, and building self-healing data pipelines with automated alerting.",
-      story: "Promotion brought new challenges — not just building systems, but leading people. Mentoring engineers taught me that the best systems are built by empowered teams."
+      impact: "Built financial reconciliation pipelines processing 1B+ records daily and led platform automation initiatives.",
+      technical: "Worked across Snowflake, Azure Data Factory, and Control-M to build large-scale pipelines integrating financial and operational datasets.",
+      story: "This phase moved from pipeline engineering to system architecture — building data platforms that multiple teams depend on."
     },
-    impact: { metric: "20+", label: "Hours Saved/Week" },
-    techStack: ["Airflow", "Terraform", "Kubernetes", "Python"],
+    impact: { metric: "1B+", label: "Records Processed Daily" },
+    techStack: ["Snowflake", "Azure Data Factory", "Python", "Streamlit"],
     expanded: {
-      details: "Led automation initiatives that eliminated manual data operations. Mentored junior engineers on best practices in data engineering and cloud architecture.",
-      highlights: ["Team mentorship", "Infrastructure automation", "Self-healing pipelines"]
+      details: "Led migration of Databricks pipelines to Snowflake, converted 400+ PySpark notebooks, and built AI-assisted test automation framework.",
+      highlights: [
+        "400+ pipeline migration",
+        "Data platform modernization",
+        "Engineering automation systems"
+      ]
     }
   },
   {
     year: 2026,
-    title: "Senior Data Engineering",
-    subtitle: "Providence · Current",
+    title: "Data Platform Engineering",
+    subtitle: "Providence · Current Work",
+    domain: "Healthcare + Financial Analytics",
     description: {
-      impact: "Architecting enterprise-scale workforce optimization and healthcare data platforms serving thousands of users.",
-      technical: "Building next-gen data mesh architectures, real-time streaming with Kafka, and AI-augmented data pipelines using LLM-powered transformations.",
-      story: "Working at the intersection of data, AI, and healthcare — building the invisible systems that help organizations make better decisions for the people they serve."
+      impact: "Building decision support systems combining clinical and financial data to support cost and care optimization.",
+      technical: "Developing Snowflake-based analytics pipelines integrating healthcare operations, workforce data, and financial reporting systems.",
+      story: "Working at the intersection of healthcare operations, finance, and data platforms — building the infrastructure behind large-scale decision systems."
     },
-    impact: { metric: "∞", label: "Systems Scaling" },
-    techStack: ["Kafka", "Data Mesh", "LLMs", "Azure"],
+    impact: { metric: "Multi-TB", label: "Enterprise Data Systems" },
+    techStack: ["Snowflake", "SQL", "Python", "Azure"],
     expanded: {
-      details: "Leading the design of next-generation data platforms. Working on staffing optimization, workforce analytics, and healthcare data systems at enterprise scale.",
-      highlights: ["Enterprise architecture", "Real-time streaming", "AI-augmented pipelines"]
+      details: "Current work focuses on enterprise data platform modernization, financial reconciliation systems, and healthcare decision-support datasets.",
+      highlights: [
+        "Enterprise healthcare analytics",
+        "Financial reconciliation platforms",
+        "Cross-domain data systems"
+      ]
     }
   }
 ];
