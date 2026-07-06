@@ -1,0 +1,175 @@
+{
+  "site_metadata": {
+    "title": "Mahavir Chaudhari — Data Engineer",
+    "description": "Mahavir Chaudhari — Data Engineer specializing in building scalable data pipelines, cloud architectures, and AI-powered data systems.",
+    "theme_color": "#bada55",
+    "author": "Mahavir Chaudhari"
+  },
+  "hero_section": {
+    "greeting": "Hi, I'm Mahavir",
+    "title": "DATA ENGINEER",
+    "cta": "ENTER NEURAL NET"
+  },
+  "about_section": {
+    "profile_text": [
+      "Hi, I'm a data engineer who enjoys working behind the scenes — building the systems that make data move, talk, and tell stories. I graduated from a place called BITS Pilani in 2023, and ever since, I've been having a lot of fun working on personal and professional projects around data engineering and cloud systems.",
+      "I mostly work with Python, SQL, Azure, and cloud data warehousing tools — with an ever-growing toolkit that stretches into big data, machine learning, and AI. I enjoy solving problems that don't come with step-by-step guides, and I'm always curious about how complex systems fit together.",
+      "These days, I'm focusing more on backend data architectures and scaling systems that deal with massive amounts of information — the kind of work that's invisible when it works right (and unforgettable when it doesn't)."
+    ],
+    "quick_summary": {
+      "role": "Data Engineer II · Providence",
+      "location": "India · Remote-friendly",
+      "stats": [
+        {"value": "4+", "label": "Years in Data"},
+        {"value": "1B+", "label": "Records / Day"},
+        {"value": "400+", "label": "Pipelines Shipped"},
+        {"value": "92%", "label": "Runtime Cut"}
+      ],
+      "current_focus": "Building enterprise-scale data platforms at Providence — Snowflake migrations, financial reconciliation systems, and AI-assisted engineering automation for healthcare + finance data.",
+      "core_stack": ["Python", "SQL", "Snowflake", "Azure", "dbt", "MCP"]
+    }
+  },
+  "projects_section": [
+    {
+      "id": "context-engineering",
+      "title": "Context Engineering",
+      "badge": "Enterprise AI",
+      "description": "Modular context engineering framework for enterprise AI agents, designing reusable skills, MCP integrations, and metadata-driven context abstractions.",
+      "tags": ["Python", "Snowflake", "MCP"]
+    },
+    {
+      "id": "mandatory-days-off",
+      "title": "Mandatory Days Off",
+      "badge": "Optimization",
+      "description": "Redesigned scheduling engine supporting 6,000+ clinicians, reducing execution time from 2 hours to 10 minutes (92% improvement).",
+      "tags": ["Python", "SQL", "Snowflake"]
+    },
+    {
+      "id": "physics-hyperion",
+      "title": "Physics Hyperion",
+      "badge": "Live System",
+      "description": "A sophisticated physics simulation website featuring real-time particle interactions, gravitational fields, and quantum mechanics visualization.",
+      "tags": ["WebGL", "JavaScript", "Physics Engine"]
+    },
+    {
+      "id": "echo-journal",
+      "title": "Echo Journal",
+      "badge": "Live System",
+      "description": "An advanced AI-powered mood journal that leverages natural language processing and sentiment analysis to help users track and reflect on their emotional well-being.",
+      "tags": ["React", "Python", "NLP"]
+    },
+    {
+      "id": "ai-research-scout",
+      "title": "AI Research Scout",
+      "badge": "Live System",
+      "description": "An intelligent research assistant that scans, summarizes, and organizes academic papers using NLP and LLM-powered analysis to accelerate scientific discovery.",
+      "tags": ["Python", "LangChain", "NLP"]
+    },
+    {
+      "id": "future-project",
+      "title": "Future Project",
+      "badge": "Coming Soon",
+      "description": "A revolutionary data engineering project currently in development. Features advanced AI integration and real-time analytics.",
+      "tags": ["AI/ML", "Big Data", "Cloud"]
+    }
+  ],
+  "skills_section": {
+    "categories": [
+      {
+        "name": "Data Engineering & Warehousing",
+        "skills": ["Snowflake", "Databricks", "Apache Spark / PySpark", "dbt (Core & Cloud)", "Delta Lake / Apache Iceberg", "ETL / ELT Pipeline Design", "Dimensional & Data Vault Modeling", "Lakehouse Architecture"]
+      },
+      {
+        "name": "Streaming & Real-Time",
+        "skills": ["Apache Kafka", "Apache Flink", "Spark Structured Streaming", "AWS Kinesis / Event Hubs", "CDC (Debezium, Fivetran)", "Event-Driven Architecture", "Real-Time OLAP (ClickHouse, DuckDB)"]
+      },
+      {
+        "name": "Orchestration & DataOps",
+        "skills": ["Apache Airflow", "Dagster / Prefect", "Control-M", "Great Expectations / Soda", "Data Contracts & Lineage", "Data Observability", "CI/CD for Data (GitHub Actions, Jenkins)"]
+      },
+      {
+        "name": "AI / GenAI Systems",
+        "skills": ["LLM Integration (OpenAI, Anthropic, Cortex AI)", "RAG Architectures", "LangChain / LlamaIndex", "Vector DBs (Pinecone, pgvector, Weaviate)", "Model Context Protocol (MCP)", "Agentic & Multi-Agent Pipelines", "Evaluation & Guardrails", "NLP / OCR Pipelines"]
+      },
+      {
+        "name": "Cloud & Infrastructure",
+        "skills": ["AWS", "Azure (ADF, Synapse, Fabric)", "GCP (BigQuery, Dataflow)", "Kubernetes & Helm", "Docker", "Terraform (IaC)", "Serverless (Lambda, Functions)"]
+      },
+      {
+        "name": "Languages & APIs",
+        "skills": ["Python", "SQL (Advanced / Window Functions)", "Rust", "Go", "Bash / Shell", "FastAPI / Flask", "REST / GraphQL APIs", "Streamlit / Power BI"]
+      }
+    ]
+  },
+  "timeline_section": [
+    {
+      "year": 2020,
+      "title": "Data Exploration & ML Foundations",
+      "subtitle": "Self-taught · Remote Learning",
+      "domain": "Data Science · Machine Learning",
+      "description": "Built multiple personal ML and data analysis projects during the pandemic, laying the technical foundation for a career in data engineering.",
+      "impact": { "metric": "5+", "label": "Projects Built" },
+      "techStack": ["Python", "Pandas", "Scikit-learn", "SQL"]
+    },
+    {
+      "year": 2021,
+      "title": "Machine Learning Engineer Intern",
+      "subtitle": "Streamn.ai · Remote",
+      "domain": "Media AI · Content Processing",
+      "description": "Built backend services supporting machine learning workflows handling 10K+ weekly API requests.",
+      "impact": { "metric": "10K+", "label": "API Requests / Week" },
+      "techStack": ["Python", "FastAPI", "Flask", "MySQL"]
+    },
+    {
+      "year": 2022,
+      "title": "Machine Learning Engineer (Intern → Part-time)",
+      "subtitle": "Streamn.ai · Remote",
+      "domain": "Media Processing · Applied ML Systems",
+      "description": "Optimized text recognition pipeline improving execution speed by 30% and supported media processing services used in production systems.",
+      "impact": { "metric": "30%", "label": "Pipeline Speed Improvement" },
+      "techStack": ["Python", "Bash", "FastAPI", "SQLite"]
+    },
+    {
+      "year": 2023,
+      "title": "CS Graduate & Systems Engineering",
+      "subtitle": "BITS Pilani · Fortanix · Providence",
+      "domain": "Systems Security → Data Engineering",
+      "description": "Graduated in Computer Science, worked on confidential computing systems in Rust at Fortanix, and joined Providence as a Data Engineer.",
+      "impact": { "metric": "35%", "label": "Test Coverage Increase" },
+      "techStack": ["Rust", "Docker", "GitHub Actions", "CI/CD"]
+    },
+    {
+      "year": 2024,
+      "title": "Data Engineer I",
+      "subtitle": "Providence · Healthcare Workforce Systems",
+      "domain": "Healthcare Operations Data",
+      "description": "Re-engineered workforce scheduling system used for 6k+ clinicians, reducing processing runtime by 92%.",
+      "impact": { "metric": "92%", "label": "Runtime Reduction" },
+      "techStack": ["Snowflake", "SQL", "Oracle", "Control-M"]
+    },
+    {
+      "year": 2025,
+      "title": "Data Engineer II",
+      "subtitle": "Providence · Healthcare & Financial Data Systems",
+      "domain": "Enterprise Data Platforms",
+      "description": "Built financial reconciliation pipelines processing 1B+ records daily and led platform automation initiatives.",
+      "impact": { "metric": "1B+", "label": "Records Processed Daily" },
+      "techStack": ["Snowflake", "Azure Data Factory", "Python", "Streamlit"]
+    },
+    {
+      "year": 2026,
+      "title": "Data Platform Engineering",
+      "subtitle": "Providence · Current Work",
+      "domain": "Healthcare + Financial Analytics",
+      "description": "Building decision support systems combining clinical and financial data to support cost and care optimization.",
+      "impact": { "metric": "Multi-TB", "label": "Enterprise Data Systems" },
+      "techStack": ["Snowflake", "SQL", "Python", "Azure"]
+    }
+  ],
+  "contact_section": {
+    "email": "mveer.rc@gmail.com",
+    "linkedin": "linkedin.com/in/mahavir01",
+    "github": "github.com/mveer1",
+    "form_endpoint": "https://formspree.io/f/xnjnezwz"
+  }
+}

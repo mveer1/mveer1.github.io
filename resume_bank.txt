@@ -1,0 +1,54 @@
+# EXPERIENCE
+
+## **Data Engineer II** | Providence Global Center | Jul 2025 – Present
+
+* **Architected** a financial reconciliation platform consolidating **8 independent Finance reports** into a unified Snowflake pipeline processing **1B+ records daily**, reducing manual reconciliation effort by **80%** while enabling audit-ready reporting across multiple Finance teams.
+* **Architecting** the **AI Data Lifecycle Companion (AIDLC)**, a standardized enterprise AI framework enabling Data Engineering teams to build AI-powered solutions through reusable skills, guardrails, MCP integrations, and modular agent workflows, establishing scalable patterns for enterprise AI development.
+* **Led** the modernization of enterprise ETL workloads by migrating **400+ production notebooks** and **11 API-driven ingestion pipelines** from Databricks to Snowflake, leveraging AI-assisted development workflows to accelerate migration while maintaining production continuity and functional parity.
+
+## **Data Engineer I** | Providence Global Center | Jul 2023 – Jun 2025
+
+* **Redesigned** the Mandatory Days Off (MDO) scheduling engine supporting **6,000+ clinicians**, reducing end-to-end execution time from **2 hours to 10 minutes (92% improvement)** through scalable query optimization and workflow redesign.
+* **Engineered** a metadata-driven test automation framework using Python and Streamlit, reducing enterprise QA execution time from **14 hours to approximately 1 hour**, improving validation consistency across production data pipelines.
+
+## **Software Development Intern** | Fortranix Technologies
+
+* **Developed** production-ready full-stack application features by building RESTful APIs, integrating relational databases, and collaborating in an Agile development environment, strengthening software engineering and backend development practices.
+
+## **Software Developer (Part-time)** | Streamn
+
+* **Built** backend services and data-driven application features using Python, SQL, and REST APIs while automating development workflows and delivering production-quality software in a fast-paced startup environment.
+
+---
+
+# PROJECTS
+
+## **Enterprise AI Context Engineering**
+
+* **Architected** a modular context engineering framework for enterprise AI agents, designing reusable skills, MCP integrations, guardrails, prompts, and metadata-driven context abstractions to enable scalable, domain-aware agent workflows.
+* **Engineered** dynamic context retrieval and orchestration strategies that separated business knowledge from agent logic, improving maintainability, extensibility, and response consistency across enterprise AI applications.
+
+**Tech Stack:** Python • Snowflake • Oracle • Cortex CLI • MCP • LLMs • Prompt Engineering
+
+## **Smart Research Scout**
+
+* **Built** a full-stack AI research platform integrating Retrieval-Augmented Generation (RAG), semantic search, and conversational interfaces to enable intelligent exploration of structured and unstructured enterprise knowledge.
+* **Engineered** scalable document ingestion, embedding, indexing, and retrieval pipelines with a production-ready FastAPI backend and React frontend, delivering context-aware responses through modular APIs and vector search.
+
+**Tech Stack:** Python • FastAPI • React • PostgreSQL • Redis • LangGraph • OpenAI APIs • Docker
+
+---
+
+# SKILLS
+
+**AI & LLM Engineering**
+Agentic AI • Context Engineering • Retrieval-Augmented Generation (RAG) • MCP • LangGraph • LangChain • Prompt Engineering • Semantic Search • Vector Search • OpenAI APIs
+
+**Data Engineering**
+Python • SQL • Snowflake • Azure Data Factory • dbt • PySpark • ETL/ELT • Data Modeling • Data Warehousing • Data Quality • Batch Processing • Stream Processing • Distributed Systems • Control-M
+
+**Cloud & DevOps**
+Azure • AWS • GCP • Docker • Git • GitHub Actions
+
+**Languages & Frameworks**
+Java • Go • Rust • JavaScript • Bash • C/C++ • FastAPI • Flask • React • PostgreSQL • MySQL • Redis • SQLite • HTML • CSS

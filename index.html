@@ -8,15 +8,87 @@
     <meta name="description"
         content="Mahavir Chaudhari — Data Engineer specializing in building scalable data pipelines, cloud architectures, and AI-powered data systems.">
     <meta name="theme-color" content="#bada55">
+    <link rel="canonical" href="https://mveer1.github.io/">
+    <meta name="author" content="Mahavir Chaudhari">
+    <meta name="keywords"
+        content="Mahavir Chaudhari, Data Engineer, Snowflake, Databricks, Azure, Python, dbt, PySpark, RAG, LangChain, Portfolio">
     <meta property="og:title" content="Mahavir Chaudhari — Data Engineer">
     <meta property="og:description" content="Data Engineer specializing in pipelines, cloud, and AI.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mveer1.github.io">
+    <meta property="og:site_name" content="Mahavir Chaudhari — Portfolio">
+    <meta property="og:image" content="https://mveer1.github.io/assets/images/social-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mahavir Chaudhari — Data Engineer">
+    <meta name="twitter:description" content="Data Engineer specializing in pipelines, cloud, and AI.">
+    <meta name="twitter:image" content="https://mveer1.github.io/assets/images/social-preview.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mahavir Chaudhari",
+      "url": "https://mveer1.github.io",
+      "jobTitle": "Data Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Providence"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "BITS Pilani"
+      },
+      "knowsAbout": [
+        "Data Engineering",
+        "Snowflake",
+        "Databricks",
+        "Azure Data Factory",
+        "PySpark",
+        "dbt",
+        "RAG",
+        "LangChain",
+        "Cloud Architecture",
+        "GenAI Systems"
+      ],
+      "sameAs": [
+        "https://github.com/mveer1",
+        "https://www.linkedin.com/in/mahavir01"
+      ]
+    }
+    </script>
+    <link id="dynamic-favicon" rel="icon" type="image/png" href="assets/images/favicons/favicon_2.png">
+    <script>
+        (function() {
+            const numFavicons = 15;
+            const defaultFaviconId = 2;
+            const randomId = Math.floor(Math.random() * numFavicons) + 1;
+            
+            const faviconPath = 'assets/images/favicons/favicon_' + randomId + '.png';
+            const defaultPath = 'assets/images/favicons/favicon_' + defaultFaviconId + '.png';
+            
+            const img = new Image();
+            img.onload = function() {
+                document.getElementById('dynamic-favicon').href = faviconPath;
+            };
+            img.onerror = function() {
+                document.getElementById('dynamic-favicon').href = defaultPath;
+            };
+            img.src = faviconPath;
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <noscript>
+        <style>
+            .loading-screen { display: none !important; }
+            .hero-anim { opacity: 1; transform: none; }
+            .reveal { opacity: 1; transform: none; }
+        </style>
+    </noscript>
 </head>
 
 <body>
@@ -217,11 +289,11 @@
         </section>
 
         <div class="matrix-bg">
-            <canvas id="matrix-canvas"></canvas>
+            <canvas id="matrix-canvas" role="img" aria-label="Animated matrix code background decoration"></canvas>
         </div>
 
         <div class="neural-network">
-            <canvas id="neural-canvas"></canvas>
+            <canvas id="neural-canvas" role="img" aria-label="Interactive neural network node visualization"></canvas>
         </div>
 
         <hr class="section-divider" aria-hidden="true">
@@ -238,6 +310,52 @@
                     <p class="section-subtitle">Holographic projections of my digital creations</p>
                 </div>
                 <div class="projects-grid-v2">
+                    <!-- Project Card: Context Engineering -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.25), rgba(0, 150, 136, 0.15));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">hub</span>
+                            <span class="pv2-badge pv2-badge--live">Enterprise AI</span>
+                        </div>
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">Context Engineering</h3>
+                            <p class="pv2-desc">Modular context engineering framework for enterprise AI agents, designing reusable skills, MCP integrations, and metadata-driven context abstractions.</p>
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">Python</span>
+                                <span class="pv2-tag">Snowflake</span>
+                                <span class="pv2-tag">MCP</span>
+                            </div>
+                            <button class="pv2-btn" data-project-modal="context-engineering">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project Card: Mandatory Days Off -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.25), rgba(255, 87, 34, 0.15));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">calendar_month</span>
+                            <span class="pv2-badge pv2-badge--live">Optimization</span>
+                        </div>
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">Mandatory Days Off</h3>
+                            <p class="pv2-desc">Redesigned scheduling engine supporting 6,000+ clinicians, reducing execution time from 2 hours to 10 minutes (92% improvement).</p>
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">Python</span>
+                                <span class="pv2-tag">SQL</span>
+                                <span class="pv2-tag">Snowflake</span>
+                            </div>
+                            <button class="pv2-btn" data-project-modal="mandatory-days-off">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Project Card 1: Physics Hyperion -->
                     <div class="project-card-v2">
                         <div class="pv2-header"
@@ -255,10 +373,10 @@
                                 <span class="pv2-tag">JavaScript</span>
                                 <span class="pv2-tag">Physics Engine</span>
                             </div>
-                            <a href="https://mveer1.github.io/hypelab/" target="_blank" class="pv2-btn">
+                            <button class="pv2-btn" data-project-modal="physics-hyperion">
                                 View Details
                                 <span class="material-symbols-outlined">arrow_forward</span>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -280,10 +398,10 @@
                                 <span class="pv2-tag">Python</span>
                                 <span class="pv2-tag">NLP</span>
                             </div>
-                            <a href="https://mveer1.github.io/echo-journal/" target="_blank" class="pv2-btn">
+                            <button class="pv2-btn" data-project-modal="echo-journal">
                                 View Details
                                 <span class="material-symbols-outlined">arrow_forward</span>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -305,10 +423,10 @@
                                 <span class="pv2-tag">LangChain</span>
                                 <span class="pv2-tag">NLP</span>
                             </div>
-                            <a href="https://mveer1.github.io/AI-research-scout/" target="_blank" class="pv2-btn">
+                            <button class="pv2-btn" data-project-modal="ai-research-scout">
                                 View Details
                                 <span class="material-symbols-outlined">arrow_forward</span>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -329,9 +447,9 @@
                                 <span class="pv2-tag">Big Data</span>
                                 <span class="pv2-tag">Cloud</span>
                             </div>
-                            <button class="pv2-btn pv2-btn--disabled" disabled>
-                                Initializing...
-                                <span class="material-symbols-outlined">hourglass_empty</span>
+                            <button class="pv2-btn" data-project-modal="future-project">
+                                Preview Roadmap
+                                <span class="material-symbols-outlined">hourglass_top</span>
                             </button>
                         </div>
                     </div>
@@ -353,41 +471,85 @@
                     <p class="section-subtitle">Cognitive architecture and technical ecosystem</p>
                 </div>
                 <div class="skills-glass-grid">
-                    <!-- Data Engineering -->
+                    <!-- Data Engineering & Warehousing -->
                     <div class="skills-glass-card">
                         <div class="skills-card-header">
                             <div class="skills-card-icon"><span class="material-symbols-outlined">database</span></div>
-                            <h3>Data Engineering</h3>
+                            <h3>Data Engineering &amp; Warehousing</h3>
                         </div>
                         <div class="skills-chip-grid">
                             <span class="skill-chip"><span class="skill-dot"></span> Snowflake</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Databricks</span>
                             <span class="skill-chip"><span class="skill-dot"></span> Apache Spark / PySpark</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> dbt</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> ETL / ELT Pipeline
-                                Development</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Data Modeling (Dimensional &amp;
-                                Analytical)</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Data Warehousing</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> dbt (Core &amp; Cloud)</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Delta Lake / Apache Iceberg</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> ETL / ELT Pipeline Design</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Dimensional &amp; Data Vault
+                                Modeling</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Lakehouse Architecture</span>
                         </div>
                     </div>
-                    <!-- ML Ops / AI Systems -->
+
+                    <!-- Streaming & Real-Time -->
+                    <div class="skills-glass-card">
+                        <div class="skills-card-header">
+                            <div class="skills-card-icon"><span class="material-symbols-outlined">bolt</span></div>
+                            <h3>Streaming &amp; Real-Time</h3>
+                        </div>
+                        <div class="skills-chip-grid">
+                            <span class="skill-chip"><span class="skill-dot"></span> Apache Kafka</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Apache Flink</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Spark Structured Streaming</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> AWS Kinesis / Event Hubs</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> CDC (Debezium, Fivetran)</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Event-Driven Architecture</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Real-Time OLAP (ClickHouse,
+                                DuckDB)</span>
+                        </div>
+                    </div>
+
+                    <!-- Orchestration & DataOps -->
+                    <div class="skills-glass-card">
+                        <div class="skills-card-header">
+                            <div class="skills-card-icon"><span class="material-symbols-outlined">account_tree</span>
+                            </div>
+                            <h3>Orchestration &amp; DataOps</h3>
+                        </div>
+                        <div class="skills-chip-grid">
+                            <span class="skill-chip"><span class="skill-dot"></span> Apache Airflow</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Dagster / Prefect</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Control-M</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Great Expectations / Soda</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Data Contracts &amp;
+                                Lineage</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Data Observability</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> CI/CD for Data (GitHub Actions,
+                                Jenkins)</span>
+                        </div>
+                    </div>
+
+                    <!-- AI / GenAI Systems -->
                     <div class="skills-glass-card">
                         <div class="skills-card-header">
                             <div class="skills-card-icon"><span class="material-symbols-outlined">neurology</span></div>
-                            <h3>ML Ops / AI Systems</h3>
+                            <h3>AI / GenAI Systems</h3>
                         </div>
                         <div class="skills-chip-grid">
-                            <span class="skill-chip"><span class="skill-dot"></span> RAG Systems</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> LangChain</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> LLM Integration (OpenAI / Cortex
-                                AI)</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Model Serving &amp; API
-                                Integration</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> NLP / OCR Pipelines</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Experimentation &amp; Evaluation
+                            <span class="skill-chip"><span class="skill-dot"></span> LLM Integration (OpenAI,
+                                Anthropic, Cortex AI)</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> RAG Architectures</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> LangChain / LlamaIndex</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Vector DBs (Pinecone, pgvector,
+                                Weaviate)</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Model Context Protocol
+                                (MCP)</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Agentic &amp; Multi-Agent
                                 Pipelines</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Evaluation &amp; Guardrails</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> NLP / OCR Pipelines</span>
                         </div>
                     </div>
+
                     <!-- Cloud & Infrastructure -->
                     <div class="skills-glass-card">
                         <div class="skills-card-header">
@@ -396,45 +558,31 @@
                         </div>
                         <div class="skills-chip-grid">
                             <span class="skill-chip"><span class="skill-dot"></span> AWS</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Azure</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> GCP</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Azure (ADF, Synapse, Fabric)</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> GCP (BigQuery, Dataflow)</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Kubernetes &amp; Helm</span>
                             <span class="skill-chip"><span class="skill-dot"></span> Docker</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> CI/CD (GitHub Actions,
-                                Jenkins)</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Workflow Orchestration (Airflow,
-                                Control-M)</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Terraform (IaC)</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Serverless (Lambda, Functions)</span>
                         </div>
                     </div>
-                    <!-- Languages -->
+
+                    <!-- Languages & APIs -->
                     <div class="skills-glass-card">
                         <div class="skills-card-header">
                             <div class="skills-card-icon"><span class="material-symbols-outlined">code</span></div>
-                            <h3>Languages</h3>
+                            <h3>Languages &amp; APIs</h3>
                         </div>
                         <div class="skills-chip-grid">
                             <span class="skill-chip"><span class="skill-dot"></span> Python</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> SQL</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Golang</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> SQL (Advanced / Window
+                                Functions)</span>
                             <span class="skill-chip"><span class="skill-dot"></span> Rust</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Java</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Bash</span>
-                        </div>
-                    </div>
-                    <!-- Others -->
-                    <div class="skills-glass-card">
-                        <div class="skills-card-header">
-                            <div class="skills-card-icon"><span class="material-symbols-outlined">construction</span>
-                            </div>
-                            <h3>Others</h3>
-                        </div>
-                        <div class="skills-chip-grid">
+                            <span class="skill-chip"><span class="skill-dot"></span> Go</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Bash / Shell</span>
                             <span class="skill-chip"><span class="skill-dot"></span> FastAPI / Flask</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Streamlit</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> React</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> REST API Development</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Power BI / Data
-                                Visualization</span>
-                            <span class="skill-chip"><span class="skill-dot"></span> Git</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> REST / GraphQL APIs</span>
+                            <span class="skill-chip"><span class="skill-dot"></span> Streamlit / Power BI</span>
                         </div>
                     </div>
                 </div>
@@ -525,6 +673,9 @@
                                 </div>
                                 <form class="neural-form" id="contactForm" action="https://formspree.io/f/xnjnezwz"
                                     method="POST">
+                                    <!-- Formspree honeypot (spam trap): human users won't fill this hidden field. -->
+                                    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+                                        aria-hidden="true" class="hp-field">
                                     <div class="form-group">
                                         <label class="form-label" for="contact-name">Full Name</label>
                                         <input type="text" id="contact-name" name="name"
@@ -570,7 +721,7 @@
                 </a>
             </div>
             <p class="footer-tagline">// built with caffeine & curiosity</p>
-            <p class="footer-copyright">&copy; 2025 Mahavir Chaudhari. All systems operational.</p>
+            <p class="footer-copyright">&copy; 2025–2026 Mahavir Chaudhari. All systems operational.</p>
         </div>
     </footer>
 
@@ -595,7 +746,8 @@
         </button>
     </div>
 
-    <div id="profileSummaryModal" class="summary-modal-overlay">
+    <div id="profileSummaryModal" class="summary-modal-overlay" role="dialog" aria-modal="true"
+        aria-labelledby="summaryModalTitle">
         <div class="summary-modal-content terminal-window">
             <div class="terminal-header">
                 <div class="terminal-controls">
@@ -603,21 +755,104 @@
                     <span class="control minimize" aria-label="Minimize"></span>
                     <span class="control maximize" aria-label="Maximize"></span>
                 </div>
-                <span class="terminal-title">profile_summary.exe</span>
+                <span class="terminal-title" id="summaryModalTitle">profile_summary.exe</span>
             </div>
-            <div class="terminal-body terminal-content">
+            <div class="terminal-body terminal-content summary-terminal-content">
                 <div class="terminal-line">
                     <span class="prompt">user@neural-net:~$</span>
                     <span class="command">cat quick_summary.txt</span>
                 </div>
-                <div class="terminal-output">
-                    <p><strong>Status:</strong> Senior Data Engineer @ Providence</p>
-                    <p><strong>Core Stack:</strong> Python, SQL, Azure, Big Data, Gen-AI</p>
-                    <p><strong>Focus:</strong> Scalable Pipelines & Cloud Architecture</p>
+
+                <div class="summary-hero">
+                    <div class="summary-hero-avatar">
+                        <span class="material-symbols-outlined">hub</span>
+                    </div>
+                    <div class="summary-hero-meta">
+                        <h3 class="summary-hero-name">Mahavir Chaudhari</h3>
+                        <p class="summary-hero-role">Data Engineer II · Providence</p>
+                        <p class="summary-hero-location">
+                            <span class="material-symbols-outlined">location_on</span>
+                            India · Remote-friendly
+                        </p>
+                        <span class="summary-hero-status">
+                            <span class="status-dot"></span> Open to collaborations
+                        </span>
+                    </div>
                 </div>
+
+                <div class="summary-stats">
+                    <div class="summary-stat">
+                        <span class="summary-stat-value">4+</span>
+                        <span class="summary-stat-label">Years in Data</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="summary-stat-value">1B+</span>
+                        <span class="summary-stat-label">Records / Day</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="summary-stat-value">400+</span>
+                        <span class="summary-stat-label">Pipelines Shipped</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="summary-stat-value">92%</span>
+                        <span class="summary-stat-label">Runtime Cut</span>
+                    </div>
+                </div>
+
+                <div class="summary-block">
+                    <p class="summary-block-title">// current_focus</p>
+                    <p class="summary-block-body">Building enterprise-scale data platforms at Providence — Snowflake
+                        migrations, financial reconciliation systems, and AI-assisted engineering automation for
+                        healthcare + finance data.</p>
+                </div>
+
+                <div class="summary-block">
+                    <p class="summary-block-title">// core_stack</p>
+                    <div class="summary-chips">
+                        <span class="summary-chip">Python</span>
+                        <span class="summary-chip">SQL</span>
+                        <span class="summary-chip">Snowflake</span>
+                        <span class="summary-chip">Databricks</span>
+                        <span class="summary-chip">Azure Data Factory</span>
+                        <span class="summary-chip">dbt</span>
+                        <span class="summary-chip">PySpark</span>
+                        <span class="summary-chip">LangChain / RAG</span>
+                    </div>
+                </div>
+
+                <div class="summary-block">
+                    <p class="summary-block-title">// signature_wins</p>
+                    <ul class="summary-wins">
+                        <li>Re-engineered scheduling for <strong>6k+ clinicians</strong>, cutting runtime by 92%.</li>
+                        <li>Migrated <strong>400+ PySpark notebooks</strong> from Databricks to Snowflake.</li>
+                        <li>Built financial reconciliation pipelines processing <strong>1B+ records/day</strong>.</li>
+                        <li>Shipped AI-assisted test automation framework for enterprise data platforms.</li>
+                    </ul>
+                </div>
+
+                <div class="summary-cta-row">
+                    <a class="summary-cta summary-cta--primary" href="mahavir.pdf" target="_blank"
+                        rel="noopener noreferrer">
+                        <span class="material-symbols-outlined">description</span>
+                        Download CV
+                    </a>
+                    <a class="summary-cta" href="https://www.linkedin.com/in/mahavir01" target="_blank"
+                        rel="noopener noreferrer">
+                        <span class="material-symbols-outlined">link</span>
+                        LinkedIn
+                    </a>
+                    <a class="summary-cta" href="https://github.com/mveer1" target="_blank" rel="noopener noreferrer">
+                        <span class="material-symbols-outlined">code</span>
+                        GitHub
+                    </a>
+                    <a class="summary-cta" href="mailto:mveer.rc@gmail.com">
+                        <span class="material-symbols-outlined">alternate_email</span>
+                        Email
+                    </a>
+                </div>
+
                 <div class="modal-actions">
-                    <button class="btn btn--primary holo-btn"
-                        onclick="document.getElementById('profileSummaryModal').classList.remove('active'); document.body.style.overflow = '';">
+                    <button class="btn btn--primary holo-btn" data-close-summary>
                         <span class="btn-text">ACKNOWLEDGE</span>
                         <div class="btn-glow"></div>
                     </button>
@@ -626,7 +861,502 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- ============================================ -->
+    <!-- Project Detail Modals -->
+    <!-- ============================================ -->
+    <div id="projectModalRoot" class="project-modal-root" aria-hidden="true">
+
+        <!-- Context Engineering -->
+        <div class="project-modal-overlay" data-project-id="context-engineering" role="dialog" aria-modal="true"
+            aria-labelledby="pm-context-engineering-title">
+            <div class="project-modal-content terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close" data-project-close aria-label="Close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title">context_engineering.exe</span>
+                </div>
+                <div class="terminal-content project-modal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">user@neural-net:~$</span>
+                        <span class="command">./launch context_engineering</span>
+                    </div>
+
+                    <div class="pm-hero">
+                        <div class="pm-hero-icon"
+                            style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.35), rgba(0, 150, 136, 0.2));">
+                            <span class="material-symbols-outlined">hub</span>
+                        </div>
+                        <div class="pm-hero-meta">
+                            <h3 class="pm-title" id="pm-context-engineering-title">Enterprise AI Context Engineering</h3>
+                            <p class="pm-subtitle">Modular framework · Reusable skills · Agent workflows</p>
+                            <span class="pm-badge pm-badge--live">Enterprise AI</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-image-container">
+                        <img src="assets/images/context_engineering_min.png" alt="Context Engineering Diagram" loading="lazy" width="1024" height="1024" />
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// overview</p>
+                        <p class="pm-body">Architected a modular context engineering framework for enterprise AI agents, designing reusable skills, MCP integrations, guardrails, prompts, and metadata-driven context abstractions to enable scalable, domain-aware agent workflows.</p>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// key_features</p>
+                        <ul class="pm-list">
+                            <li>Engineered dynamic context retrieval and orchestration strategies.</li>
+                            <li>Separated business knowledge from agent logic.</li>
+                            <li>Improved maintainability, extensibility, and response consistency across enterprise AI applications.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// tech_stack</p>
+                        <div class="pm-chips">
+                            <span class="pm-chip">Python</span>
+                            <span class="pm-chip">Snowflake</span>
+                            <span class="pm-chip">Oracle</span>
+                            <span class="pm-chip">Cortex CLI</span>
+                            <span class="pm-chip">MCP</span>
+                            <span class="pm-chip">LLMs</span>
+                            <span class="pm-chip">Prompt Engineering</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pm-cta-row">
+                        <button class="pm-cta" data-project-close>
+                            <span class="material-symbols-outlined">close</span>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mandatory Days Off -->
+        <div class="project-modal-overlay" data-project-id="mandatory-days-off" role="dialog" aria-modal="true"
+            aria-labelledby="pm-mdo-title">
+            <div class="project-modal-content terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close" data-project-close aria-label="Close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title">mdo_scheduling.exe</span>
+                </div>
+                <div class="terminal-content project-modal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">user@neural-net:~$</span>
+                        <span class="command">./launch mandatory_days_off</span>
+                    </div>
+
+                    <div class="pm-hero">
+                        <div class="pm-hero-icon"
+                            style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.35), rgba(255, 87, 34, 0.2));">
+                            <span class="material-symbols-outlined">calendar_month</span>
+                        </div>
+                        <div class="pm-hero-meta">
+                            <h3 class="pm-title" id="pm-mdo-title">Mandatory Days Off Scheduling</h3>
+                            <p class="pm-subtitle">Scalable query optimization · Workflow redesign</p>
+                            <span class="pm-badge pm-badge--live">Optimization</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-image-container">
+                        <img src="assets/images/mdo_scheduling_min.png" alt="MDO Scheduling Dashboard" loading="lazy" width="1024" height="1024" />
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// overview</p>
+                        <p class="pm-body">Redesigned the Mandatory Days Off (MDO) scheduling engine supporting 6,000+ clinicians. The focus was on optimizing scalable queries and redesigning the workflow to significantly reduce processing bottlenecks and ensure consistency.</p>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// key_features</p>
+                        <ul class="pm-list">
+                            <li>Reduced end-to-end execution time from 2 hours to 10 minutes (92% improvement).</li>
+                            <li>Implemented scalable query optimization to handle increasing data volume.</li>
+                            <li>Redesigned the entire processing workflow to minimize manual intervention.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// tech_stack</p>
+                        <div class="pm-chips">
+                            <span class="pm-chip">Python</span>
+                            <span class="pm-chip">SQL</span>
+                            <span class="pm-chip">Snowflake</span>
+                            <span class="pm-chip">Data Optimization</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pm-cta-row">
+                        <button class="pm-cta" data-project-close>
+                            <span class="material-symbols-outlined">close</span>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Physics Hyperion -->
+        <div class="project-modal-overlay" data-project-id="physics-hyperion" role="dialog" aria-modal="true"
+            aria-labelledby="pm-physics-title">
+            <div class="project-modal-content terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close" data-project-close aria-label="Close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title">physics_hyperion.exe</span>
+                </div>
+                <div class="terminal-content project-modal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">user@neural-net:~$</span>
+                        <span class="command">./launch physics_hyperion --mode=interactive</span>
+                    </div>
+
+                    <div class="pm-hero">
+                        <div class="pm-hero-icon"
+                            style="background: linear-gradient(135deg, rgba(186,218,85,0.35), rgba(0,204,255,0.2));">
+                            <span class="material-symbols-outlined">science</span>
+                        </div>
+                        <div class="pm-hero-meta">
+                            <h3 class="pm-title" id="pm-physics-title">Physics Hyperion</h3>
+                            <p class="pm-subtitle">Interactive physics playground · WebGL · Real-time simulation</p>
+                            <span class="pm-badge pm-badge--live">Live System</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-image-container">
+                        <img src="assets/images/physics_hyperion_min.png" alt="Physics Hyperion Simulation" loading="lazy" width="1024" height="1024" />
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// overview</p>
+                        <p class="pm-body">A browser-based physics laboratory that simulates particle interactions,
+                            gravitational fields, spring-mass systems, and quantum-inspired visual behaviors — all
+                            rendered in real time using WebGL. Built as a personal deep-dive into rendering pipelines,
+                            numerical integration, and the maths that make virtual worlds behave.</p>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// key_features</p>
+                        <ul class="pm-list">
+                            <li>Real-time particle systems with configurable forces (gravity, drag, wind).</li>
+                            <li>Interactive controls — click, drag, and inject energy into the simulation.</li>
+                            <li>Verlet / Euler integrators for stable long-running simulations.</li>
+                            <li>Custom shader pipeline for glow, motion trails, and depth cues.</li>
+                            <li>Responsive canvas that adapts across desktop and mobile viewports.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// tech_stack</p>
+                        <div class="pm-chips">
+                            <span class="pm-chip">JavaScript (ES6+)</span>
+                            <span class="pm-chip">WebGL</span>
+                            <span class="pm-chip">Canvas API</span>
+                            <span class="pm-chip">GLSL Shaders</span>
+                            <span class="pm-chip">HTML5</span>
+                            <span class="pm-chip">CSS3</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// engineering_challenges</p>
+                        <ul class="pm-list">
+                            <li>Keeping frame rates smooth (60fps target) while thousands of particles interact.</li>
+                            <li>Balancing physical accuracy against browser CPU/GPU budgets.</li>
+                            <li>Designing an input model that feels tactile without breaking simulation stability.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-cta-row">
+                        <a class="pm-cta pm-cta--primary" href="https://mveer1.github.io/hypelab/" target="_blank"
+                            rel="noopener noreferrer">
+                            <span class="material-symbols-outlined">rocket_launch</span>
+                            Launch Live Demo
+                        </a>
+                        <button class="pm-cta" data-project-close>
+                            <span class="material-symbols-outlined">close</span>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Echo Journal -->
+        <div class="project-modal-overlay" data-project-id="echo-journal" role="dialog" aria-modal="true"
+            aria-labelledby="pm-echo-title">
+            <div class="project-modal-content terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close" data-project-close aria-label="Close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title">echo_journal.exe</span>
+                </div>
+                <div class="terminal-content project-modal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">user@neural-net:~$</span>
+                        <span class="command">./launch echo_journal --mode=reflect</span>
+                    </div>
+
+                    <div class="pm-hero">
+                        <div class="pm-hero-icon"
+                            style="background: linear-gradient(135deg, rgba(0,204,255,0.35), rgba(138,43,226,0.2));">
+                            <span class="material-symbols-outlined">psychology</span>
+                        </div>
+                        <div class="pm-hero-meta">
+                            <h3 class="pm-title" id="pm-echo-title">Echo Journal</h3>
+                            <p class="pm-subtitle">AI-powered mood journal · NLP · Sentiment analytics</p>
+                            <span class="pm-badge pm-badge--live">Live System</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-image-container">
+                        <img src="assets/images/echo_journal_min.png" alt="Echo Journal Dashboard" loading="lazy" width="1024" height="1024" />
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// overview</p>
+                        <p class="pm-body">Echo Journal is a private mood-and-thought journal that uses natural
+                            language processing to surface patterns in how you feel over time. Entries are analyzed for
+                            sentiment, recurring themes, and emotional trajectory — turning free-form writing into a
+                            gentle, data-informed mirror.</p>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// key_features</p>
+                        <ul class="pm-list">
+                            <li>Frictionless writing interface with autosave and streak tracking.</li>
+                            <li>Automatic sentiment scoring and emotion classification per entry.</li>
+                            <li>Weekly and monthly mood trend visualizations.</li>
+                            <li>Topic and keyword extraction to surface recurring themes.</li>
+                            <li>Client-side storage with privacy-first defaults — your entries stay yours.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// tech_stack</p>
+                        <div class="pm-chips">
+                            <span class="pm-chip">React</span>
+                            <span class="pm-chip">Python</span>
+                            <span class="pm-chip">NLP</span>
+                            <span class="pm-chip">Sentiment Models</span>
+                            <span class="pm-chip">REST APIs</span>
+                            <span class="pm-chip">Chart.js / D3</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// engineering_challenges</p>
+                        <ul class="pm-list">
+                            <li>Balancing on-device privacy with model accuracy for sentiment scoring.</li>
+                            <li>Designing visualizations that feel supportive rather than clinical.</li>
+                            <li>Handling long-form entries efficiently without blocking the UI thread.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-cta-row">
+                        <a class="pm-cta pm-cta--primary" href="https://mveer1.github.io/echo-journal/" target="_blank"
+                            rel="noopener noreferrer">
+                            <span class="material-symbols-outlined">rocket_launch</span>
+                            Launch Live Demo
+                        </a>
+                        <button class="pm-cta" data-project-close>
+                            <span class="material-symbols-outlined">close</span>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Research Scout -->
+        <div class="project-modal-overlay" data-project-id="ai-research-scout" role="dialog" aria-modal="true"
+            aria-labelledby="pm-scout-title">
+            <div class="project-modal-content terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close" data-project-close aria-label="Close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title">ai_research_scout.exe</span>
+                </div>
+                <div class="terminal-content project-modal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">user@neural-net:~$</span>
+                        <span class="command">./launch research_scout --index=arxiv</span>
+                    </div>
+
+                    <div class="pm-hero">
+                        <div class="pm-hero-icon"
+                            style="background: linear-gradient(135deg, rgba(59,130,246,0.35), rgba(99,102,241,0.25));">
+                            <span class="material-symbols-outlined">search_insights</span>
+                        </div>
+                        <div class="pm-hero-meta">
+                            <h3 class="pm-title" id="pm-scout-title">AI Research Scout</h3>
+                            <p class="pm-subtitle">LLM-powered research assistant · RAG · Paper synthesis</p>
+                            <span class="pm-badge pm-badge--live">Live System</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-image-container">
+                        <img src="assets/images/ai_research_scout_min.png" alt="AI Research Scout UI" loading="lazy" width="1024" height="1024" />
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// overview</p>
+                        <p class="pm-body">AI Research Scout accelerates literature review by scanning, summarizing,
+                            and organizing academic papers on demand. It combines retrieval-augmented generation with
+                            LLM-based synthesis to answer research questions in the language of the papers themselves —
+                            with citations you can trust and trace back.</p>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// key_features</p>
+                        <ul class="pm-list">
+                            <li>Semantic search across academic corpora with abstract-level ranking.</li>
+                            <li>LLM-generated summaries, key findings, and comparison across papers.</li>
+                            <li>RAG pipeline that grounds every answer in cited source passages.</li>
+                            <li>Topic clustering to spot related work you may have missed.</li>
+                            <li>Export-ready notes for downstream writing and citation.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// tech_stack</p>
+                        <div class="pm-chips">
+                            <span class="pm-chip">Python</span>
+                            <span class="pm-chip">LangChain</span>
+                            <span class="pm-chip">LLM APIs</span>
+                            <span class="pm-chip">Vector Search</span>
+                            <span class="pm-chip">Embeddings</span>
+                            <span class="pm-chip">NLP Preprocessing</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// engineering_challenges</p>
+                        <ul class="pm-list">
+                            <li>Chunking long PDFs while preserving semantic boundaries.</li>
+                            <li>Minimizing hallucination through strict retrieval-first prompting.</li>
+                            <li>Keeping cost predictable across large corpora and repeated queries.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-cta-row">
+                        <a class="pm-cta pm-cta--primary" href="https://mveer1.github.io/AI-research-scout/"
+                            target="_blank" rel="noopener noreferrer">
+                            <span class="material-symbols-outlined">rocket_launch</span>
+                            Launch Live Demo
+                        </a>
+                        <button class="pm-cta" data-project-close>
+                            <span class="material-symbols-outlined">close</span>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Future Project (Roadmap) -->
+        <div class="project-modal-overlay" data-project-id="future-project" role="dialog" aria-modal="true"
+            aria-labelledby="pm-future-title">
+            <div class="project-modal-content terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close" data-project-close aria-label="Close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title">roadmap.plan</span>
+                </div>
+                <div class="terminal-content project-modal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">user@neural-net:~$</span>
+                        <span class="command">cat roadmap/next_pipeline.md</span>
+                    </div>
+
+                    <div class="pm-hero">
+                        <div class="pm-hero-icon"
+                            style="background: linear-gradient(135deg, rgba(100,100,120,0.35), rgba(60,60,80,0.25));">
+                            <span class="material-symbols-outlined">rocket_launch</span>
+                        </div>
+                        <div class="pm-hero-meta">
+                            <h3 class="pm-title" id="pm-future-title">Next Pipeline · In R&amp;D</h3>
+                            <p class="pm-subtitle">Agentic data platform · Real-time + GenAI · Coming soon</p>
+                            <span class="pm-badge pm-badge--soon">Roadmap</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-image-container">
+                        <img src="assets/images/future_project_min.png" alt="Future Project Blueprint" loading="lazy" width="1024" height="1024" />
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// direction</p>
+                        <p class="pm-body">The next build combines everything I love about modern data engineering:
+                            streaming ingestion, a lakehouse core, LLM-powered agents that reason over the data, and a
+                            control plane that treats pipelines as first-class products with contracts, SLAs, and
+                            observability.</p>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// planned_capabilities</p>
+                        <ul class="pm-list">
+                            <li>Real-time CDC ingestion into an Iceberg / Delta lakehouse.</li>
+                            <li>Agentic workflows over the warehouse via MCP-style tool interfaces.</li>
+                            <li>Automated data quality with contracts, tests, and lineage baked in.</li>
+                            <li>Cost + performance observability dashboards from day one.</li>
+                            <li>Natural-language interface for analysts to query and explain data.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// planned_stack</p>
+                        <div class="pm-chips">
+                            <span class="pm-chip">Kafka / Flink</span>
+                            <span class="pm-chip">Iceberg / Delta</span>
+                            <span class="pm-chip">dbt</span>
+                            <span class="pm-chip">Airflow / Dagster</span>
+                            <span class="pm-chip">LangGraph</span>
+                            <span class="pm-chip">Vector DB</span>
+                            <span class="pm-chip">Terraform</span>
+                            <span class="pm-chip">Kubernetes</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-cta-row">
+                        <a class="pm-cta pm-cta--primary"
+                            href="mailto:mveer.rc@gmail.com?subject=Curious%20about%20your%20next%20project">
+                            <span class="material-symbols-outlined">alternate_email</span>
+                            Ping me when it ships
+                        </a>
+                        <button class="pm-cta" data-project-close>
+                            <span class="material-symbols-outlined">close</span>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     <script src="timeline-data.js"></script>
     <script src="app.js"></script>
 </body>

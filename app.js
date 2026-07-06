@@ -1,6 +1,4 @@
 // Global variables
-let mouseX = 0;
-let mouseY = 0;
 let isLoading = true;
 let currentSection = 'hero';
 let currentTheme = 'dark';
@@ -22,8 +20,6 @@ function initializeApp() {
     initNavigation();
     initScrollAnimations();
     initScrollReveal();
-    initSkillBars();
-    initAnimatedSkillsList();
     initTimeline();
     initProjects();
     initContactForm();
@@ -31,6 +27,7 @@ function initializeApp() {
     initProfileModal();
     initParallax();
     initThreeHeroScene();
+    optimizeAnimations();
 
     // Handle mobile detection
     if (window.innerWidth <= 768) {
@@ -177,7 +174,7 @@ function initCustomCursor() {
     updateCursor();
 
     // Cursor interactions
-    const interactiveElements = document.querySelectorAll('button, a, .project-card, .timeline-item');
+    const interactiveElements = document.querySelectorAll('button, a, .timeline-item, .project-card-v2');
 
     interactiveElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
@@ -209,14 +206,28 @@ function initMatrixBackground() {
 
     const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/[]{}()!@#$%^&*';
 
-    function drawMatrix() {
+    // Cache theme-derived colors (updated on theme change)
+    let matrixFadeBg = 'rgba(10, 10, 10, 0.04)';
+    let matrixTextColor = '#bada55';
+
+    function updateMatrixColors() {
         const style = getComputedStyle(document.documentElement);
-        const fadeBg = style.getPropertyValue('--matrix-fade').trim() || 'rgba(10, 10, 10, 0.04)';
-        const textColor = style.getPropertyValue('--primary-cyber').trim() || '#bada55';
-        ctx.fillStyle = fadeBg;
+        matrixFadeBg = style.getPropertyValue('--matrix-fade').trim() || 'rgba(10, 10, 10, 0.04)';
+        matrixTextColor = style.getPropertyValue('--primary-cyber').trim() || '#bada55';
+    }
+    updateMatrixColors();
+
+    // Re-read colors when theme changes
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => setTimeout(updateMatrixColors, 50));
+    }
+
+    function drawMatrix() {
+        ctx.fillStyle = matrixFadeBg;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = textColor;
+        ctx.fillStyle = matrixTextColor;
         ctx.font = '15px monospace';
 
         for (let i = 0; i < drops.length; i++) {
@@ -230,7 +241,16 @@ function initMatrixBackground() {
         }
     }
 
-    setInterval(drawMatrix, 35);
+    // Use requestAnimationFrame with time-delta throttle instead of setInterval
+    let lastMatrixTime = 0;
+    function matrixLoop(timestamp) {
+        if (timestamp - lastMatrixTime >= 35) {
+            drawMatrix();
+            lastMatrixTime = timestamp;
+        }
+        requestAnimationFrame(matrixLoop);
+    }
+    requestAnimationFrame(matrixLoop);
 
     // Resize handler
     window.addEventListener('resize', () => {
@@ -262,6 +282,30 @@ function initNeuralNetwork() {
         });
     }
 
+    // Cache theme-derived colors (updated on theme change)
+    const hexToRgb = (hex) => {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return `${r}, ${g}, ${b}`;
+    };
+
+    let neuralAccentColor = '#bada55';
+    let neuralRgb = hexToRgb(neuralAccentColor);
+
+    function updateNeuralColors() {
+        const style = getComputedStyle(document.documentElement);
+        neuralAccentColor = style.getPropertyValue('--primary-cyber').trim() || '#bada55';
+        neuralRgb = hexToRgb(neuralAccentColor);
+    }
+    updateNeuralColors();
+
+    // Re-read colors when theme changes
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => setTimeout(updateNeuralColors, 50));
+    }
+
     function updateNodes() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -279,17 +323,8 @@ function initNeuralNetwork() {
             node.y = Math.max(0, Math.min(canvas.height, node.y));
         });
 
-        // Draw connections
-        const style = getComputedStyle(document.documentElement);
-        const accentColor = style.getPropertyValue('--primary-cyber').trim() || '#bada55';
-        // Parse hex to rgb for dynamic opacity
-        const hexToRgb = (hex) => {
-            const r = parseInt(hex.slice(1, 3), 16);
-            const g = parseInt(hex.slice(3, 5), 16);
-            const b = parseInt(hex.slice(5, 7), 16);
-            return `${r}, ${g}, ${b}`;
-        };
-        const rgb = hexToRgb(accentColor);
+        // Draw connections using cached color values
+        const rgb = neuralRgb;
         ctx.strokeStyle = `rgba(${rgb}, 0.2)`;
         ctx.lineWidth = 1;
 
@@ -311,7 +346,7 @@ function initNeuralNetwork() {
         }
 
         // Draw nodes
-        ctx.fillStyle = accentColor;
+        ctx.fillStyle = neuralAccentColor;
         nodes.forEach(node => {
             ctx.beginPath();
             ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
@@ -319,7 +354,7 @@ function initNeuralNetwork() {
 
             // Add glow effect
             ctx.shadowBlur = 10;
-            ctx.shadowColor = accentColor;
+            ctx.shadowColor = neuralAccentColor;
             ctx.beginPath();
             ctx.arc(node.x, node.y, 1, 0, Math.PI * 2);
             ctx.fill();
@@ -469,10 +504,7 @@ function scrollToSection(sectionId) {
     }
 }
 
-// updateActiveNav is no longer needed (burger menu replaces active-section highlighting)
-function updateActiveNav() { }
-
-// Scroll Animations
+// Scroll Animations — generic .animate-in tagging for observed sections
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -483,384 +515,13 @@ function initScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-
-                // Trigger specific animations based on element type
-                if (entry.target.classList.contains('skill-item')) {
-                    animateSkillBar(entry.target);
-                }
-
-                if (entry.target.classList.contains('timeline-item')) {
-                    animateTimelineItem(entry.target);
-                }
             }
         });
     }, observerOptions);
 
-    // Observe elements for animation
-    const elementsToAnimate = document.querySelectorAll('.skill-item, .timeline-item, .project-card, .terminal-window');
+    // Observe elements for animation (timeline items reveal via their own observer in initTimeline)
+    const elementsToAnimate = document.querySelectorAll('.terminal-window');
     elementsToAnimate.forEach(el => observer.observe(el));
-}
-
-// Animated Skills List
-function initAnimatedSkillsList() {
-    const skillsContainer = document.getElementById('animatedSkillsList');
-    const skillsList = document.getElementById('skillsScrollList');
-    const topGradient = document.getElementById('topGradient');
-    const bottomGradient = document.getElementById('bottomGradient');
-
-    if (!skillsContainer || !skillsList) return;
-
-    // Skills data with percentages
-    const skills = [
-        { name: 'Python', level: 90 },
-        { name: 'SQL', level: 88 },
-        { name: 'Golang', level: 75 },
-        { name: 'Java', level: 80 },
-        { name: 'Rust', level: 70 },
-        { name: 'Bash', level: 82 },
-        { name: 'C', level: 75 },
-        { name: 'C++', level: 75 },
-        { name: 'JavaScript', level: 80 },
-        { name: 'HTML', level: 85 },
-        { name: 'FastAPI', level: 85 },
-        { name: 'Flask', level: 82 },
-        { name: 'Streamlit', level: 85 },
-        { name: 'React', level: 75 },
-        { name: 'PySpark', level: 80 },
-        { name: 'dbt', level: 85 },
-        { name: 'PyTorch', level: 78 },
-        { name: 'LangChain', level: 80 },
-        { name: 'NLP libraries', level: 78 },
-        { name: 'OCR libraries', level: 75 },
-        { name: 'Snowflake', level: 85 },
-        { name: 'Databricks', level: 82 },
-        { name: 'Delta Lake', level: 80 },
-        { name: 'Fivetran', level: 78 },
-        { name: 'Oracle DB', level: 75 },
-        { name: 'Azure Data Factory', level: 83 },
-        { name: 'AWS', level: 80 },
-        { name: 'GCP', level: 78 },
-        { name: 'BigQuery', level: 80 },
-        { name: 'Firebase', level: 75 },
-        { name: 'MySQL', level: 82 },
-        { name: 'PostgreSQL', level: 82 },
-        { name: 'SQLite', level: 80 },
-        { name: 'Rockset', level: 70 },
-        { name: 'Docker', level: 85 },
-        { name: 'Kubernetes', level: 78 },
-        { name: 'Airflow', level: 82 },
-        { name: 'Control-M', level: 75 },
-        { name: 'ETL pipeline design', level: 85 },
-        { name: 'ELT pipeline design', level: 85 },
-        { name: 'Scheduling systems', level: 82 },
-        { name: 'Data quality automation', level: 85 },
-        { name: 'CI/CD pipelines', level: 80 },
-        { name: 'GitHub Actions', level: 82 },
-        { name: 'Jenkins', level: 75 },
-        { name: 'LLMs', level: 80 },
-        { name: 'SLMs', level: 75 },
-        { name: 'RAG architectures', level: 82 },
-        { name: 'MCPs', level: 75 },
-        { name: 'RESTful APIs', level: 85 },
-        { name: 'Microservices', level: 80 },
-        { name: 'API integration', level: 85 },
-        { name: 'Unit testing', level: 82 },
-        { name: 'Test automation frameworks', level: 80 },
-        { name: 'Confidential computing workflows', level: 75 },
-        { name: 'Encryption testing', level: 75 },
-        { name: 'Key management testing', level: 75 },
-        { name: 'Canvas APIs', level: 70 },
-        { name: 'Responsive web design', level: 80 },
-        { name: 'Performance optimization', level: 82 },
-        { name: 'Power BI', level: 78 },
-        { name: 'Data visualization', level: 85 },
-        { name: 'Stakeholder reporting', level: 85 },
-        { name: 'Plotly', level: 82 },
-        { name: 'D3', level: 75 }
-    ];
-
-    let selectedIndex = -1;
-    let keyboardNav = false;
-    let isScrolling = false;
-
-    // Clear existing content
-    skillsList.innerHTML = '';
-
-    // Create skill item element
-    function createSkillItem(skill, index, isDuplicate = false) {
-        const item = document.createElement('div');
-        item.className = 'animated-skill-item';
-        item.setAttribute('data-index', isDuplicate ? index + skills.length : index);
-        item.setAttribute('data-original-index', index);
-        item.style.setProperty('--skill-level', skill.level + '%');
-
-        const fillDiv = document.createElement('div');
-        fillDiv.className = 'skill-fill-bg';
-        fillDiv.style.width = '0%'; // Start at 0, will animate to skill.level
-        fillDiv.setAttribute('data-level', skill.level + '%');
-
-        const textP = document.createElement('p');
-        textP.className = 'animated-skill-text';
-        textP.textContent = skill.name;
-
-        item.appendChild(fillDiv);
-        item.appendChild(textP);
-
-        // Mouse enter
-        item.addEventListener('mouseenter', () => {
-            if (!keyboardNav && !isScrolling) {
-                setSelectedIndex(index);
-            }
-        });
-
-        // Click
-        item.addEventListener('click', () => {
-            setSelectedIndex(index);
-            console.log('Selected skill:', skill.name, index);
-        });
-
-        return item;
-    }
-
-    // Generate skill items - create multiple copies for infinite scroll
-    const copies = 3; // Create 3 copies for seamless looping
-    for (let copy = 0; copy < copies; copy++) {
-        skills.forEach((skill, index) => {
-            const item = createSkillItem(skill, index, copy > 0);
-            skillsList.appendChild(item);
-        });
-    }
-
-    // Set selected index
-    function setSelectedIndex(index) {
-        // Remove previous selection from all copies
-        const prevSelected = skillsList.querySelectorAll('.animated-skill-item.selected');
-        prevSelected.forEach(item => {
-            item.classList.remove('selected');
-            const textEl = item.querySelector('.animated-skill-text');
-            if (textEl) textEl.classList.remove('selected');
-        });
-
-        // Set new selection - select all copies with same original index
-        selectedIndex = index;
-        if (index >= 0 && index < skills.length) {
-            const items = skillsList.querySelectorAll(`[data-original-index="${index}"]`);
-            items.forEach(item => {
-                item.classList.add('selected');
-                const textEl = item.querySelector('.animated-skill-text');
-                if (textEl) textEl.classList.add('selected');
-            });
-
-            // Scroll to first visible instance
-            if (keyboardNav) {
-                const firstItem = Array.from(items).find(item => {
-                    const rect = item.getBoundingClientRect();
-                    const containerRect = skillsList.getBoundingClientRect();
-                    return rect.top >= containerRect.top && rect.top <= containerRect.bottom;
-                }) || items[0];
-
-                if (firstItem) {
-                    scrollToItem(firstItem);
-                }
-            }
-        }
-    }
-
-    // Scroll to item
-    function scrollToItem(item) {
-        if (!keyboardNav || !item) return;
-
-        const container = skillsList;
-        const extraMargin = 50;
-        const containerScrollTop = container.scrollTop;
-        const containerHeight = container.clientHeight;
-        const itemTop = item.offsetTop;
-        const itemBottom = itemTop + item.offsetHeight;
-
-        if (itemTop < containerScrollTop + extraMargin) {
-            container.scrollTo({ top: itemTop - extraMargin, behavior: 'smooth' });
-        } else if (itemBottom > containerScrollTop + containerHeight - extraMargin) {
-            container.scrollTo({
-                top: itemBottom - containerHeight + extraMargin,
-                behavior: 'smooth'
-            });
-        }
-
-        keyboardNav = false;
-    }
-
-    // Handle scroll for gradients
-    function handleScroll() {
-        const scrollTop = skillsList.scrollTop;
-        const scrollHeight = skillsList.scrollHeight;
-        const clientHeight = skillsList.clientHeight;
-
-        // Top gradient
-        const topOpacity = Math.min(scrollTop / 50, 1);
-        topGradient.style.opacity = topOpacity;
-
-        // Bottom gradient
-        const bottomDistance = scrollHeight - (scrollTop + clientHeight);
-        const bottomOpacity = scrollHeight <= clientHeight ? 0 : Math.min(bottomDistance / 50, 1);
-        bottomGradient.style.opacity = bottomOpacity;
-    }
-
-    // Infinite scroll logic
-    function setupInfiniteScroll() {
-        let singleListHeight = 0;
-
-        // Calculate actual height of one copy
-        function calculateListHeight() {
-            const firstItem = skillsList.querySelector('[data-original-index="0"]');
-            const lastItem = skillsList.querySelector(`[data-original-index="${skills.length - 1}"]`);
-
-            if (firstItem && lastItem) {
-                const firstTop = firstItem.offsetTop;
-                const lastTop = lastItem.offsetTop;
-                const lastHeight = lastItem.offsetHeight;
-                singleListHeight = (lastTop - firstTop) + lastHeight + 16; // Add margin
-            } else {
-                // Fallback calculation
-                singleListHeight = skills.length * 80;
-            }
-        }
-
-        // Calculate on load and resize
-        setTimeout(() => {
-            calculateListHeight();
-            // Start scroll position at middle copy for bidirectional scrolling
-            if (singleListHeight > 0) {
-                skillsList.scrollTop = singleListHeight;
-            }
-        }, 200);
-
-        window.addEventListener('resize', () => {
-            setTimeout(() => {
-                calculateListHeight();
-            }, 100);
-        });
-
-        skillsList.addEventListener('scroll', () => {
-            if (isScrolling) {
-                handleScroll();
-                return;
-            }
-
-            // Recalculate if needed
-            if (singleListHeight === 0) {
-                calculateListHeight();
-                handleScroll();
-                return;
-            }
-
-            const scrollTop = skillsList.scrollTop;
-            const scrollThreshold = singleListHeight * 2;
-
-            // When scrolled past 2 copies, reset to first copy seamlessly
-            if (scrollTop >= scrollThreshold) {
-                isScrolling = true;
-                skillsList.scrollTop = scrollTop - singleListHeight;
-                setTimeout(() => {
-                    isScrolling = false;
-                }, 50);
-            }
-
-            // When scrolled to top, jump to middle copy for reverse scroll
-            if (scrollTop <= 0) {
-                isScrolling = true;
-                skillsList.scrollTop = singleListHeight;
-                setTimeout(() => {
-                    isScrolling = false;
-                }, 50);
-            }
-
-            // Update gradients
-            handleScroll();
-        });
-    }
-
-    setupInfiniteScroll();
-
-    // Keyboard navigation - only when skills section is in view
-    let isSkillsSectionInView = false;
-    const skillsSectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            isSkillsSectionInView = entry.isIntersecting;
-        });
-    }, { threshold: 0.1 });
-
-    const skillsSection = document.querySelector('.skills-section');
-    if (skillsSection) {
-        skillsSectionObserver.observe(skillsSection);
-    }
-
-    function handleKeyDown(e) {
-        // Only handle keyboard navigation when skills section is visible
-        if (!isSkillsSectionInView) return;
-
-        if (e.key === 'ArrowDown' || (e.key === 'Tab' && !e.shiftKey)) {
-            e.preventDefault();
-            keyboardNav = true;
-            const newIndex = selectedIndex < 0 ? 0 : Math.min(selectedIndex + 1, skills.length - 1);
-            setSelectedIndex(newIndex);
-        } else if (e.key === 'ArrowUp' || (e.key === 'Tab' && e.shiftKey)) {
-            e.preventDefault();
-            keyboardNav = true;
-            const newIndex = selectedIndex < 0 ? skills.length - 1 : Math.max(selectedIndex - 1, 0);
-            setSelectedIndex(newIndex);
-        } else if (e.key === 'Enter') {
-            if (selectedIndex >= 0 && selectedIndex < skills.length) {
-                e.preventDefault();
-                console.log('Selected skill:', skills[selectedIndex].name, selectedIndex);
-            }
-        }
-    }
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    // Intersection Observer for animations
-    const observerOptions = {
-        threshold: 0.3,
-        rootMargin: '0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Animate fill when visible
-                const fillBg = entry.target.querySelector('.skill-fill-bg');
-                if (fillBg && fillBg.style.width === '0%') {
-                    const targetWidth = fillBg.getAttribute('data-level');
-                    setTimeout(() => {
-                        fillBg.style.width = targetWidth;
-                    }, 200);
-                }
-            }
-        });
-    }, observerOptions);
-
-    // Observe all skill items
-    skillsList.querySelectorAll('.animated-skill-item').forEach((item) => {
-        observer.observe(item);
-    });
-
-    // Initial gradient state
-    handleScroll();
-}
-
-// Skills Bar Animation (legacy)
-function initSkillBars() {
-    // Skills will be animated when they come into view via scroll animations
-}
-
-function animateSkillBar(skillItem) {
-    const progressBar = skillItem.querySelector('.skill-progress');
-    const level = progressBar.getAttribute('data-level');
-
-    setTimeout(() => {
-        progressBar.style.width = level + '%';
-    }, 200);
 }
 
 // ============================================
@@ -1116,71 +777,91 @@ function initTimelineExpand() {
 
 // initModeSwitcher removed — mode switcher UI was removed
 
-// Legacy compat — animateTimelineItem is no longer used but referenced by initScrollAnimations
-function animateTimelineItem(item) {
-    if (!item.classList.contains('visible')) {
-        item.classList.add('visible');
-    }
-}
-
 // Projects
 function initProjects() {
-    const projectCards = document.querySelectorAll('.project-card');
+    // Project detail modals
+    initProjectModals();
+}
 
-    projectCards.forEach(card => {
-        // Add hover sound effect visual
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) scale(1.02)';
-            card.style.boxShadow = '0 20px 40px rgba(186, 218, 85, 0.3)';
+// ---- Project Detail Modals ----
+function initProjectModals() {
+    const triggers = document.querySelectorAll('[data-project-modal]');
+    const modals = document.querySelectorAll('.project-modal-overlay[data-project-id]');
+    if (!triggers.length || !modals.length) return;
+
+    let lastFocusedTrigger = null;
+
+    function openProjectModal(id, trigger) {
+        const modal = document.querySelector(`.project-modal-overlay[data-project-id="${id}"]`);
+        if (!modal) return;
+        // Close any already open project modal
+        closeAllProjectModals();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        lastFocusedTrigger = trigger || null;
+
+        // Focus first focusable element inside modal for accessibility
+        const focusable = modal.querySelector('button, a[href], [tabindex]:not([tabindex="-1"])');
+        if (focusable) {
+            setTimeout(() => focusable.focus(), 60);
+        }
+    }
+
+    function closeProjectModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('active');
+        // Only restore body scroll if no other modal is active
+        if (!document.querySelector('.project-modal-overlay.active, .summary-modal-overlay.active')) {
+            document.body.style.overflow = '';
+        }
+        if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+            lastFocusedTrigger.focus();
+        }
+    }
+
+    function closeAllProjectModals() {
+        document.querySelectorAll('.project-modal-overlay.active').forEach(m => {
+            m.classList.remove('active');
         });
+    }
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
-            card.style.boxShadow = 'none';
-        });
-
-        // Touch support for mobile
-        card.addEventListener('touchstart', () => {
-            card.classList.add('touched');
+    // Wire triggers
+    triggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const id = btn.getAttribute('data-project-modal');
+            openProjectModal(id, btn);
         });
     });
 
-    // Initialize project animations
-    initPhysicsSimulation();
-    initFuturePreview();
-}
+    // Wire close controls
+    modals.forEach(modal => {
+        // Close on overlay click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeProjectModal(modal);
+            }
+        });
 
-function initPhysicsSimulation() {
-    const particles = document.querySelectorAll('.physics-simulation .particle');
-
-    particles.forEach((particle, index) => {
-        // Create random movement patterns
-        setInterval(() => {
-            const x = Math.random() * 80 + 10; // 10-90%
-            const y = Math.random() * 80 + 10; // 10-90%
-
-            particle.style.left = x + '%';
-            particle.style.top = y + '%';
-            particle.style.transform = `scale(${0.5 + Math.random() * 0.5})`;
-        }, 2000 + index * 500);
+        // Close buttons inside modal (control.close and [data-project-close])
+        modal.querySelectorAll('[data-project-close]').forEach(closer => {
+            closer.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeProjectModal(modal);
+            });
+        });
     });
-}
 
-function initFuturePreview() {
-    const dots = document.querySelectorAll('.loading-dots .dot');
-    const hologramText = document.querySelector('.hologram-text');
-
-    // Add extra glitch effect to hologram text
-    setInterval(() => {
-        hologramText.style.textShadow = `
-            ${Math.random() * 4 - 2}px ${Math.random() * 4 - 2}px 0 #ff0040,
-            ${Math.random() * 4 - 2}px ${Math.random() * 4 - 2}px 0 #00ccff
-        `;
-
-        setTimeout(() => {
-            hologramText.style.textShadow = 'none';
-        }, 50);
-    }, 3000);
+    // Escape key closes topmost active project modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const active = document.querySelector('.project-modal-overlay.active');
+            if (active) {
+                e.preventDefault();
+                closeProjectModal(active);
+            }
+        }
+    });
 }
 
 // Contact Form
@@ -1320,6 +1001,14 @@ function initProfileModal() {
         closeProfileModal();
     });
 
+    // Close modal via any [data-close-summary] button (e.g. Acknowledge)
+    modal.querySelectorAll('[data-close-summary]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeProfileModal();
+        });
+    });
+
     // Close modal via overlay click
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -1336,7 +1025,10 @@ function initProfileModal() {
 
     function closeProfileModal() {
         modal.classList.remove('active');
-        document.body.style.overflow = ''; // Restore background scrolling
+        // Only restore scroll if no other modal is active
+        if (!document.querySelector('.project-modal-overlay.active')) {
+            document.body.style.overflow = '';
+        }
     }
 }
 
@@ -1430,33 +1122,6 @@ function startHeroAnimations() {
     });
 }
 
-// Mobile Touch Handling
-function initMobileSupport() {
-    if (window.innerWidth <= 768) {
-        // Add touch support for project cards
-        const projectCards = document.querySelectorAll('.project-card');
-
-        projectCards.forEach(card => {
-            let touchStartTime = 0;
-
-            card.addEventListener('touchstart', (e) => {
-                touchStartTime = Date.now();
-            });
-
-            card.addEventListener('touchend', (e) => {
-                const touchDuration = Date.now() - touchStartTime;
-
-                if (touchDuration < 500) { // Quick tap
-                    card.classList.toggle('flipped');
-                }
-            });
-        });
-
-        // Disable hover effects on mobile
-        document.body.classList.add('mobile-device');
-    }
-}
-
 // Performance optimization
 function optimizeAnimations() {
     // Reduce animations on lower-end devices
@@ -1511,10 +1176,6 @@ const dynamicStyles = `
         }
     }
     
-    .mobile-device .project-card:hover {
-        transform: none !important;
-    }
-    
     .reduced-motion * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
@@ -1525,15 +1186,7 @@ const dynamicStyles = `
         animation-play-state: paused !important;
     }
     
-    .project-card.flipped .card-inner {
-        transform: rotateY(180deg);
-    }
-    
     @media (max-width: 768px) {
-        .project-card {
-            touch-action: manipulation;
-        }
-        
         .timeline-item {
             touch-action: manipulation;
         }
@@ -1554,9 +1207,8 @@ const styleSheet = document.createElement('style');
 styleSheet.textContent = dynamicStyles;
 document.head.appendChild(styleSheet);
 
-// Initialize mobile support and optimizations
+// Initialize performance optimizations after page load
 window.addEventListener('load', () => {
-    initMobileSupport();
     optimizeAnimations();
 });
 
