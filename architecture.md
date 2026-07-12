@@ -29,7 +29,7 @@ The portfolio is built as a highly performant, lightweight static site with no h
 
 ### 3. Canvas Animations
 The site implements performance-conscious custom canvas backgrounds rather than importing heavy Three.js scenes where not required:
-- **Matrix Background:** A custom implementation in `app.js` (`initMatrixBackground`) drawing descending character streams on a `<canvas>` element using a requestAnimationFrame or setInterval loop.
+- **Matrix Background:** A custom implementation in `app.js` (`initMatrixBackground`) drawing descending character streams on a `<canvas>` element using a throttled `requestAnimationFrame` loop.
 - **Neural Network Background:** An interactive node-and-link visualization (`initNeuralNetwork`) mapping connections based on node proximity.
 
 ### 4. Interactive Components
@@ -38,5 +38,7 @@ The site implements performance-conscious custom canvas backgrounds rather than 
 - **Form Integration:** The Contact section leverages Formspree (`https://formspree.io/f/xnjnezwz`) for serverless form submissions, eliminating the need for a custom backend.
 
 ## Performance and Deployment
-- The site prioritizes performance by limiting external library dependencies, relying on native APIs (`IntersectionObserver`, `window.matchMedia`, `localStorage`).
-- Deployment is handled statically. The Vite build command outputs optimized, minified HTML/CSS/JS ready to be hosted on any static provider (e.g., GitHub Pages).
+- The site prioritizes performance by limiting external library dependencies and relying on native APIs (`IntersectionObserver`, `window.matchMedia`, `localStorage`).
+- **Asset Optimization:** Heavy dependencies (Three.js) are deferred, and modal images are native lazy-loaded (`loading="lazy"`) with explicit dimensions to prevent Cumulative Layout Shift (CLS).
+- **SEO & Accessibility:** Structured with semantic HTML, comprehensive `og:image`/`twitter:card` meta tags for social previews, ARIA roles on canvas elements, and a `<noscript>` fallback for JS-disabled environments.
+- Deployment is handled statically. The Vite build command outputs optimized, minified HTML/CSS/JS ready to be hosted on any static provider (e.g., GitHub Pages). Note that the CI pipeline is Vite-based; legacy Jekyll workflows have been removed.
