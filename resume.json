@@ -1,0 +1,89 @@
+{
+  "personal_info": {
+    "name": "Mahavir Chaudhari",
+    "email": "mveer.rc@gmail.com",
+    "linkedin": "https://linkedin.com/in/mahavir01",
+    "portfolio": "https://mveer1.github.io/",
+    "github": "https://github.com/mveer1",
+    "phone": "+91 9405476969"
+  },
+  "experience": [
+    {
+      "date": "Jul 2025 - Present",
+      "role": "Data Engineer II",
+      "company": "Providence Global Center",
+      "location": "Hyderabad",
+      "highlights": [
+        "Designed and implemented a financial reconciliation data layer in Snowflake using dimensional modeling, SCD Type 2 dimensions, ELT pipelines, and batch processing, consolidating 1B+ records daily into analytics-ready datasets, reducing manual reconciliation effort by 80% while enabling audit-ready financial reporting.",
+        "Architected the AI Data Lifecycle Companion (AIDLC), an enterprise platform for agentic AI that standardizes context engineering, MCP integrations, reusable skills, agent orchestration, and HIPAA-compliant guardrails, enabling Data Engineering teams to rapidly build scalable, production-grade AI applications.",
+        "Modernized enterprise data infrastructure by migrating 400+ PySpark ETL workloads and 11 production ingestion pipelines from Databricks to Snowflake, leveraging AI agents, reusable skills, and automation tools to accelerate migration while ensuring functional parity and zero production downtime."
+      ]
+    },
+    {
+      "date": "Jul 2023 - Jun 2025",
+      "role": "Data Engineer I",
+      "company": "Providence Global Center",
+      "location": "Hyderabad",
+      "highlights": [
+        "Re-architected the Mandatory Days Off (MDO) scheduling engine by redesigning data models, query paths, and batch workflows across enterprise warehouses and curated data marts, reducing execution time from 2 hours to 10 minutes (92%) while supporting scheduling for 6,000+ clinicians.",
+        "Engineered a metadata-driven validation framework using Python, Streamlit, and Dynamic SQL generation, implementing reusable validation rules, schema verification, and automated data reconciliation across production ETL pipelines, reducing QA execution time by 86% (7 hours → 1 hour) while improving data reliability."
+      ]
+    },
+    {
+      "date": "Jan 2023 - Jun 2023",
+      "role": "Software Development Intern",
+      "company": "Fortranix Technologies",
+      "location": "Bangalore",
+      "highlights": [
+        "Developed automated Rust unit tests for an enterprise software security platform, increasing code coverage from 30% to 80% and strengthening production reliability through comprehensive validation."
+      ]
+    },
+    {
+      "date": "May 2021 - Aug 2022",
+      "role": "Software Developer (Part-time)",
+      "company": "Streamn",
+      "location": "Remote",
+      "highlights": [
+        "Built GPU-accelerated computer vision models using Python, TensorFlow/PyTorch, Jupyter, and Google Colab to automate logo detection across video streams, improving the scalability of media content analysis."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Enterprise AI Context Engineering",
+      "link": null,
+      "highlights": [
+        "Architected a containerized context engineering platform for enterprise AI agents using Python, Docker, MCP, and LLMs, implementing a layered context architecture with semantic layers, ontologies, knowledge graphs, and reusable tools to integrate enterprise systems and standardize AI-assisted data engineering workflows.",
+        "Engineered a modular multi-agent runtime with 15+ reusable Data Engineering skills, dynamic context composition, semantic retrieval, tool orchestration to Oracle, Snowflake, and ADF, and enterprise HIPAA-compliant guardrails, enabling complex KTLO operations through natural language."
+      ]
+    },
+    {
+      "name": "Smart Research Scout",
+      "link": "https://github.com/mveer1/AI-research-scout",
+      "highlights": [
+        "Designed and developed a full-stack AI research platform using FastAPI, React, PostgreSQL, Redis, and vector search, aggregating technical knowledge from research papers, developer communities, and social platforms into a unified semantic search and analytics dashboard."
+      ]
+    }
+  ],
+  "technical_skills": {
+    "Data Engineering": [
+      "Python", "SQL", "Snowflake", "Azure Data Factory (ADF)", "Distributed systems", "PySpark", "dbt", "ETL/ELT", "Data Modeling", "Dimensional Modeling", "SCD", "Data Warehousing", "Batch Processing", "Control-M"
+    ],
+    "AI Systems": [
+      "Agentic AI", "Context Engineering", "Semantic Layers", "Ontologies", "Knowledge Graphs", "Retrieval-Augmented Generation (RAG)", "MCP", "LangGraph", "AI Agents", "Tool Calling", "Semantic Search", "Vector Search", "APIs", "Orchestration"
+    ],
+    "Cloud": [
+      "Azure", "AWS", "GCP", "Docker", "Git", "GitHub Actions"
+    ],
+    "Languages & Frameworks": [
+      "FastAPI", "Flask", "React", "PostgreSQL", "Redis", "MySQL", "SQLite", "Java", "Go", "Rust", "Bash", "JavaScript", "HTML/CSS"
+    ]
+  },
+  "education": [
+    {
+      "date": "2019-2023",
+      "degree": "BE in Computer Science",
+      "institution": "BITS Pilani"
+    }
+  ]
+}

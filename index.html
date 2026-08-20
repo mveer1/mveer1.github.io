@@ -17,11 +17,9 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mveer1.github.io">
     <meta property="og:site_name" content="Mahavir Chaudhari — Portfolio">
-    <meta property="og:image" content="https://mveer1.github.io/assets/images/social-preview.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mahavir Chaudhari — Data Engineer">
     <meta name="twitter:description" content="Data Engineer specializing in pipelines, cloud, and AI.">
-    <meta name="twitter:image" content="https://mveer1.github.io/assets/images/social-preview.png">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -55,40 +53,12 @@
       ]
     }
     </script>
-    <link id="dynamic-favicon" rel="icon" type="image/png" href="assets/images/favicons/favicon_2.png">
-    <script>
-        (function() {
-            const numFavicons = 15;
-            const defaultFaviconId = 2;
-            const randomId = Math.floor(Math.random() * numFavicons) + 1;
-            
-            const faviconPath = 'assets/images/favicons/favicon_' + randomId + '.png';
-            const defaultPath = 'assets/images/favicons/favicon_' + defaultFaviconId + '.png';
-            
-            const img = new Image();
-            img.onload = function() {
-                document.getElementById('dynamic-favicon').href = faviconPath;
-            };
-            img.onerror = function() {
-                document.getElementById('dynamic-favicon').href = defaultPath;
-            };
-            img.src = faviconPath;
-        })();
-    </script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <noscript>
-        <style>
-            .loading-screen { display: none !important; }
-            .hero-anim { opacity: 1; transform: none; }
-            .reveal { opacity: 1; transform: none; }
-        </style>
-    </noscript>
 </head>
 
 <body>
@@ -208,7 +178,9 @@
                 </div>
             </div>
             <div class="hero-visual hero-anim hero-anim-3">
-                <div id="three-hero-container"></div>
+                <div id="three-hero-container" tabindex="0" role="img"
+                    aria-label="Interactive neural mesh. Drag to rotate, click to pulse, arrow keys to spin."></div>
+                <p class="hero-visual-hint" id="heroVisualHint">drag to rotate &middot; click to pulse</p>
             </div>
         </section>
 
@@ -289,12 +261,37 @@
         </section>
 
         <div class="matrix-bg">
-            <canvas id="matrix-canvas" role="img" aria-label="Animated matrix code background decoration"></canvas>
+            <canvas id="matrix-canvas"></canvas>
         </div>
 
         <div class="neural-network">
-            <canvas id="neural-canvas" role="img" aria-label="Interactive neural network node visualization"></canvas>
+            <canvas id="neural-canvas"></canvas>
         </div>
+
+        <hr class="section-divider" aria-hidden="true">
+
+        <!-- Idle process: Flappy Byte launcher -->
+        <aside class="arcade-strip reveal" aria-label="Playable: Flappy Byte">
+            <div class="container">
+                <div class="arcade-strip-inner">
+                    <div class="arcade-strip-meta">
+                        <p class="arcade-strip-prompt">
+                            <span class="prompt">user@neural-net:~$</span>
+                            <span class="command">./idle_process --name=flappy_byte</span>
+                        </p>
+                        <p class="arcade-strip-desc">
+                            <span class="arcade-strip-name">FLAPPY_BYTE</span>
+                            <span class="arcade-strip-sep">//</span>
+                            steer a data packet through the firewall. one key, no mercy.
+                        </p>
+                    </div>
+                    <button class="arcade-strip-btn" data-game-open="flappy">
+                        <span class="material-symbols-outlined">sports_esports</span>
+                        RUN
+                    </button>
+                </div>
+            </div>
+        </aside>
 
         <hr class="section-divider" aria-hidden="true">
 
@@ -307,122 +304,233 @@
                         DIGITAL_ARTIFACTS
                         <span class="title-bracket">]</span>
                     </h2>
-                    <p class="section-subtitle">Holographic projections of my digital creations</p>
+                    <p class="section-subtitle">
+                        Production systems, AI platforms, and engineering experiments
+                    </p>
                 </div>
-                <div class="projects-grid-v2">
-                    <!-- Project Card: Context Engineering -->
-                    <div class="project-card-v2">
-                        <div class="pv2-header"
-                            style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.25), rgba(0, 150, 136, 0.15));">
-                            <div class="pv2-header-overlay"></div>
-                            <span class="material-symbols-outlined pv2-header-icon">hub</span>
-                            <span class="pv2-badge pv2-badge--live">Enterprise AI</span>
-                        </div>
-                        <div class="pv2-body">
-                            <h3 class="pv2-title">Context Engineering</h3>
-                            <p class="pv2-desc">Modular context engineering framework for enterprise AI agents, designing reusable skills, MCP integrations, and metadata-driven context abstractions.</p>
-                            <div class="pv2-tags">
-                                <span class="pv2-tag">Python</span>
-                                <span class="pv2-tag">Snowflake</span>
-                                <span class="pv2-tag">MCP</span>
-                            </div>
-                            <button class="pv2-btn" data-project-modal="context-engineering">
-                                View Details
-                                <span class="material-symbols-outlined">arrow_forward</span>
-                            </button>
-                        </div>
-                    </div>
 
-                    <!-- Project Card: Mandatory Days Off -->
-                    <div class="project-card-v2">
-                        <div class="pv2-header"
-                            style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.25), rgba(255, 87, 34, 0.15));">
-                            <div class="pv2-header-overlay"></div>
-                            <span class="material-symbols-outlined pv2-header-icon">calendar_month</span>
-                            <span class="pv2-badge pv2-badge--live">Optimization</span>
-                        </div>
-                        <div class="pv2-body">
-                            <h3 class="pv2-title">Mandatory Days Off</h3>
-                            <p class="pv2-desc">Redesigned scheduling engine supporting 6,000+ clinicians, reducing execution time from 2 hours to 10 minutes (92% improvement).</p>
-                            <div class="pv2-tags">
-                                <span class="pv2-tag">Python</span>
-                                <span class="pv2-tag">SQL</span>
-                                <span class="pv2-tag">Snowflake</span>
-                            </div>
-                            <button class="pv2-btn" data-project-modal="mandatory-days-off">
-                                View Details
-                                <span class="material-symbols-outlined">arrow_forward</span>
-                            </button>
-                        </div>
-                    </div>
+                <div class="projects-grid-v2 reveal reveal--stagger">
 
-                    <!-- Project Card 1: Physics Hyperion -->
+                  <!-- ========================================================= -->
+                    <!-- 10 — kanban-taskboard -->
+                    <!-- ========================================================= -->
                     <div class="project-card-v2">
                         <div class="pv2-header"
-                            style="background: linear-gradient(135deg, rgba(186,218,85,0.25), rgba(0,204,255,0.15));">
+                            style="background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(0,204,255,0.15));">
                             <div class="pv2-header-overlay"></div>
-                            <span class="material-symbols-outlined pv2-header-icon">science</span>
+                            <span class="material-symbols-outlined pv2-header-icon">view_kanban</span>
                             <span class="pv2-badge pv2-badge--live">Live System</span>
                         </div>
-                        <div class="pv2-body">
-                            <h3 class="pv2-title">Physics Hyperion</h3>
-                            <p class="pv2-desc">A sophisticated physics simulation website featuring real-time particle
-                                interactions, gravitational fields, and quantum mechanics visualization.</p>
-                            <div class="pv2-tags">
-                                <span class="pv2-tag">WebGL</span>
-                                <span class="pv2-tag">JavaScript</span>
-                                <span class="pv2-tag">Physics Engine</span>
-                            </div>
-                            <button class="pv2-btn" data-project-modal="physics-hyperion">
-                                View Details
-                                <span class="material-symbols-outlined">arrow_forward</span>
-                            </button>
-                        </div>
-                    </div>
 
-                    <!-- Project Card 2: Echo Journal -->
-                    <div class="project-card-v2">
-                        <div class="pv2-header"
-                            style="background: linear-gradient(135deg, rgba(0,204,255,0.25), rgba(138,43,226,0.15));">
-                            <div class="pv2-header-overlay"></div>
-                            <span class="material-symbols-outlined pv2-header-icon">psychology</span>
-                            <span class="pv2-badge pv2-badge--live">Live System</span>
-                        </div>
                         <div class="pv2-body">
-                            <h3 class="pv2-title">Echo Journal</h3>
-                            <p class="pv2-desc">An advanced AI-powered mood journal that leverages natural language
-                                processing and sentiment analysis to help users track and reflect on their emotional
-                                well-being.</p>
+                            <h3 class="pv2-title">Kanban Taskboard</h3>
+                            <p class="pv2-desc">
+                                A cloud-backed Kanban application for organizing tasks,
+                                tracking progress, and visualizing productivity through
+                                interactive workflow analytics.
+                            </p>
+
                             <div class="pv2-tags">
                                 <span class="pv2-tag">React</span>
-                                <span class="pv2-tag">Python</span>
-                                <span class="pv2-tag">NLP</span>
+                                <span class="pv2-tag">TypeScript</span>
+                                <span class="pv2-tag">Firebase</span>
                             </div>
-                            <button class="pv2-btn" data-project-modal="echo-journal">
+
+                            <button class="pv2-btn" data-project-modal="kanban-taskboard">
                                 View Details
                                 <span class="material-symbols-outlined">arrow_forward</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Project Card 3: AI Research Scout -->
+                                        <!-- ========================================================= -->
+                    <!-- 09 — fit -->
+                    <!-- ========================================================= -->
                     <div class="project-card-v2">
                         <div class="pv2-header"
-                            style="background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(99,102,241,0.2));">
+                            style="background: linear-gradient(135deg, rgba(255,159,64,0.25), rgba(186,218,85,0.18));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">fitness_center</span>
+                            <span class="pv2-badge pv2-badge--live">Live System</span>
+                        </div>
+
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">fit</h3>
+                            <p class="pv2-desc">
+                                A lightweight fitness tracking application for logging
+                                workouts against a seven-day plan and visualizing training
+                                consistency over time.
+                            </p>
+
+                            <button class="pv2-btn" data-project-modal="fit">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ========================================================= -->
+                    <!-- 01 — Enterprise AI Context Engineering -->
+                    <!-- ========================================================= -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(138,43,226,0.28), rgba(0,204,255,0.18));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">hub</span>
+                            <span class="pv2-badge pv2-badge--live">Technical Showcase</span>
+                        </div>
+
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">Enterprise AI Context Engineering</h3>
+                            <p class="pv2-desc">
+                                An enterprise context layer for AI-powered data engineering,
+                                combining data connectivity, reusable skills, tools, context files,
+                                and agentic workflows to ground AI systems in enterprise data.
+                            </p>
+
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">Snowflake</span>
+                                <span class="pv2-tag">Python</span>
+                                <span class="pv2-tag">Cortex</span>
+                                <span class="pv2-tag">Agentic AI</span>
+                            </div>
+
+                            <button class="pv2-btn" data-project-modal="enterprise-ai-context">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- ========================================================= -->
+                    <!-- 02 — Project-to-GL Reconciliation -->
+                    <!-- ========================================================= -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(16,185,129,0.28), rgba(0,204,255,0.18));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">account_balance</span>
+                            <span class="pv2-badge pv2-badge--live">Production System</span>
+                        </div>
+
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">Project-to-GL Reconciliation</h3>
+                            <p class="pv2-desc">
+                                Enterprise financial reconciliation infrastructure consolidating
+                                eight manual reports into a unified platform processing 1B+
+                                financial records daily for audit-ready reporting.
+                            </p>
+
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">Snowflake</span>
+                                <span class="pv2-tag">ADF</span>
+                                <span class="pv2-tag">Control-M</span>
+                                <span class="pv2-tag">SQL</span>
+                            </div>
+
+                            <button class="pv2-btn" data-project-modal="project-gl-reconciliation">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- ========================================================= -->
+                    <!-- 03 — Databricks → Snowflake Modernization -->
+                    <!-- ========================================================= -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(59,130,246,0.28), rgba(99,102,241,0.20));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">swap_horiz</span>
+                            <span class="pv2-badge pv2-badge--live">Platform Migration</span>
+                        </div>
+
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">Databricks → Snowflake Modernization</h3>
+                            <p class="pv2-desc">
+                                Large-scale modernization of enterprise ETL workloads, migrating
+                                400+ production PySpark notebooks to Snowflake and rebuilding
+                                11 API-driven ingestion pipelines.
+                            </p>
+
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">Snowflake</span>
+                                <span class="pv2-tag">PySpark</span>
+                                <span class="pv2-tag">Python</span>
+                                <span class="pv2-tag">Agentic AI</span>
+                            </div>
+
+                            <button class="pv2-btn" data-project-modal="databricks-snowflake">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- ========================================================= -->
+                    <!-- 04 — AI Data Lifecycle Companion -->
+                    <!-- ========================================================= -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(186,218,85,0.25), rgba(138,43,226,0.20));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">account_tree</span>
+                            <span class="pv2-badge pv2-badge--live">Framework</span>
+                        </div>
+
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">AI Data Lifecycle Companion</h3>
+                            <p class="pv2-desc">
+                                A reusable enterprise framework for building AI-powered data
+                                engineering solutions through modular skills, guardrails,
+                                MCP integrations, and agent workflows.
+                            </p>
+
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">Python</span>
+                                <span class="pv2-tag">LLMs</span>
+                                <span class="pv2-tag">MCP</span>
+                                <span class="pv2-tag">Agentic AI</span>
+                            </div>
+
+                            <button class="pv2-btn" data-project-modal="aidlc">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- ========================================================= -->
+                    <!-- 05 — AI Research Scout -->
+                    <!-- ========================================================= -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(0,204,255,0.25), rgba(138,43,226,0.20));">
                             <div class="pv2-header-overlay"></div>
                             <span class="material-symbols-outlined pv2-header-icon">search_insights</span>
                             <span class="pv2-badge pv2-badge--live">Live System</span>
                         </div>
+
                         <div class="pv2-body">
                             <h3 class="pv2-title">AI Research Scout</h3>
-                            <p class="pv2-desc">An intelligent research assistant that scans, summarizes, and organizes
-                                academic papers using NLP and LLM-powered analysis to accelerate scientific discovery.
+                            <p class="pv2-desc">
+                                A RAG-based research platform that discovers, retrieves,
+                                summarizes, and organizes technical literature using LLMs
+                                and semantic search.
                             </p>
+
                             <div class="pv2-tags">
-                                <span class="pv2-tag">Python</span>
-                                <span class="pv2-tag">LangChain</span>
-                                <span class="pv2-tag">NLP</span>
+                                <span class="pv2-tag">FastAPI</span>
+                                <span class="pv2-tag">PostgreSQL</span>
+                                <span class="pv2-tag">Redis</span>
+                                <span class="pv2-tag">RAG</span>
                             </div>
+
                             <button class="pv2-btn" data-project-modal="ai-research-scout">
                                 View Details
                                 <span class="material-symbols-outlined">arrow_forward</span>
@@ -430,35 +538,162 @@
                         </div>
                     </div>
 
-                    <!-- Project Card 4: Future Project (Coming Soon) -->
-                    <div class="project-card-v2 pv2-coming-soon">
+
+                    <!-- ========================================================= -->
+                    <!-- 06 — Small Data -->
+                    <!-- ========================================================= -->
+                    <div class="project-card-v2">
                         <div class="pv2-header"
-                            style="background: linear-gradient(135deg, rgba(100,100,120,0.2), rgba(60,60,80,0.15));">
+                            style="background: linear-gradient(135deg, rgba(255,159,64,0.25), rgba(0,204,255,0.18));">
                             <div class="pv2-header-overlay"></div>
-                            <span class="material-symbols-outlined pv2-header-icon">rocket_launch</span>
-                            <span class="pv2-badge pv2-badge--soon">Coming Soon</span>
+                            <span class="material-symbols-outlined pv2-header-icon">dataset</span>
+                            <span class="pv2-badge pv2-badge--live">Live System</span>
                         </div>
+
                         <div class="pv2-body">
-                            <h3 class="pv2-title">Future Project</h3>
-                            <p class="pv2-desc">A revolutionary data engineering project currently in development.
-                                Features advanced AI integration and real-time analytics.</p>
+                            <h3 class="pv2-title">Small Data</h3>
+                            <p class="pv2-desc">
+                                An AI-powered data analysis assistant that turns datasets into
+                                summaries, exploratory analysis, and useful insights through
+                                a conversational interface.
+                            </p>
+
                             <div class="pv2-tags">
-                                <span class="pv2-tag">AI/ML</span>
-                                <span class="pv2-tag">Big Data</span>
-                                <span class="pv2-tag">Cloud</span>
+                                <span class="pv2-tag">FastAPI</span>
+                                <span class="pv2-tag">Pandas</span>
+                                <span class="pv2-tag">LangChain</span>
+                                <span class="pv2-tag">OpenAI</span>
                             </div>
-                            <button class="pv2-btn" data-project-modal="future-project">
-                                Preview Roadmap
-                                <span class="material-symbols-outlined">hourglass_top</span>
+
+                            <button class="pv2-btn" data-project-modal="small-data">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
                             </button>
                         </div>
                     </div>
+
+
+                    <!-- ========================================================= -->
+                    <!-- 07 — Physics Hyperion -->
+                    <!-- ========================================================= -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(186,218,85,0.25), rgba(0,204,255,0.15));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">science</span>
+                            <span class="pv2-badge pv2-badge--live">Live System</span>
+                        </div>
+
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">Physics Hyperion</h3>
+                            <p class="pv2-desc">
+                                An interactive physics simulation exploring particle
+                                interactions, gravitational fields, and mathematical
+                                models through real-time browser visualization.
+                            </p>
+
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">WebGL</span>
+                                <span class="pv2-tag">JavaScript</span>
+                                <span class="pv2-tag">Physics Engine</span>
+                            </div>
+
+                            <button class="pv2-btn" data-project-modal="physics-hyperion">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- ========================================================= -->
+                    <!-- 08 — Echo Journal -->
+                    <!-- ========================================================= -->
+                    <div class="project-card-v2">
+                        <div class="pv2-header"
+                            style="background: linear-gradient(135deg, rgba(0,204,255,0.25), rgba(138,43,226,0.15));">
+                            <div class="pv2-header-overlay"></div>
+                            <span class="material-symbols-outlined pv2-header-icon">psychology</span>
+                            <span class="pv2-badge pv2-badge--live">Live System</span>
+                        </div>
+
+                        <div class="pv2-body">
+                            <h3 class="pv2-title">Echo Journal</h3>
+                            <p class="pv2-desc">
+                                An AI-assisted journaling application using natural language
+                                processing and sentiment analysis to help users reflect on
+                                journal entries and identify patterns over time.
+                            </p>
+
+                            <div class="pv2-tags">
+                                <span class="pv2-tag">React</span>
+                                <span class="pv2-tag">Python</span>
+                                <span class="pv2-tag">NLP</span>
+                            </div>
+
+                            <button class="pv2-btn" data-project-modal="echo-journal">
+                                View Details
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </section>
 
+
+                <hr class="section-divider" aria-hidden="true">
+
+        <!-- Timeline Section (Chronicles) -->
+        <section id="timeline" class="timeline-section-standalone reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-bracket">[</span>
+                        CHRONICLES
+                        <span class="title-bracket">]</span>
+                    </h2>
+                    <p class="section-subtitle">Sequential visualization of milestones</p>
+                </div>
+                <div class="timeline" id="timeline-container">
+                    <div class="timeline-progress-track">
+                        <div class="timeline-progress-fill" id="timelineProgressFill"></div>
+                    </div>
+                    <!-- Items rendered dynamically -->
+                </div>
+            </div>
+        </section>
+
+
         <hr class="section-divider" aria-hidden="true">
 
+        <!-- Idle process: Conway's Game of Life launcher -->
+        <aside class="arcade-strip reveal" aria-label="Playable: Conway's Game of Life">
+            <div class="container">
+                <div class="arcade-strip-inner">
+                    <div class="arcade-strip-meta">
+                        <p class="arcade-strip-prompt">
+                            <span class="prompt">user@neural-net:~$</span>
+                            <span class="command">./idle_process --name=life_cell</span>
+                        </p>
+                        <p class="arcade-strip-desc">
+                            <span class="arcade-strip-name">LIFE.CELL</span>
+                            <span class="arcade-strip-sep">//</span>
+                            Conway's Game of Life. draw a seed, watch it evolve from four rules.
+                        </p>
+                    </div>
+                    <button class="arcade-strip-btn" data-game-open="life">
+                        <span class="material-symbols-outlined">grid_on</span>
+                        RUN
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <hr class="section-divider" aria-hidden="true">
+        
         <!-- Skills Section -->
         <section id="skills" class="skills-section-standalone reveal">
             <div class="container">
@@ -589,27 +824,6 @@
             </div>
         </section>
 
-        <hr class="section-divider" aria-hidden="true">
-
-        <!-- Timeline Section (Chronicles) -->
-        <section id="timeline" class="timeline-section-standalone reveal">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="title-bracket">[</span>
-                        CHRONICLES
-                        <span class="title-bracket">]</span>
-                    </h2>
-                    <p class="section-subtitle">Sequential visualization of milestones</p>
-                </div>
-                <div class="timeline" id="timeline-container">
-                    <div class="timeline-progress-track">
-                        <div class="timeline-progress-fill" id="timelineProgressFill"></div>
-                    </div>
-                    <!-- Items rendered dynamically -->
-                </div>
-            </div>
-        </section>
 
         <hr class="section-divider" aria-hidden="true">
 
@@ -721,7 +935,7 @@
                 </a>
             </div>
             <p class="footer-tagline">// built with caffeine & curiosity</p>
-            <p class="footer-copyright">&copy; 2025–2026 Mahavir Chaudhari. All systems operational.</p>
+            <p class="footer-copyright">&copy; 2025 Mahavir Chaudhari. All systems operational.</p>
         </div>
     </footer>
 
@@ -866,145 +1080,6 @@
     <!-- ============================================ -->
     <div id="projectModalRoot" class="project-modal-root" aria-hidden="true">
 
-        <!-- Context Engineering -->
-        <div class="project-modal-overlay" data-project-id="context-engineering" role="dialog" aria-modal="true"
-            aria-labelledby="pm-context-engineering-title">
-            <div class="project-modal-content terminal-window">
-                <div class="terminal-header">
-                    <div class="terminal-controls">
-                        <span class="control close" data-project-close aria-label="Close"></span>
-                        <span class="control minimize"></span>
-                        <span class="control maximize"></span>
-                    </div>
-                    <span class="terminal-title">context_engineering.exe</span>
-                </div>
-                <div class="terminal-content project-modal-body">
-                    <div class="terminal-line">
-                        <span class="prompt">user@neural-net:~$</span>
-                        <span class="command">./launch context_engineering</span>
-                    </div>
-
-                    <div class="pm-hero">
-                        <div class="pm-hero-icon"
-                            style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.35), rgba(0, 150, 136, 0.2));">
-                            <span class="material-symbols-outlined">hub</span>
-                        </div>
-                        <div class="pm-hero-meta">
-                            <h3 class="pm-title" id="pm-context-engineering-title">Enterprise AI Context Engineering</h3>
-                            <p class="pm-subtitle">Modular framework · Reusable skills · Agent workflows</p>
-                            <span class="pm-badge pm-badge--live">Enterprise AI</span>
-                        </div>
-                    </div>
-
-                    <div class="pm-image-container">
-                        <img src="assets/images/context_engineering_min.png" alt="Context Engineering Diagram" loading="lazy" width="1024" height="1024" />
-                    </div>
-
-                    <div class="pm-section">
-                        <p class="pm-section-title">// overview</p>
-                        <p class="pm-body">Architected a modular context engineering framework for enterprise AI agents, designing reusable skills, MCP integrations, guardrails, prompts, and metadata-driven context abstractions to enable scalable, domain-aware agent workflows.</p>
-                    </div>
-
-                    <div class="pm-section">
-                        <p class="pm-section-title">// key_features</p>
-                        <ul class="pm-list">
-                            <li>Engineered dynamic context retrieval and orchestration strategies.</li>
-                            <li>Separated business knowledge from agent logic.</li>
-                            <li>Improved maintainability, extensibility, and response consistency across enterprise AI applications.</li>
-                        </ul>
-                    </div>
-
-                    <div class="pm-section">
-                        <p class="pm-section-title">// tech_stack</p>
-                        <div class="pm-chips">
-                            <span class="pm-chip">Python</span>
-                            <span class="pm-chip">Snowflake</span>
-                            <span class="pm-chip">Oracle</span>
-                            <span class="pm-chip">Cortex CLI</span>
-                            <span class="pm-chip">MCP</span>
-                            <span class="pm-chip">LLMs</span>
-                            <span class="pm-chip">Prompt Engineering</span>
-                        </div>
-                    </div>
-                    
-                    <div class="pm-cta-row">
-                        <button class="pm-cta" data-project-close>
-                            <span class="material-symbols-outlined">close</span>
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mandatory Days Off -->
-        <div class="project-modal-overlay" data-project-id="mandatory-days-off" role="dialog" aria-modal="true"
-            aria-labelledby="pm-mdo-title">
-            <div class="project-modal-content terminal-window">
-                <div class="terminal-header">
-                    <div class="terminal-controls">
-                        <span class="control close" data-project-close aria-label="Close"></span>
-                        <span class="control minimize"></span>
-                        <span class="control maximize"></span>
-                    </div>
-                    <span class="terminal-title">mdo_scheduling.exe</span>
-                </div>
-                <div class="terminal-content project-modal-body">
-                    <div class="terminal-line">
-                        <span class="prompt">user@neural-net:~$</span>
-                        <span class="command">./launch mandatory_days_off</span>
-                    </div>
-
-                    <div class="pm-hero">
-                        <div class="pm-hero-icon"
-                            style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.35), rgba(255, 87, 34, 0.2));">
-                            <span class="material-symbols-outlined">calendar_month</span>
-                        </div>
-                        <div class="pm-hero-meta">
-                            <h3 class="pm-title" id="pm-mdo-title">Mandatory Days Off Scheduling</h3>
-                            <p class="pm-subtitle">Scalable query optimization · Workflow redesign</p>
-                            <span class="pm-badge pm-badge--live">Optimization</span>
-                        </div>
-                    </div>
-
-                    <div class="pm-image-container">
-                        <img src="assets/images/mdo_scheduling_min.png" alt="MDO Scheduling Dashboard" loading="lazy" width="1024" height="1024" />
-                    </div>
-
-                    <div class="pm-section">
-                        <p class="pm-section-title">// overview</p>
-                        <p class="pm-body">Redesigned the Mandatory Days Off (MDO) scheduling engine supporting 6,000+ clinicians. The focus was on optimizing scalable queries and redesigning the workflow to significantly reduce processing bottlenecks and ensure consistency.</p>
-                    </div>
-
-                    <div class="pm-section">
-                        <p class="pm-section-title">// key_features</p>
-                        <ul class="pm-list">
-                            <li>Reduced end-to-end execution time from 2 hours to 10 minutes (92% improvement).</li>
-                            <li>Implemented scalable query optimization to handle increasing data volume.</li>
-                            <li>Redesigned the entire processing workflow to minimize manual intervention.</li>
-                        </ul>
-                    </div>
-
-                    <div class="pm-section">
-                        <p class="pm-section-title">// tech_stack</p>
-                        <div class="pm-chips">
-                            <span class="pm-chip">Python</span>
-                            <span class="pm-chip">SQL</span>
-                            <span class="pm-chip">Snowflake</span>
-                            <span class="pm-chip">Data Optimization</span>
-                        </div>
-                    </div>
-                    
-                    <div class="pm-cta-row">
-                        <button class="pm-cta" data-project-close>
-                            <span class="material-symbols-outlined">close</span>
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Physics Hyperion -->
         <div class="project-modal-overlay" data-project-id="physics-hyperion" role="dialog" aria-modal="true"
             aria-labelledby="pm-physics-title">
@@ -1033,10 +1108,6 @@
                             <p class="pm-subtitle">Interactive physics playground · WebGL · Real-time simulation</p>
                             <span class="pm-badge pm-badge--live">Live System</span>
                         </div>
-                    </div>
-
-                    <div class="pm-image-container">
-                        <img src="assets/images/physics_hyperion_min.png" alt="Physics Hyperion Simulation" loading="lazy" width="1024" height="1024" />
                     </div>
 
                     <div class="pm-section">
@@ -1124,10 +1195,6 @@
                         </div>
                     </div>
 
-                    <div class="pm-image-container">
-                        <img src="assets/images/echo_journal_min.png" alt="Echo Journal Dashboard" loading="lazy" width="1024" height="1024" />
-                    </div>
-
                     <div class="pm-section">
                         <p class="pm-section-title">// overview</p>
                         <p class="pm-body">Echo Journal is a private mood-and-thought journal that uses natural
@@ -1213,10 +1280,6 @@
                         </div>
                     </div>
 
-                    <div class="pm-image-container">
-                        <img src="assets/images/ai_research_scout_min.png" alt="AI Research Scout UI" loading="lazy" width="1024" height="1024" />
-                    </div>
-
                     <div class="pm-section">
                         <p class="pm-section-title">// overview</p>
                         <p class="pm-body">AI Research Scout accelerates literature review by scanning, summarizing,
@@ -1272,6 +1335,154 @@
             </div>
         </div>
 
+        <!-- fit -->
+        <div class="project-modal-overlay" data-project-id="fit" role="dialog" aria-modal="true"
+            aria-labelledby="pm-fit-title">
+            <div class="project-modal-content terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close" data-project-close aria-label="Close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title">fit.exe</span>
+                </div>
+                <div class="terminal-content project-modal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">user@neural-net:~$</span>
+                        <span class="command">./fit --week current</span>
+                    </div>
+
+                    <div class="pm-hero">
+                        <div class="pm-hero-icon"
+                            style="background: linear-gradient(135deg, rgba(255,159,64,0.35), rgba(186,218,85,0.22));">
+                            <span class="material-symbols-outlined">fitness_center</span>
+                        </div>
+                        <div class="pm-hero-meta">
+                            <h3 class="pm-title" id="pm-fit-title">fit</h3>
+                            <p class="pm-subtitle">Weekly fitness tracker · Habit consistency</p>
+                            <span class="pm-badge pm-badge--live">Live System</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// overview</p>
+                        <p class="pm-body">A weekly fitness tracker built around a seven-day view rather than an
+                            endless activity feed. The week is the unit of progress: plan what you intend to do,
+                            log what you actually did, and let the gap between the two be the feedback loop.</p>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// key_features</p>
+                        <ul class="pm-list">
+                            <li>Seven-day board showing the whole week at a glance.</li>
+                            <li>Log workouts against a planned weekly target.</li>
+                            <li>Streak and consistency tracking across weeks.</li>
+                            <li>Progress history to compare one week against the last.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-cta-row">
+                        <a class="pm-cta pm-cta--primary" href="https://github.com/mveer1/fit" target="_blank"
+                            rel="noopener noreferrer">
+                            <span class="material-symbols-outlined">code</span>
+                            View Source
+                        </a>
+                        <button class="pm-cta" data-project-close>
+                            <span class="material-symbols-outlined">close</span>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- kanban-taskboard -->
+        <div class="project-modal-overlay" data-project-id="kanban-taskboard" role="dialog" aria-modal="true"
+            aria-labelledby="pm-kanban-title">
+            <div class="project-modal-content terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close" data-project-close aria-label="Close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title">kanban_taskboard.exe</span>
+                </div>
+                <div class="terminal-content project-modal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">user@neural-net:~$</span>
+                        <span class="command">npm run dev --workspace=taskboard</span>
+                    </div>
+
+                    <div class="pm-hero">
+                        <div class="pm-hero-icon"
+                            style="background: linear-gradient(135deg, rgba(16,185,129,0.35), rgba(0,204,255,0.2));">
+                            <span class="material-symbols-outlined">view_kanban</span>
+                        </div>
+                        <div class="pm-hero-meta">
+                            <h3 class="pm-title" id="pm-kanban-title">kanban-taskboard</h3>
+                            <p class="pm-subtitle">Task management board · React + TypeScript · Firebase-backed</p>
+                            <span class="pm-badge pm-badge--live">Live System</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// overview</p>
+                        <p class="pm-body">A Kanban board for managing daily tasks systematically. Cards move across
+                            columns by drag-and-drop, state persists to Firebase so the board follows you between
+                            devices, and completed work rolls up into charts that show throughput over time.</p>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// key_features</p>
+                        <ul class="pm-list">
+                            <li>Drag-and-drop cards across columns with SortableJS.</li>
+                            <li>Firebase-backed persistence and cross-device sync.</li>
+                            <li>Progress analytics rendered with Chart.js and D3.</li>
+                            <li>Fully typed React component tree with TypeScript.</li>
+                            <li>Vitest coverage over the board's state transitions.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// tech_stack</p>
+                        <div class="pm-chips">
+                            <span class="pm-chip">React 18</span>
+                            <span class="pm-chip">TypeScript</span>
+                            <span class="pm-chip">Vite</span>
+                            <span class="pm-chip">Firebase</span>
+                            <span class="pm-chip">Chart.js</span>
+                            <span class="pm-chip">D3.js</span>
+                            <span class="pm-chip">SortableJS</span>
+                            <span class="pm-chip">Express</span>
+                        </div>
+                    </div>
+
+                    <div class="pm-section">
+                        <p class="pm-section-title">// engineering_challenges</p>
+                        <ul class="pm-list">
+                            <li>Keeping drag-and-drop reordering in sync with remote Firebase state.</li>
+                            <li>Modelling column/card ordering so concurrent edits don't clobber each other.</li>
+                            <li>Deriving meaningful analytics from a task log without slowing the board down.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pm-cta-row">
+                        <a class="pm-cta pm-cta--primary" href="https://github.com/mveer1/kanban-taskboard"
+                            target="_blank" rel="noopener noreferrer">
+                            <span class="material-symbols-outlined">code</span>
+                            View Source
+                        </a>
+                        <button class="pm-cta" data-project-close>
+                            <span class="material-symbols-outlined">close</span>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Future Project (Roadmap) -->
         <div class="project-modal-overlay" data-project-id="future-project" role="dialog" aria-modal="true"
             aria-labelledby="pm-future-title">
@@ -1300,10 +1511,6 @@
                             <p class="pm-subtitle">Agentic data platform · Real-time + GenAI · Coming soon</p>
                             <span class="pm-badge pm-badge--soon">Roadmap</span>
                         </div>
-                    </div>
-
-                    <div class="pm-image-container">
-                        <img src="assets/images/future_project_min.png" alt="Future Project Blueprint" loading="lazy" width="1024" height="1024" />
                     </div>
 
                     <div class="pm-section">
@@ -1356,7 +1563,191 @@
 
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <!-- ============================================================
+         Arcade modals (Flappy Byte + Conway's Game of Life)
+         ============================================================ -->
+    <div id="gameModalRoot" class="game-modal-root" aria-hidden="true">
+
+        <!-- Flappy Byte -->
+        <div class="game-modal-overlay" data-game-id="flappy" role="dialog" aria-modal="true"
+            aria-labelledby="gm-flappy-title">
+            <div class="game-modal-content terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close" data-game-close aria-label="Close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title" id="gm-flappy-title">flappy_byte.exe</span>
+                </div>
+                <div class="terminal-content game-modal-body">
+                    <div class="game-hud">
+                        <div class="game-hud-stat">
+                            <span class="game-hud-label">SCORE</span>
+                            <span class="game-hud-value" id="flappyScore">0000</span>
+                        </div>
+                        <div class="game-hud-stat">
+                            <span class="game-hud-label">HIGH</span>
+                            <span class="game-hud-value game-hud-value--alt" id="flappyHigh">0000</span>
+                        </div>
+                        <div class="game-hud-stat game-hud-stat--status">
+                            <span class="game-hud-label">STATUS</span>
+                            <span class="game-hud-value" id="flappyStatus">READY</span>
+                        </div>
+                    </div>
+
+                    <div class="game-canvas-wrap">
+                        <canvas id="flappyCanvas" width="480" height="360" role="img"
+                            aria-label="Flappy Byte game canvas"></canvas>
+                        <div class="game-overlay-msg" id="flappyOverlay">
+                            <p class="game-overlay-title">FLAPPY_BYTE</p>
+                            <p class="game-overlay-sub">SPACE / CLICK / TAP to flap</p>
+                            <p class="game-overlay-hint">avoid the firewall &mdash; one hit and the packet drops</p>
+                        </div>
+                    </div>
+
+                    <div class="game-controls">
+                        <button class="game-btn game-btn--primary" id="flappyStartBtn">
+                            <span class="material-symbols-outlined">play_arrow</span>
+                            <span class="game-btn-text">START</span>
+                        </button>
+                        <button class="game-btn" id="flappyResetHighBtn">
+                            <span class="material-symbols-outlined">restart_alt</span>
+                            RESET HIGH
+                        </button>
+                        <button class="game-btn" data-game-close>
+                            <span class="material-symbols-outlined">close</span>
+                            CLOSE
+                        </button>
+                    </div>
+
+                    <p class="game-footnote">// highscore stored locally in your browser</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conway's Game of Life -->
+        <div class="game-modal-overlay" data-game-id="life" role="dialog" aria-modal="true"
+            aria-labelledby="gm-life-title">
+            <div class="game-modal-content terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close" data-game-close aria-label="Close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="terminal-title" id="gm-life-title">life_cell.exe</span>
+                </div>
+                <div class="terminal-content game-modal-body">
+                    <div class="game-hud">
+                        <div class="game-hud-stat">
+                            <span class="game-hud-label">GEN</span>
+                            <span class="game-hud-value" id="lifeGen">0</span>
+                        </div>
+                        <div class="game-hud-stat">
+                            <span class="game-hud-label">POP</span>
+                            <span class="game-hud-value game-hud-value--alt" id="lifePop">0</span>
+                        </div>
+                        <button class="game-rules-btn" id="lifeRulesBtn" aria-expanded="false"
+                            aria-controls="lifeRulesPanel">
+                            <span class="material-symbols-outlined">help</span>
+                            RULES
+                        </button>
+                    </div>
+
+                    <!-- Rules popover -->
+                    <div class="game-rules-panel" id="lifeRulesPanel" hidden>
+                        <p class="game-rules-title">// conway's game of life &mdash; four rules</p>
+                        <p class="game-rules-intro">Every cell is either alive or dead. Each generation, every
+                            cell looks at its 8 neighbours and applies these rules at the same time:</p>
+                        <ul class="game-rules-list">
+                            <li><strong>Underpopulation</strong> &mdash; a live cell with fewer than 2 live
+                                neighbours dies.</li>
+                            <li><strong>Survival</strong> &mdash; a live cell with 2 or 3 live neighbours lives on.
+                            </li>
+                            <li><strong>Overpopulation</strong> &mdash; a live cell with more than 3 live neighbours
+                                dies.</li>
+                            <li><strong>Reproduction</strong> &mdash; a dead cell with exactly 3 live neighbours
+                                becomes alive.</li>
+                        </ul>
+                        <p class="game-rules-intro">That's the whole game. Nothing is random and nothing is aimed
+                            &mdash; every pattern you see is those four rules running over and over.</p>
+                        <p class="game-rules-title">// how to use this</p>
+                        <ul class="game-rules-list">
+                            <li><strong>Click or drag</strong> on the grid to paint cells alive or dead.</li>
+                            <li><strong>PLAY</strong> runs generations continuously; <strong>STEP</strong> advances
+                                exactly one.</li>
+                            <li><strong>RANDOM</strong> scatters a fresh seed; <strong>CLEAR</strong> empties the
+                                grid.</li>
+                            <li><strong>PRESET</strong> loads a known pattern &mdash; try <em>Glider</em> (it walks
+                                diagonally) or <em>Gosper Glider Gun</em> (it emits gliders forever).</li>
+                        </ul>
+                        <p class="game-rules-note">The grid wraps at the edges, so patterns leaving one side
+                            reappear on the other.</p>
+                        <button class="game-btn game-btn--primary" id="lifeRulesCloseBtn">
+                            <span class="material-symbols-outlined">check</span>
+                            GOT IT
+                        </button>
+                    </div>
+
+                    <div class="game-canvas-wrap game-canvas-wrap--life">
+                        <canvas id="lifeCanvas" width="480" height="320" role="img"
+                            aria-label="Conway's Game of Life grid. Click or drag to toggle cells."></canvas>
+                    </div>
+
+                    <div class="game-controls">
+                        <button class="game-btn game-btn--primary" id="lifePlayBtn">
+                            <span class="material-symbols-outlined">play_arrow</span>
+                            <span class="game-btn-text">PLAY</span>
+                        </button>
+                        <button class="game-btn" id="lifeStepBtn">
+                            <span class="material-symbols-outlined">skip_next</span>
+                            STEP
+                        </button>
+                        <button class="game-btn" id="lifeRandomBtn">
+                            <span class="material-symbols-outlined">casino</span>
+                            RANDOM
+                        </button>
+                        <button class="game-btn" id="lifeClearBtn">
+                            <span class="material-symbols-outlined">delete_sweep</span>
+                            CLEAR
+                        </button>
+                    </div>
+
+                    <div class="game-controls game-controls--secondary">
+                        <label class="game-field">
+                            <span class="game-field-label">SPEED</span>
+                            <input type="range" class="game-range" id="lifeSpeed" min="1" max="30" value="10"
+                                aria-label="Generations per second">
+                        </label>
+                        <label class="game-field">
+                            <span class="game-field-label">PRESET</span>
+                            <select class="game-select" id="lifePreset" aria-label="Load a known pattern">
+                                <option value="">-- select --</option>
+                                <option value="glider">Glider</option>
+                                <option value="blinker">Blinker</option>
+                                <option value="toad">Toad</option>
+                                <option value="pulsar">Pulsar</option>
+                                <option value="lwss">Lightweight Spaceship</option>
+                                <option value="gosper">Gosper Glider Gun</option>
+                            </select>
+                        </label>
+                        <button class="game-btn" data-game-close>
+                            <span class="material-symbols-outlined">close</span>
+                            CLOSE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- three.js pinned to r128 with Subresource Integrity; the hero scene degrades
+         gracefully via a THREE availability guard in app.js if this fails to load. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+        integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="timeline-data.js"></script>
     <script src="app.js"></script>
 </body>

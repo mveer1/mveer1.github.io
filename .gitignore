@@ -1,4 +1,28 @@
-.DS_Store
-stitch_screens/
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+_site/
+.vite/
+
+# OS cruft
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local env
+.env
+.env.local
+
+# Working assets
+stitch_screens/

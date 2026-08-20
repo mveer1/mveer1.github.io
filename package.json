@@ -1,27 +1,31 @@
 {
   "name": "mveer1.github.io",
   "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio site for Mahavir Chaudhari — Data Engineer. Zero-build vanilla HTML/CSS/JS served directly by GitHub Pages; npm is used only for the local dev server.",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "serve": "http-server . -p 8080 -c-1",
+    "check": "node --check app.js && node --check timeline-data.js"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
     "vite": "^5.0.0"
   },
-  "description": "Personal portfolio site for Mahavir Chaudhari — Data Engineer. Vanilla HTML/CSS/JS with a Vite dev server.",
-  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mveer1/mveer1.github.io.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "portfolio",
+    "data-engineering",
+    "github-pages"
+  ],
+  "author": "Mahavir Chaudhari",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mveer1/mveer1.github.io/issues"
   },
-  "homepage": "https://github.com/mveer1/mveer1.github.io#readme"
+  "homepage": "https://mveer1.github.io"
 }
