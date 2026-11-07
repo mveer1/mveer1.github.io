@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Parts Lab</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #10161f; color: #e9e4d8; font: 14px/1.4 system-ui, sans-serif; }
+  canvas { display: block; }
+  #ui { position: fixed; left: 16px; top: 12px; }
+  select { font: inherit; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="ui">Parts lab · <select id="view"><option value="parts">Part library</option><option value="figure">Minifigure</option><option value="props">Props</option></select></div>
+<script type="module" src="js/lab.js"></script>
+</body>
+</html>

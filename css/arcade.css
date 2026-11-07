@@ -1,0 +1,140 @@
+/* The arcade: a game-select screen of poster tiles, then each game. Everything here is built
+   from brick parts: a baseplate backdrop, tiles with studs on top, chunky buttons that press
+   down. Colours are the plastic colours used in the world. Uses the tokens in world.css. */
+.arcade {
+  --lego-yellow: #f2cd37; --lego-yellow-dk: #b8941a;
+  --lego-red: #c91a09; --lego-red-dk: #7f0f05;
+  --lego-blue: #0055bf; --lego-blue-dk: #003579;
+  --lego-green: #237841; --lego-green-dk: #15502a;
+  --plate: #0b4faa; --plate-dk: #07357a; --plate-lt: #1d6ad0;
+  --tile: #f7f3e6; --tile-dk: #bfb7a1;
+  --stud-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='9'%3E%3Crect x='7' y='0' width='14' height='9' rx='3'/%3E%3C/svg%3E");
+  position: fixed; inset: 0; margin: auto; padding: 0; border: 0; background: transparent; overflow: visible;
+  width: min(1000px, calc(100vw - 2 * var(--gutter))); height: fit-content; max-height: calc(100dvh - 2 * var(--gutter));
+  color: var(--ink);
+}
+.arcade[open] { display: flex; }
+.arcade::backdrop { background: rgba(6, 10, 18, 0.7); }
+
+/* The sheet is a yellow brick frame around a blue baseplate with its studs showing. */
+.arcade-sheet {
+  position: relative; flex: 1; min-width: 0; overflow-y: auto; overscroll-behavior: contain;
+  border: 8px solid var(--lego-yellow); border-radius: 16px;
+  background:
+    radial-gradient(circle at 50% 56%, var(--plate-lt) 0 8px, transparent 9px) 0 0 / 34px 34px,
+    radial-gradient(circle at 50% 66%, var(--plate-dk) 0 8px, transparent 9px) 0 0 / 34px 34px,
+    var(--plate);
+  box-shadow: 0 8px 0 var(--lego-yellow-dk), 0 36px 70px -20px rgba(0, 0, 0, 0.75);
+}
+.arcade[open] .arcade-sheet { animation: arcade-in 260ms cubic-bezier(.2, .9, .25, 1.1) both; }
+@keyframes arcade-in { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: none; } }
+
+.arcade-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 22px 24px 4px 28px; }
+.arcade-kicker { margin: 0 0 6px; font: 500 13px/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--lego-yellow); }
+.arcade-title { margin: 0; font: 800 clamp(28px, 4vw, 44px)/1 var(--display); letter-spacing: -0.02em; color: #fff; text-shadow: 0 3px 0 var(--plate-dk); }
+.arcade-close {
+  flex: none; width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 10px; cursor: pointer;
+  background: var(--lego-red); color: #fff; box-shadow: 0 4px 0 var(--lego-red-dk); transition: transform 140ms, box-shadow 140ms;
+}
+.arcade-close:hover { transform: translateY(-1px); box-shadow: 0 5px 0 var(--lego-red-dk); }
+.arcade-close:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--lego-red-dk); }
+.arcade-close svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 3; stroke-linecap: round; fill: none; }
+
+/* ---------- buttons: a brick with studs on top that presses down */
+.brick-btn {
+  --c: var(--lego-yellow); --dk: var(--lego-yellow-dk); --ink-on: var(--ink);
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 46px; padding: 0 22px; margin-top: 7px; border: 0; border-radius: 8px; cursor: pointer;
+  background: var(--c); color: var(--ink-on); box-shadow: 0 5px 0 var(--dk);
+  font: 800 15px/1 var(--display); letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none;
+  transition: transform 140ms cubic-bezier(.2, .8, .2, 1), box-shadow 140ms;
+}
+.brick-btn::before { content: ""; position: absolute; top: -6px; left: 14px; width: 16px; height: 7px; border-radius: 3px 3px 0 0; background: var(--c); box-shadow: 26px 0 0 var(--c); }
+.brick-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 0 var(--dk); }
+.brick-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--dk); }
+.brick-btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.brick-btn--red { --c: var(--lego-red); --dk: var(--lego-red-dk); --ink-on: #fff; }
+.brick-btn--blue { --c: var(--lego-blue); --dk: var(--lego-blue-dk); --ink-on: #fff; }
+.brick-btn--yellow { --c: var(--lego-yellow); --dk: var(--lego-yellow-dk); }
+.brick-btn--ghost { --c: #f2ede2; --dk: #a89f89; --ink-on: var(--ink); }
+.play-icon, .back-icon { display: inline-block; width: 11px; height: 13px; background: currentColor; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.back-icon { transform: scaleX(-1); }
+
+/* ---------- game select */
+.arcade-menu { padding: 8px 28px 30px; }
+.arcade-lede { margin: 0 0 22px; max-width: 56ch; font: 500 16px/1.5 var(--text); color: #dbe8fb; }
+.arcade-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.arcade-tile {
+  position: relative; display: flex; flex-direction: column; margin-top: 9px; padding: 0; border: 0; border-radius: 14px; overflow: visible; cursor: pointer; text-align: left;
+  background: var(--tile); color: var(--ink); box-shadow: 0 7px 0 var(--tile-dk), 0 22px 30px -14px rgba(0, 0, 0, 0.6);
+  transition: transform 180ms cubic-bezier(.2, .8, .2, 1), box-shadow 180ms;
+}
+.tile-studs { position: absolute; left: 14px; right: 14px; top: -9px; height: 9px; background: var(--tile); -webkit-mask: var(--stud-mask) 0 0 / 28px 9px repeat-x; mask: var(--stud-mask) 0 0 / 28px 9px repeat-x; }
+.tile-poster { display: block; margin: 10px 10px 0; border-radius: 8px; overflow: hidden; line-height: 0; aspect-ratio: 4 / 3; background: #0b4faa; }
+.tile-poster svg { width: 100%; height: 100%; transition: transform 380ms cubic-bezier(.2, .8, .2, 1); }
+.tile-body { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 14px 18px 20px; }
+.tile-meta { font: 500 12px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.tile-text { font: 500 16px/1.45 var(--text); min-height: 2.9em; }
+.arcade-tile:hover { transform: translateY(-5px); box-shadow: 0 12px 0 var(--tile-dk), 0 30px 36px -14px rgba(0, 0, 0, 0.6); }
+.arcade-tile:hover .tile-poster svg { transform: scale(1.04); }
+.arcade-tile:active { transform: translateY(2px); box-shadow: 0 3px 0 var(--tile-dk); }
+.arcade-tile:hover .brick-btn { transform: translateY(-1px); box-shadow: 0 6px 0 var(--dk); }
+.arcade-tile:focus-visible { outline: 4px solid #fff; outline-offset: 5px; }
+
+/* ---------- a game */
+.game { padding: 12px 28px 26px; }
+.game-bar { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px 22px; margin-bottom: 18px; }
+.game-hud { display: flex; align-items: flex-end; gap: 12px; }
+.game-stat { position: relative; display: flex; flex-direction: column; gap: 4px; min-width: 92px; margin-top: 7px; padding: 9px 14px 8px; border-radius: 6px; background: var(--tile); box-shadow: 0 4px 0 var(--tile-dk); }
+.game-stat::before { content: ""; position: absolute; left: 10px; right: 10px; top: -6px; height: 6px; background: var(--tile); -webkit-mask: var(--stud-mask) 0 0 / 28px 6px repeat-x; mask: var(--stud-mask) 0 0 / 28px 6px repeat-x; }
+.game-label { font: 500 11px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+.game-value { font: 500 22px/1 var(--mono); letter-spacing: -0.02em; color: var(--ink); min-width: 4ch; }
+.game-rules-btn { min-height: 40px; }
+
+/* The screen sits in a dark brick frame; it is sized so the whole game fits the window. */
+.game-frame {
+  position: relative; width: min(100%, calc((100dvh - 440px) * var(--ar, 1.333))); min-width: min(100%, 320px); margin-inline: auto; padding: 8px;
+  border-radius: 14px; background: #1b2a34; line-height: 0; box-shadow: 0 6px 0 #0a1118, inset 0 0 0 2px rgba(255, 255, 255, 0.07);
+}
+.game-frame canvas { display: block; width: 100%; height: auto; border-radius: 7px; touch-action: none; image-rendering: auto; }
+.game-frame canvas:focus-visible { outline: 3px solid var(--lego-yellow); outline-offset: -3px; }
+.game-frame--life canvas { cursor: crosshair; }
+.game-overlay-msg { position: absolute; inset: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 16px; text-align: center; border-radius: 7px; background: rgba(8, 24, 48, 0.5); line-height: 1.4; }
+.game-overlay-title { margin: 0; padding: 12px 22px 10px; border-radius: 8px; background: var(--lego-red); color: #fff; box-shadow: 0 5px 0 var(--lego-red-dk); font: 800 clamp(22px, 3.4vw, 34px)/1 var(--display); letter-spacing: 0.03em; }
+.game-overlay-sub { margin: 4px 0 0; font: 500 15px/1.3 var(--mono); color: var(--lego-yellow); letter-spacing: 0.03em; }
+.game-overlay-hint { margin: 0; font: 500 14px/1.4 var(--text); color: #dbe8fb; }
+
+.game-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 20px; }
+.game-field { display: flex; align-items: center; gap: 8px; margin-top: 7px; padding: 6px 10px; border-radius: 8px; background: var(--tile); box-shadow: 0 4px 0 var(--tile-dk); }
+.game-range { width: 84px; accent-color: var(--lego-red); }
+.game-select { min-height: 34px; padding: 0 8px; border: 2px solid var(--ink); border-radius: 6px; background: #fff; color: var(--ink); font: 600 14px/1 var(--text); }
+.game-footnote { margin: 16px 0 0; font: 500 13.5px/1.4 var(--text); color: #c9dcf7; }
+.game-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.game-legend span { font: 500 11px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--lego-yellow); margin-right: 2px; }
+.game-legend i { display: inline-block; width: 14px; height: 14px; margin-left: 8px; border-radius: 3px; background: var(--c); box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.25); }
+.game-legend i:first-of-type { margin-left: 0; }
+
+.game-rules-panel { margin-bottom: 16px; padding: 16px 20px; border-radius: 10px; border-left: 8px solid var(--lego-yellow); background: var(--tile); font-size: 14.5px; line-height: 1.5; color: var(--ink); box-shadow: 0 5px 0 var(--tile-dk); }
+.game-rules-panel p { margin: 0 0 8px; }
+.game-rules-panel ul { margin: 0 0 10px; padding-left: 20px; }
+.game-rules-panel li { margin-bottom: 4px; }
+.game-rules-title { font: 750 16px/1.3 var(--display); letter-spacing: -0.01em; }
+
+@media (max-width: 760px) {
+  .arcade-sheet { border-width: 6px; border-radius: 12px; }
+  .arcade-head { padding: 16px 16px 2px 18px; }
+  .arcade-menu { padding: 6px 18px 24px; }
+  .arcade-tiles { grid-template-columns: 1fr; gap: 26px; }
+  .tile-text { min-height: 0; }
+  .game { padding: 10px 16px 20px; }
+  .game-hud { gap: 8px; }
+  .game-stat { min-width: 0; padding: 8px 10px 7px; }
+  .game-value { font-size: 18px; }
+  .game-frame { width: 100%; }
+  .game-range { width: 90px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arcade[open] .arcade-sheet { animation: none; }
+  .arcade-tile, .arcade-tile:hover, .brick-btn, .tile-poster svg { transition: none; }
+  .arcade-tile:hover { transform: none; }
+}

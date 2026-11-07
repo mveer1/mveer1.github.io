@@ -26,3 +26,9 @@ npm-debug.log*
 
 # Working assets
 stitch_screens/
+
+# Design-skill tooling state
+.taste-skill/
+
+# QA screenshots
+qa/shots/
