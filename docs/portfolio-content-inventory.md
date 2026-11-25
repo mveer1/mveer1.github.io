@@ -10,9 +10,9 @@ This file lists what the workspace actually says about Mahavir. Nothing here is 
 |---|---|---|---|
 | 1 | `mahavir.pdf` | 2026-10-24 ("res update") | Linked from the site as the CV. Newest, so it is canonical. |
 | 2 | `index.html` | 2026-08-21 | Project cards, project modals, skills, about text, contact. |
-| 3 | `main.tex`, `resume.json` | 2026-08-20 | Identical to each other. Older than the PDF. |
+| 3 | `main.tex`, `resume.json` | 2026-08-20 | Identical to each other. Older than the PDF. Removed from the repository on 2026-11-25; still in git history. |
 | 4 | `timeline-data.js` | 2026-08-20 | Year-by-year narrative (2020 to 2026). |
-| 5 | `resume_bank.txt` | 2026-07-07 | Older bullet bank. |
+| 5 | `resume_bank.txt` | 2026-07-07 | Older bullet bank. Removed from the repository on 2026-11-25; still in git history. |
 | 6 | Public GitHub READMEs (`github.com/mveer1/*`) | various | Fetched read-only for projects the site already links to. |
 
 **Rule used in the world:** a metric is shown only if it appears in `mahavir.pdf` or in the project modal text on `index.html`. A secondary source is used only for detail the PDF does not cover. Values from older sources that the PDF has since changed are not shown.

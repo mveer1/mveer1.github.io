@@ -7,10 +7,11 @@
   "scripts": {
     "dev": "vite",
     "serve": "http-server . -p 8080 -c-1",
-    "check": "node --check js/main.js && node --check js/app.js",
+    "check": "node tools/check.mjs",
     "guide": "node tools/render-guide.mjs",
     "preload": "node tools/preload.mjs",
     "qa": "node qa/interact.mjs",
+    "qa:reach": "node qa/reach.mjs",
     "qa:tour": "node qa/tour.mjs --panels",
     "qa:storyboard": "node qa/storyboard.mjs"
   },

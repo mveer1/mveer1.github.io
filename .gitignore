@@ -1,14 +1,11 @@
 # Dependencies
 node_modules/
 
-# Build output
+# Build output (the site itself has no build step; this guards an accidental `vite build`)
 dist/
-_site/
-.vite/
 
 # OS cruft
 .DS_Store
-**/.DS_Store
 Thumbs.db
 
 # Editor
@@ -22,13 +19,14 @@ npm-debug.log*
 
 # Local env
 .env
-.env.local
+.env.*
 
-# Working assets
-stitch_screens/
-
-# Design-skill tooling state
+# Local tooling state
+.claude/settings.local.json
 .taste-skill/
 
-# QA screenshots
+# QA output
 qa/shots/
+playwright-report/
+test-results/
+.playwright-mcp/

@@ -1,0 +1,10 @@
+# Keep text files LF in the repository. Files already stored with CRLF
+# (package.json, package-lock.json, robots.txt, sitemap.xml, .gitignore) are left
+# alone: git does not convert a file whose indexed copy already has CRLF.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.pdf binary
+*.woff2 binary
